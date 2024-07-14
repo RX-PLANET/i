@@ -7,9 +7,15 @@ import {
 
 // 2.Components
 const Index = () => import("../views/Index.vue");
+const Login = () => import("../views/Login.vue");
+const Signup = () => import("../views/Signup.vue");
 
 // 3.Routes
-const routes = [{ path: "/", component: Index }];
+const routes = [
+    { path: "/", component: Index },
+    { path: "/login", component: Login },
+    { path: "/signup", component: Signup },
+];
 
 // 4.Build An Instance
 const router = createRouter({

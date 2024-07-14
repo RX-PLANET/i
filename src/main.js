@@ -18,5 +18,8 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 app.use(ElementPlus);
 
+import svgIcon from "@/utils/svgIcon";
+app.use(svgIcon);
+
 // 3.Mount DOM
 app.mount("#app");

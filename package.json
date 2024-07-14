@@ -3,15 +3,20 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "dev": "env DEV_SERVER=true vue-cli-service serve",
+        "serve": "vue-cli-service serve --mode serve",
+        "preview": "cross-env DEV_SERVER=true vue-cli-service serve --mode preview",
+        "dev": "cross-env DEV_SERVER=true vue-cli-service serve",
+        "debug": "cross-env DEV_SERVER=true vue-cli-service serve --mode staging",
         "build": "vue-cli-service build",
+        "build-preview": "vue-cli-service build --mode preview",
+        "build-dev": "vue-cli-service build --mode development",
         "lint": "vue-cli-service lint",
         "prepare": "husky install"
     },
     "dependencies": {
         "@vueuse/head": "^0.7.6",
         "core-js": "^3.8.3",
+        "cross-env": "^7.0.3",
         "element-plus": "^2.2.5",
         "vue": "^3.2.13",
         "vue-router": "^4.0.16",

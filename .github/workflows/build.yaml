@@ -1,8 +1,8 @@
-name: Build
+name: Preview Master
 on:
     push:
-        branches:
-            - master
+        tags:
+            - "v*.*.*-master"
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
