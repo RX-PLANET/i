@@ -17,6 +17,7 @@ function $uc(options) {
         withCredentials: true,
         headers: {
             Authorization: "Bearer " + User.getToken(),
+            "user-device-fingerprint": User.getDeviceFingerprint(),
         },
         baseURL: domain,
     };

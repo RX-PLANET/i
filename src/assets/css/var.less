@@ -2,3 +2,13 @@
 GLOBAL DEFINITION 项目本地全局定义
 🚫 WARNING : 不可删除！
 ***/
+
+@color-link: #0366d6;
+@color: #3d454d;
+@primary: #0366d6;
+
+.underline(@color:@color-link) {
+    &:hover {
+        box-shadow: 0 1px 0 @color;
+    }
+}

@@ -1,5 +1,7 @@
 import { tokenExpires, tokenKey } from "../settings";
 import { Local } from "@/utils/storage";
+import Fingerprint2 from "fingerprintjs2";
+
 class User {
     static TOKEN_KEY = tokenKey;
     static LAST_AUTH = "created_at";
@@ -162,6 +164,26 @@ class User {
     // 获取我的权限
     getPermission() {
         return Local.get("permission") || [];
+    }
+
+    // 生成设备指纹
+    generateFingerprint(callback) {
+        const cache = Local.get("fingerprint");
+        if (cache) {
+            return cache;
+        }
+        Fingerprint2.get(function (components) {
+            const values = components.map((component) => component.value);
+            const murmur = Fingerprint2.x64hash128(values.join(""), 31);
+
+            Local.set("fingerprint", murmur);
+            callback(murmur);
+        });
+    }
+
+    // 获取设备指纹
+    getDeviceFingerprint() {
+        return Local.get("fingerprint");
     }
 }
 
