@@ -32,7 +32,7 @@
                 >
             </el-form-item>
             <el-form-item class="m-footer">
-                <p class="u-login">已有账号? <a href="/">登录 &raquo;</a></p>
+                <p class="u-login">已有账号? <a :href="loginLink">登录 &raquo;</a></p>
             </el-form-item>
         </el-form>
     </el-card>
@@ -93,6 +93,10 @@ export default {
         canSubmit() {
             return this.form.username && this.form.password && this.agreement;
         },
+        loginLink() {
+            const path = this.$router.resolve({ name: "username-login", query: { app: this.app } });
+            return path.href;
+        },
     },
     async mounted() {
         // 生成特征码
@@ -120,8 +124,9 @@ export default {
         onRegister() {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
-                    registerByUsername(this.form, { app: this.app }).then((res) => {
-                        console.log(res);
+                    registerByUsername(this.form, { app: this.app }).then(() => {
+                        this.$message.success("注册成功");
+                        this.$router.push({ name: "username-login", query: { app: this.app } });
                     });
                 }
             });

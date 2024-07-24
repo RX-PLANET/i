@@ -16,7 +16,6 @@ class User {
 
             name: "匿名用户",
             avatar: "",
-            panel: "cms",
         };
         // token有效期30天
         this.expires = tokenExpires;

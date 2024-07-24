@@ -45,7 +45,7 @@ export function registerByUsername(data, params) {
  * @returns
  */
 export function loginByUsername(data, params) {
-    return $uc().post("/api/uc/user/account/username/login", data, {
+    return $uc({ mute: true }).post("/api/uc/user/account/username/login", data, {
         params,
     });
 }

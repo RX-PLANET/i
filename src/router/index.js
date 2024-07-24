@@ -13,8 +13,22 @@ const UsernameRegister = () => import("../views/account/username/register.vue");
 // 3.Routes
 const routes = [
     { path: "/", component: Index },
-    { path: "/account/username/login", component: UsernameLogin },
-    { path: "/account/username/register", component: UsernameRegister },
+    {
+        path: "/account/username/login",
+        name: "username-login",
+        component: UsernameLogin,
+        meta: {
+            title: "登录",
+        },
+    },
+    {
+        path: "/account/username/register",
+        name: "username-register",
+        component: UsernameRegister,
+        meta: {
+            title: "注册",
+        },
+    },
 ];
 
 // 4.Build An Instance
@@ -23,6 +37,13 @@ const router = createRouter({
     // history: createWebHistory(),  //history api
     // base : '/rewrite root',
     routes,
+});
+
+// 5.Global Guard
+router.beforeEach((to, from, next) => {
+    // Set Title
+    document.title = to.meta.title || "Mii";
+    next();
 });
 
 export default router;
