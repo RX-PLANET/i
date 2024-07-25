@@ -3,9 +3,17 @@ import { createStore } from "vuex";
 
 // 2.Store
 const store = {
-    state: {},
-    mutations: {},
-    getters: {},
+    state: {
+        user: {},
+    },
+    mutations: {
+        SET_USER(state, user) {
+            state.user = user;
+        },
+    },
+    getters: {
+        user: (state) => state.user,
+    },
     actions: {},
 };
 
