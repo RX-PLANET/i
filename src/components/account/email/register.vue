@@ -129,7 +129,7 @@ export default {
             } else {
                 const res = await checkEmail(value);
                 if (res) {
-                    callback(new Error("请输入正确的邮箱地址"));
+                    callback(new Error("邮箱已被注册"));
                 }
                 callback();
             }
