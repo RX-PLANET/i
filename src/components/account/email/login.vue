@@ -1,12 +1,12 @@
-<!-- 公共组件 用户名注册 -->
+<!-- 公共组件 邮件地址注册 -->
 <template>
-    <el-card class="m-account-username__login">
+    <el-card class="m-account-email__login">
         <card-header></card-header>
         <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
-            <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" placeholder="用户名">
+            <el-form-item prop="email">
+                <el-input v-model.trim="form.email" size="large" placeholder="邮件地址">
                     <template #prepend
-                        ><el-icon><UserFilled></UserFilled></el-icon
+                        ><el-icon><Message></Message></el-icon
                     ></template>
                 </el-input>
             </el-form-item>
@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import { loginByUsername } from "@/service/account";
+import { loginByEmail } from "@/service/account";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
 export default {
-    name: "UsernameLogin",
+    name: "EmailLogin",
     components: {
         CardHeader,
     },
@@ -61,14 +61,14 @@ export default {
     data() {
         return {
             form: {
-                username: "",
+                email: "",
                 password: "",
             },
 
             rules: {
-                username: [
-                    { required: true, message: "请输入用户名", trigger: "blur" },
-                    { min: 3, max: 20, message: "长度在 3 到 20 个字符", trigger: "blur" },
+                email: [
+                    { required: true, message: "请输入邮件地址", trigger: "blur" },
+                    { type: "email", message: "请输入正确的邮件地址", trigger: ["blur", "change"] },
                 ],
                 password: [
                     { required: true, message: "请输入密码", trigger: "blur" },
@@ -78,17 +78,21 @@ export default {
 
             error: "",
             success: false,
+
             redirect: "",
-            redirect_button: "跳转",
+            redirect_button: "",
             homepage: "/",
         };
     },
     computed: {
         canSubmit() {
-            return this.form.username && this.form.password;
+            return this.form.email && this.form.password;
         },
         registerLink() {
-            const path = this.$router.resolve({ name: "username-register", query: { app: this.app } });
+            const path = this.$router.resolve({
+                name: "email-register",
+                query: { app: this.app, redirect: this.redirect },
+            });
 
             return path.href;
         },
@@ -96,6 +100,7 @@ export default {
     mounted() {
         // 生成特征码
         User.generateFingerprint();
+
         this.checkDirect();
     },
     methods: {
@@ -103,7 +108,7 @@ export default {
             this.error = "";
             this.$refs.loginForm.validate(async (valid) => {
                 if (valid) {
-                    loginByUsername(this.form, { app: this.app })
+                    loginByEmail(this.form, { app: this.app })
                         .then((res) => {
                             this.$message.success("登录成功");
                             this.success = true;
@@ -114,7 +119,7 @@ export default {
                         })
                         .catch((err) => {
                             this.success = false;
-                            this.error = err.data?.msg || "登录失败, 请检查用户名和密码";
+                            this.error = err.data?.msg || "登录失败, 请检查邮件地址和密码";
                         });
                 }
             });

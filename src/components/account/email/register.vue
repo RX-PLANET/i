@@ -1,12 +1,12 @@
-<!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-account-username__register">
+    <el-card class="m-account-email__register">
         <card-header></card-header>
-        <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon>
-            <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" placeholder="用户名">
+
+        <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon v-if="success === null">
+            <el-form-item prop="email">
+                <el-input v-model.trim="form.email" size="large" placeholder="邮箱地址">
                     <template #prepend
-                        ><el-icon><UserFilled></UserFilled></el-icon
+                        ><el-icon><Message></Message></el-icon
                     ></template>
                 </el-input>
             </el-form-item>
@@ -41,18 +41,23 @@
                 <p class="u-login">已有账号? <a :href="loginLink">登录 &raquo;</a></p>
             </el-form-item>
         </el-form>
+
+        <main class="m-main" v-if="success == true">
+            <el-alert title="等待验证" type="success" :description="successDesc" show-icon :closable="false">
+            </el-alert>
+        </main>
+
+        <main class="m-main" v-if="success == false"></main>
     </el-card>
 </template>
 
 <script>
-import { checkUsername, registerByUsername } from "@/service/account";
+import { checkEmail, registerByEmail } from "@/service/account";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
+
 export default {
-    name: "UsernameRegister",
-    components: {
-        CardHeader,
-    },
+    name: "EmailRegister",
     props: {
         app: {
             type: String,
@@ -73,18 +78,21 @@ export default {
             ],
         },
     },
+    components: {
+        CardHeader,
+    },
     data() {
         return {
             form: {
-                username: "",
+                email: "",
                 password: "",
             },
 
             rules: {
-                username: [
-                    { required: true, message: "请输入用户名", trigger: "blur" },
+                email: [
+                    { required: true, message: "请输入邮箱地址", trigger: "blur" },
+                    { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
                     { validator: this.check, trigger: "blur" },
-                    { min: 3, max: 20, message: "长度在 3 到 20 个字符", trigger: "blur" },
                 ],
                 password: [
                     { required: true, message: "请输入密码", trigger: "blur" },
@@ -93,46 +101,44 @@ export default {
             },
 
             agreement: false,
+
+            success: null,
         };
     },
     computed: {
         canSubmit() {
-            return this.form.username && this.form.password && this.agreement;
+            return this.form.email && this.form.password && this.agreement;
         },
         loginLink() {
-            const path = this.$router.resolve({ name: "username-login", query: { app: this.app } });
-            return path.href;
+            // const path = this.$router.resolve({ name: "username-login", query: { app: this.app } });
+            // return path.href;
+            return "";
+        },
+        successDesc() {
+            return `已向您的邮箱${this.form.email}发送了一封验证邮件，点击激活链接即可注册成功！邮件有效期为24小时。`;
         },
     },
-    async mounted() {
+    mounted() {
         // 生成特征码
         User.generateFingerprint();
     },
     methods: {
         async check(rule, value, callback) {
             if (!value) {
-                callback(new Error("请输入用户名"));
+                callback(new Error("请输入邮箱地址"));
             } else {
-                // 长度最小3，最大20，禁止任何符号，不能是纯数字，必须以字母开头
-                const regex = /^[a-zA-Z][a-zA-Z0-9]{2,19}$/;
-                if (!regex.test(value)) {
-                    callback(new Error("用户名需以字母开头，长度在 3 到 20 个字符"));
-                } else {
-                    const res = await checkUsername(value);
-                    if (res) {
-                        callback(new Error("用户名已存在"));
-                    } else {
-                        callback();
-                    }
+                const res = await checkEmail(value);
+                if (res) {
+                    callback(new Error("请输入正确的邮箱地址"));
                 }
+                callback();
             }
         },
         onRegister() {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
-                    registerByUsername(this.form, { app: this.app }).then(() => {
-                        this.$message.success("注册成功");
-                        this.$router.push({ name: "username-login", query: { app: this.app } });
+                    registerByEmail(this.form, { app: this.app }).then(() => {
+                        this.success = true;
                     });
                 }
             });
