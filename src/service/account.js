@@ -5,10 +5,6 @@ import { $uc } from "@/utils/api";
  * 查询用户名称是否可用
  * @param {String} username 用户名
  * @returns {Promise}
- * @example
- * checkUsername("admin").then(res => {
- *    console.log(res);
- * });
  */
 export async function checkUsername(username) {
     return $uc()
@@ -21,7 +17,7 @@ export async function checkUsername(username) {
 }
 
 /**
- * 注册用户
+ * 注册账号 - 用户名注册
  * @param {Object} data
  * @param {String} data.username 用户名
  * @param {String} data.password 密码

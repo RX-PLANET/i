@@ -1,8 +1,8 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-account-username__register">
+    <el-card class="m-account-username__login">
         <card-header></card-header>
-        <el-form ref="registerForm" :model="form" :rules="rules" size="large">
+        <el-form ref="loginForm" :model="form" :rules="rules" size="large">
             <el-form-item prop="username">
                 <el-input v-model.trim="form.username" size="large" placeholder="用户名">
                     <template #prepend
@@ -90,7 +90,7 @@ export default {
     methods: {
         onLogin() {
             this.error = "";
-            this.$refs.registerForm.validate(async (valid) => {
+            this.$refs.loginForm.validate(async (valid) => {
                 if (valid) {
                     loginByUsername(this.form, { app: this.app })
                         .then(() => {

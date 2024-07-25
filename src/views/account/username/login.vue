@@ -15,6 +15,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "@/assets/css/account/username/register.less";
 @import "@/assets/css/account/username/login.less";
 </style>
