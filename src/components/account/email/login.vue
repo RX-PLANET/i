@@ -32,6 +32,9 @@
             </el-form-item>
             <el-form-item class="m-footer">
                 <p class="u-login">还没有账号? <a :href="registerLink">立即注册 &raquo;</a></p>
+                <p class="u-resetpwd">
+                    <a :href="resetPwdLink">忘记密码?</a>
+                </p>
             </el-form-item>
         </el-form>
 
@@ -91,6 +94,14 @@ export default {
         registerLink() {
             const path = this.$router.resolve({
                 name: "email-register",
+                query: { app: this.app, redirect: this.redirect },
+            });
+
+            return path.href;
+        },
+        resetPwdLink() {
+            const path = this.$router.resolve({
+                name: "email-reset-password",
                 query: { app: this.app, redirect: this.redirect },
             });
 

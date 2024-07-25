@@ -58,12 +58,23 @@
     .m-footer {
         .mt(20px);
         .clearfix;
+
+        .el-form-item__content {
+            .flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         p {
             margin: 5px 0;
             a {
                 .pointer;
                 color: @primary;
-                .underline(@primary);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
             }
             .fz(13px,14px);
             span {
@@ -75,6 +86,10 @@
 
     .u-alert {
         margin-bottom: 20px;
+
+        .el-alert__content {
+            .flex;
+        }
     }
 
     .u-skip {

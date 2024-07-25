@@ -110,9 +110,8 @@ export default {
             return this.form.email && this.form.password && this.agreement;
         },
         loginLink() {
-            // const path = this.$router.resolve({ name: "username-login", query: { app: this.app } });
-            // return path.href;
-            return "";
+            const path = this.$router.resolve({ name: "email-login", query: { app: this.app } });
+            return path.href;
         },
         successDesc() {
             return `已向您的邮箱${this.form.email}发送了一封验证邮件，点击激活链接即可注册成功！邮件有效期为24小时。`;
