@@ -6,7 +6,9 @@
             <main class="m-main">
                 <el-alert v-if="!success" :title="title" type="error" show-icon :closable="false" center> </el-alert>
                 <el-alert v-else type="success" show-icon :closable="false">
-                    <template #title>验证成功，<a :href="loginLink">前往登录</a></template>
+                    <template #title
+                        >验证成功，<a :href="loginLink">{{ $t("common.login") }}</a></template
+                    >
                 </el-alert>
             </main>
         </el-card>
@@ -15,7 +17,7 @@
 
 <script>
 import CardHeader from "@/components/common/card-header.vue";
-import { activeByEmail } from "@/service/account";
+import { activeByEmail } from "@/service/email";
 export default {
     name: "AccountEmailActive",
     components: {
@@ -24,7 +26,7 @@ export default {
     data() {
         return {
             success: false,
-            title: "非法请求",
+            title: this.$t("email.illegalRequest"),
 
             token: "",
             app: "",

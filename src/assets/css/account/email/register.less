@@ -12,10 +12,14 @@
             .w(100%);
         }
         .u-submit {
-            letter-spacing: 30px;
+            letter-spacing: 5px;
             span {
                 padding-left: 30px;
             }
+        }
+
+        .u-back {
+            margin-top: 20px;
         }
     }
     .u-terms {
@@ -84,5 +88,17 @@
     .u-skip {
         margin-top: 20px;
         text-decoration: none;
+    }
+
+    .el-form-item.is-success {
+        .el-input__validateIcon {
+            color: var(--el-color-success);
+        }
+    }
+
+    .m-password {
+        .el-input__validateIcon {
+            .none;
+        }
     }
 }

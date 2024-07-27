@@ -26,5 +26,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 import svgIcon from "@/utils/svgIcon";
 app.use(svgIcon);
 
+import { i18n } from "@/locale";
+app.use(i18n);
+
 // 3.Mount DOM
 app.mount("#app");

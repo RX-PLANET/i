@@ -1,0 +1,20 @@
+export default {
+    address: "Email",
+    addressPlaceholder: "Please enter your email address",
+    addressError: "Please enter a valid email address",
+    forgetPassword: "Forgot Password",
+    emailRegistered: "Email has been registered",
+    successDesc:
+        "A verification email has been sent to your email address {email}. Click the activation link to complete your registration successfully! The email is valid for 24 hours.",
+    waitVerify: "Wait for verification",
+    loginFailed: "Login failed, please check the email and password",
+    code: "Code",
+    next: "Next",
+    newPassword: "New Password",
+    confirmPassword: "Confirm Password",
+    illegalRequest: "Illegal request",
+    resend: "Resend",
+    resetSuccess: "Reset Success",
+    resetSuccessDesc: "Your password has been reset successfully",
+    findPassword: "Retrieve password, please fill in the bound email",
+};

@@ -6,6 +6,7 @@ class User {
     static TOKEN_KEY = tokenKey;
     static LAST_AUTH = "created_at";
     static KEY_FIELDS = ["uid", "group", "token", "name", "avatar", "logged_in", User.LAST_AUTH, tokenKey];
+    static LOCALE = "lang";
     constructor() {
         this.profile = {};
 
@@ -163,6 +164,32 @@ class User {
     // 获取我的权限
     getPermission() {
         return Local.get("permission") || [];
+    }
+
+    /**
+     * 设置语言偏好
+     *
+     * @param {*} locale
+     * @return {*}
+     * @memberof User
+     */
+    setLocale(locale) {
+        return localStorage.setItem(User.LOCALE, locale);
+    }
+
+    /**
+     * 获取语言偏好设置
+     *
+     * @return {*}
+     * @memberof User
+     */
+    getLocale() {
+        const _val = localStorage.getItem(User.LOCALE);
+        if (!_val) {
+            return "zh-cn";
+        } else {
+            return _val.toLowerCase();
+        }
     }
 
     // 生成设备指纹
