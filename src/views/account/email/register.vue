@@ -1,5 +1,5 @@
 <template>
-    <div class="p-account-email__register">
+    <div class="p-account p-account-email__register">
         <register app="miipet" />
     </div>
 </template>
@@ -15,5 +15,6 @@ export default {
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/email/register.less";
 </style>

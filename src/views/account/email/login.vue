@@ -1,5 +1,5 @@
 <template>
-    <div class="p-account-email__login">
+    <div class="p-account p-account-email__login">
         <login :app="app"></login>
     </div>
 </template>
@@ -27,5 +27,6 @@ export default {
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/email/login.less";
 </style>

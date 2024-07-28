@@ -1,5 +1,5 @@
 <template>
-    <el-card class="m-account-email__register">
+    <el-card class="m-card">
         <card-header></card-header>
 
         <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon v-if="success === null">

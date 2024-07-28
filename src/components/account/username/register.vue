@@ -1,6 +1,6 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-account-username__register">
+    <el-card class="m-card">
         <card-header></card-header>
         <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon>
             <el-form-item prop="username">

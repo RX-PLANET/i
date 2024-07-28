@@ -1,6 +1,6 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-account-username__login">
+    <el-card class="m-card">
         <card-header></card-header>
         <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
             <el-form-item prop="username">

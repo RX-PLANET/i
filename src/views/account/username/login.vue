@@ -1,5 +1,5 @@
 <template>
-    <div class="p-account-username__login">
+    <div class="p-account p-account-username__login">
         <login app=""></login>
     </div>
 </template>
@@ -15,5 +15,6 @@ export default {
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/username/login.less";
 </style>

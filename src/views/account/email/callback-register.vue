@@ -1,6 +1,6 @@
 <template>
-    <div class="p-account-email__register p-account-email__active">
-        <el-card class="m-account-email__register">
+    <div class="p-account p-account-email__register">
+        <el-card class="m-card">
             <card-header></card-header>
 
             <main class="m-main">

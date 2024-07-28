@@ -1,6 +1,6 @@
 <!-- 公共组件 邮件地址注册 -->
 <template>
-    <el-card class="m-account-email__login">
+    <el-card class="m-card">
         <card-header></card-header>
         <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
             <el-form-item prop="email">

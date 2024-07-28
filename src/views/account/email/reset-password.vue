@@ -1,6 +1,6 @@
 <template>
-    <div class="p-account-email__register p-reset-password">
-        <el-card class="m-account-email__register">
+    <div class="p-account p-reset-password">
+        <el-card class="m-card">
             <card-header></card-header>
             <el-alert
                 type="warning"
@@ -213,5 +213,6 @@ export default {
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/email/register.less";
 </style>
