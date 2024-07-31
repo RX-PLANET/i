@@ -123,7 +123,7 @@ export default {
             return path.href;
         },
         successDesc() {
-            return this.$t("register.successDesc");
+            return this.$t("email.successDesc");
         },
     },
     mounted() {
