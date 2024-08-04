@@ -1,6 +1,8 @@
 import { tokenExpires, tokenKey } from "../settings";
 import { Local } from "@/utils/storage";
 import Fingerprint2 from "fingerprintjs2";
+import axios from "axios";
+import { getCdnLink } from "@/utils/common";
 
 class User {
     static TOKEN_KEY = tokenKey;
@@ -210,6 +212,46 @@ class User {
     // 获取设备指纹
     getDeviceFingerprint() {
         return Local.get("fingerprint");
+    }
+
+    /**
+     * 版本预检
+     * @param {string} version
+     * @returns {boolean}
+     * @memberof User
+     */
+    checkVersion(version) {
+        try {
+            const token_version = localStorage.getItem("token_version");
+
+            if (token_version == version) {
+                console.log("版本预检通过");
+                return true;
+            } else {
+                console.log("版本预检失败，清空缓存");
+                localStorage.clear();
+                localStorage.setItem("token_version", version);
+
+                this.toLogin();
+
+                return false;
+            }
+        } catch (err) {
+            this.toLogin();
+            return false;
+        }
+    }
+
+    /**
+     * 加载默认配置
+     */
+    getTitanDefaultConf() {
+        return axios.get(`${getCdnLink("/common/system/conf/miipet_default.json")}`).then((res) => {
+            console.log("miipet_default_conf", res);
+            sessionStorage.setItem("miipet_default_conf", JSON.stringify(res.data));
+
+            return this.checkVersion(res.data.token_version);
+        });
     }
 }
 
