@@ -1,6 +1,6 @@
 <template>
     <div class="p-account p-account-email__register">
-        <register app="miipet" />
+        <register :app="app" />
     </div>
 </template>
 
@@ -10,6 +10,18 @@ export default {
     name: "AccountEmailRegister",
     components: {
         register,
+    },
+    data() {
+        return {
+            app: "",
+        };
+    },
+    mounted() {
+        const search = new URLSearchParams(document.location.search);
+
+        if (search.has("app")) {
+            this.app = search.get("app");
+        }
     },
 };
 </script>

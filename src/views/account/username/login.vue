@@ -1,6 +1,6 @@
 <template>
     <div class="p-account p-account-username__login">
-        <login app=""></login>
+        <login :app="app"></login>
     </div>
 </template>
 
@@ -10,6 +10,18 @@ export default {
     name: "AccountUsernameLogin",
     components: {
         login,
+    },
+    data() {
+        return {
+            app: "",
+        };
+    },
+    mounted() {
+        const search = new URLSearchParams(document.location.search);
+
+        if (search.has("app")) {
+            this.app = search.get("app");
+        }
     },
 };
 </script>
