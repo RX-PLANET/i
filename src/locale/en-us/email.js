@@ -17,4 +17,5 @@ export default {
     resetSuccess: "Reset Success",
     resetSuccessDesc: "Your password has been reset successfully",
     findPassword: "Retrieve password, please fill in the bound email",
+    resetPassword: "Reset Password",
 };

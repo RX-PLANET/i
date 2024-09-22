@@ -1,21 +1,24 @@
 .p-account {
-    .m-card {
-        width: 460px;
-        .pa;
-        .lt(50%,50%);
-        transform: translate(-50%, -50%);
+    margin-top: 3rem;
+    .m-container {
+        padding: 0 15px;
+    }
 
+    .el-card__body {
+        padding: 0;
+    }
+
+    .el-form-item {
+        margin-bottom: 25px;
+    }
+
+    .m-card {
         padding-bottom: 1px;
+        border-top: 2px solid @primary;
 
         // 按钮
         .u-button {
             .w(100%);
-        }
-        .u-submit {
-            letter-spacing: 5px;
-            span {
-                padding-left: 30px;
-            }
         }
 
         .u-alert {
@@ -47,19 +50,45 @@
     }
 
     .m-header {
+        .flex;
+        align-items: center;
+        line-height: 30px;
+        padding: 15px 25px;
+        border-bottom: 1px solid #f9f9f9;
+        .u-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 28px;
+            color: #6777ef;
+        }
+    }
+
+    .m-form {
+        padding: 20px 20px 0 20px;
+
+        .el-form-item__label {
+            padding-right: 0;
+        }
+    }
+
+    .m-form-label {
+        font-size: 12px;
+        color: #34395e;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        .flex;
+        align-items: center;
+        justify-content: space-between;
+
         a {
-            .db;
-        }
+            .pointer;
+            color: @primary;
+            text-decoration: none;
 
-        .u-logo {
-            .db;
-            .auto(x);
-            .size(88px);
-        }
-
-        .el-divider__text {
-            .fz(12px) !important;
-            color: #999 !important;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 
@@ -72,28 +101,31 @@
             align-items: center;
             justify-content: space-between;
         }
+    }
 
-        p {
-            margin: 5px 0;
-            a {
-                .pointer;
-                color: @primary;
-                text-decoration: none;
+    .m-misc {
+        margin: 3rem 0;
+        .x;
+        font-size: 14px;
+        color: #98a6ad;
 
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-            .fz(13px,14px);
-            span {
-                color: #ccc;
-                margin: 0 5px;
-            }
+        .u-link {
+            font-weight: 500;
+            text-decoration: none;
+            color: #6777ef;
         }
     }
 
     .u-skip {
         margin-top: 20px;
         text-decoration: none;
+    }
+
+    .u-reset-tips {
+        color: #98a6ad;
+        font-weight: 500;
+        line-height: 28px;
+        margin-bottom: 1rem;
+        font-size: 14px;
     }
 }

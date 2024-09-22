@@ -15,5 +15,6 @@ export default {
     resend: "重新发送",
     resetSuccess: "重置成功",
     resetSuccessDesc: "您的密码已重置成功",
-    findPassword: "找回密码，请填写绑定的邮箱",
+    findPassword: "我们将会发送一封包含重置密码链接的邮件到您的邮箱",
+    resetPassword: "重置密码",
 };

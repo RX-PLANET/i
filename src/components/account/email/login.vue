@@ -1,16 +1,38 @@
 <!-- 公共组件 邮件地址注册 -->
 <template>
     <el-card class="m-card">
-        <card-header></card-header>
-        <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
+        <card-header :title="$t('common.login')"></card-header>
+        <el-form
+            class="m-form"
+            hide-required-asterisk
+            ref="loginForm"
+            label-position="top"
+            :model="form"
+            :rules="rules"
+            size="large"
+            v-if="!success"
+        >
             <el-form-item prop="email">
-                <el-input v-model.trim="form.email" size="large" :placeholder="$t('email.address')">
-                    <template #prepend
+                <template #label>
+                    <div class="m-form-label">
+                        <span>{{ $t("email.address") }}</span>
+                    </div>
+                </template>
+                <el-input v-model.trim="form.email" size="large">
+                    <!-- <template #prepend
                         ><el-icon><Message></Message></el-icon
-                    ></template>
+                    ></template> -->
                 </el-input>
             </el-form-item>
             <el-form-item prop="password">
+                <template #label>
+                    <div class="m-form-label">
+                        <span>{{ $t("common.password") }}</span>
+                        <span class="u-resetpwd">
+                            <a :href="resetPwdLink">{{ $t("email.forgetPassword") }}?</a>
+                        </span>
+                    </div>
+                </template>
                 <el-input
                     v-model.trim="form.password"
                     @keydown.enter="onLogin"
@@ -19,9 +41,9 @@
                     show-password
                     :placeholder="$t('common.password')"
                 >
-                    <template #prepend
+                    <!-- <template #prepend
                         ><el-icon><Lock></Lock></el-icon
-                    ></template>
+                    ></template> -->
                 </el-input>
             </el-form-item>
             <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
@@ -30,14 +52,14 @@
                     $t("common.login")
                 }}</el-button>
             </el-form-item>
-            <el-form-item class="m-footer">
+            <!-- <el-form-item class="m-footer">
                 <p class="u-login">
                     {{ $t("common.noAccount") }} <a :href="registerLink">{{ $t("common.registerNow") }} &raquo;</a>
                 </p>
                 <p class="u-resetpwd">
                     <a :href="resetPwdLink">{{ $t("email.forgetPassword") }}?</a>
                 </p>
-            </el-form-item>
+            </el-form-item> -->
         </el-form>
 
         <main v-else class="m-main">
@@ -52,6 +74,9 @@
             <a class="u-skip el-button u-button el-button--primary" :href="redirect">{{ redirect_button }}</a>
         </main>
     </el-card>
+    <div class="m-misc">
+        {{ $t("common.noAccount") }} <a class="u-link" :href="registerLink">{{ $t("common.registerNow") }} 👉</a>
+    </div>
 </template>
 
 <script>

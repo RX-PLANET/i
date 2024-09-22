@@ -1,93 +1,127 @@
 <template>
     <div class="p-account p-reset-password">
-        <el-card class="m-card">
-            <card-header></card-header>
-            <el-alert
-                type="warning"
-                show-icon
-                :title="$t('email.findPassword')"
-                class="u-alert"
-                :closable="false"
-            ></el-alert>
-            <el-form :model="form" ref="resetForm" :rules="rules" size="large" v-if="step != 3">
-                <el-form-item prop="email">
-                    <el-input
-                        v-model.trim="form.email"
-                        :disabled="!!interval"
+        <el-row class="m-container" justify="center">
+            <el-col :md="8" :lg="4" :sm="10" :xl="4">
+                <logo />
+                <el-card class="m-card">
+                    <card-header :title="$t('email.resetPassword')"></card-header>
+                    <el-form
+                        class="m-form"
+                        :model="form"
+                        ref="resetForm"
+                        label-position="top"
+                        hide-required-asterisk
+                        :rules="rules"
                         size="large"
-                        :placeholder="$t('email.address')"
+                        v-if="step != 3"
                     >
-                        <template #prepend
-                            ><el-icon><Message></Message></el-icon
-                        ></template>
-                        <template #append v-if="sent">
-                            <span @click="onResetPassword"
-                                >{{ $t("email.resend") }} (<span>{{ interval }}s</span>)</span
+                        <p class="u-reset-tips">{{ $t("email.findPassword") }}</p>
+                        <el-form-item prop="email">
+                            <template #label>
+                                <div class="m-form-label">
+                                    <span>{{ $t("email.address") }}</span>
+                                </div>
+                            </template>
+                            <el-input
+                                v-model.trim="form.email"
+                                :disabled="!!interval"
+                                size="large"
+                                :placeholder="$t('email.address')"
                             >
+                                <!-- <template #prepend
+                                    ><el-icon><Message></Message></el-icon
+                                ></template> -->
+                                <template #append v-if="sent">
+                                    <span @click="onResetPassword"
+                                        >{{ $t("email.resend") }} (<span>{{ interval }}s</span>)</span
+                                    >
+                                </template>
+                            </el-input>
+                        </el-form-item>
+                        <template v-if="step == 1">
+                            <el-form-item prop="code">
+                                <template #label>
+                                    <div class="m-form-label">
+                                        <span>{{ $t("email.code") }}</span>
+                                    </div>
+                                </template>
+                                <el-input v-model.trim="form.code" size="large" :placeholder="$t('email.code')">
+                                    <!-- <template #prepend
+                                        ><el-icon><Message></Message></el-icon
+                                    ></template> -->
+                                </el-input>
+                            </el-form-item>
+                            <el-form-item prop="password1">
+                                <template #label>
+                                    <div class="m-form-label">
+                                        <span>{{ $t("email.newPassword") }}</span>
+                                    </div>
+                                </template>
+                                <el-input
+                                    v-model.trim="form.password1"
+                                    type="password"
+                                    size="large"
+                                    show-password
+                                    :placeholder="$t('email.newPassword')"
+                                >
+                                    <!-- <template #prepend
+                                        ><el-icon><Lock></Lock></el-icon
+                                    ></template> -->
+                                </el-input>
+                            </el-form-item>
+                            <el-form-item prop="password2">
+                                <template #label>
+                                    <div class="m-form-label">
+                                        <span>{{ $t("email.confirmPassword") }}</span>
+                                    </div>
+                                </template>
+                                <el-input
+                                    v-model.trim="form.password2"
+                                    type="password"
+                                    size="large"
+                                    show-password
+                                    :placeholder="$t('email.confirmPassword')"
+                                >
+                                    <!-- <template #prepend
+                                        ><el-icon><Lock></Lock></el-icon
+                                    ></template> -->
+                                </el-input>
+                            </el-form-item>
                         </template>
-                    </el-input>
-                </el-form-item>
-                <template v-if="step == 1">
-                    <el-form-item prop="code">
-                        <el-input v-model.trim="form.code" size="large" :placeholder="$t('email.code')">
-                            <template #prepend
-                                ><el-icon><Message></Message></el-icon
-                            ></template>
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item prop="password1">
-                        <el-input
-                            v-model.trim="form.password1"
-                            type="password"
-                            size="large"
-                            show-password
-                            :placeholder="$t('email.newPassword')"
+                        <el-form-item>
+                            <el-button class="u-button" type="primary" @click="onNextStep">{{
+                                $t("email.next")
+                            }}</el-button>
+                        </el-form-item>
+                    </el-form>
+                    <main class="m-main" v-if="step == 3">
+                        <el-alert
+                            :title="$t('email.resetSuccess')"
+                            type="success"
+                            :description="$t('email.resetSuccessDesc')"
+                            show-icon
+                            :closable="false"
                         >
-                            <template #prepend
-                                ><el-icon><Lock></Lock></el-icon
-                            ></template>
-                        </el-input>
-                    </el-form-item>
-                    <el-form-item prop="password2">
-                        <el-input
-                            v-model.trim="form.password2"
-                            type="password"
-                            size="large"
-                            show-password
-                            :placeholder="$t('email.confirmPassword')"
-                        >
-                            <template #prepend
-                                ><el-icon><Lock></Lock></el-icon
-                            ></template>
-                        </el-input>
-                    </el-form-item>
-                </template>
-                <el-form-item>
-                    <el-button class="u-button" type="primary" @click="onNextStep">{{ $t("email.next") }}</el-button>
-                </el-form-item>
-            </el-form>
-            <main class="m-main" v-if="step == 3">
-                <el-alert
-                    :title="$t('email.resetSuccess')"
-                    type="success"
-                    :description="$t('email.resetSuccessDesc')"
-                    show-icon
-                    :closable="false"
-                >
-                </el-alert>
-                <a class="u-skip el-button u-button el-button--primary" :href="loginLink">{{ $t("common.login") }}</a>
-            </main>
-        </el-card>
+                        </el-alert>
+                        <a class="u-skip el-button u-button el-button--primary" :href="loginLink">{{
+                            $t("common.login")
+                        }}</a>
+                    </main>
+                </el-card>
+            </el-col>
+        </el-row>
     </div>
 </template>
 
 <script>
 import CardHeader from "@/components/common/card-header.vue";
 import { checkEmail, findPassword, resetPassword } from "@/service/email";
+import Logo from "@/components/common/logo.vue";
 export default {
     name: "ResetPassword",
     components: {
         CardHeader,
+        Logo,
     },
     data() {
         return {
