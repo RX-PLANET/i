@@ -36,7 +36,7 @@
                             type="password"
                             size="large"
                             show-password
-                            placeholder="输入密码"
+                            placeholder="输入新密码"
                         >
                             <template #prepend
                                 ><el-icon><Lock></Lock></el-icon
@@ -49,7 +49,7 @@
                             type="password"
                             size="large"
                             show-password
-                            placeholder="确认密码"
+                            placeholder="确认新密码"
                         >
                             <template #prepend
                                 ><el-icon><Lock></Lock></el-icon

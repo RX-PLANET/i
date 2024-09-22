@@ -1,6 +1,6 @@
 module.exports = {
     // document title
-    Title: "Management Center",
+    Title: "User Center",
 
     API: {},
 
