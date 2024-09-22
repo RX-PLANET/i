@@ -48,7 +48,7 @@
             </el-form-item>
             <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
             <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onLogin" :disabled="!canSubmit">{{
+                <el-button class="u-button u-submit" type="primary" @click="onLogin">{{
                     $t("common.login")
                 }}</el-button>
             </el-form-item>

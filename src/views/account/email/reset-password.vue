@@ -1,7 +1,7 @@
 <template>
     <div class="p-account p-reset-password">
         <el-row class="m-container" justify="center">
-            <el-col :md="8" :lg="4" :sm="10" :xl="4">
+            <div class="m-col">
                 <logo />
                 <el-card class="m-card">
                     <card-header :title="$t('email.resetPassword')"></card-header>
@@ -89,7 +89,7 @@
                             </el-form-item>
                         </template>
                         <el-form-item>
-                            <el-button class="u-button" type="primary" @click="onNextStep">{{
+                            <el-button class="u-button u-submit" type="primary" @click="onNextStep">{{
                                 $t("email.next")
                             }}</el-button>
                         </el-form-item>
@@ -108,7 +108,11 @@
                         }}</a>
                     </main>
                 </el-card>
-            </el-col>
+
+                <div class="m-misc">
+                    <a class="u-link" :href="loginLink">{{ $t("common.back") + $t("common.login") }}</a>
+                </div>
+            </div>
         </el-row>
     </div>
 </template>

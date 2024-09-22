@@ -1,10 +1,10 @@
 <template>
     <div class="p-account p-account-email__register">
         <el-row class="m-container" justify="center">
-            <el-col :md="8" :lg="4" :sm="10" :xl="4">
+            <div class="m-col">
                 <logo />
                 <register :app="app" />
-            </el-col>
+            </div>
         </el-row>
     </div>
 </template>
