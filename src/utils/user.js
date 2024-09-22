@@ -1,11 +1,14 @@
 import { tokenExpires, tokenKey } from "../settings";
 import { Local } from "@/utils/storage";
 import Fingerprint2 from "fingerprintjs2";
+import axios from "axios";
+import { getCdnLink } from "@/utils/common";
 
 class User {
     static TOKEN_KEY = tokenKey;
     static LAST_AUTH = "created_at";
     static KEY_FIELDS = ["uid", "group", "token", "name", "avatar", "logged_in", User.LAST_AUTH, tokenKey];
+    static LOCALE = "lang";
     constructor() {
         this.profile = {};
 
@@ -165,6 +168,32 @@ class User {
         return Local.get("permission") || [];
     }
 
+    /**
+     * 设置语言偏好
+     *
+     * @param {*} locale
+     * @return {*}
+     * @memberof User
+     */
+    setLocale(locale) {
+        return localStorage.setItem(User.LOCALE, locale);
+    }
+
+    /**
+     * 获取语言偏好设置
+     *
+     * @return {*}
+     * @memberof User
+     */
+    getLocale() {
+        const _val = localStorage.getItem(User.LOCALE);
+        if (!_val) {
+            return "zh-cn";
+        } else {
+            return _val.toLowerCase();
+        }
+    }
+
     // 生成设备指纹
     generateFingerprint(callback) {
         const cache = Local.get("fingerprint");
@@ -183,6 +212,46 @@ class User {
     // 获取设备指纹
     getDeviceFingerprint() {
         return Local.get("fingerprint");
+    }
+
+    /**
+     * 版本预检
+     * @param {string} version
+     * @returns {boolean}
+     * @memberof User
+     */
+    checkVersion(version) {
+        try {
+            const token_version = localStorage.getItem("token_version");
+
+            if (token_version == version) {
+                console.log("版本预检通过");
+                return true;
+            } else {
+                console.log("版本预检失败，清空缓存");
+                localStorage.clear();
+                localStorage.setItem("token_version", version);
+
+                this.toLogin();
+
+                return false;
+            }
+        } catch (err) {
+            this.toLogin();
+            return false;
+        }
+    }
+
+    /**
+     * 加载默认配置
+     */
+    getTitanDefaultConf() {
+        return axios.get(`${getCdnLink("/common/system/conf/miipet_default.json")}`).then((res) => {
+            console.log("miipet_default_conf", res);
+            sessionStorage.setItem("miipet_default_conf", JSON.stringify(res.data));
+
+            return this.checkVersion(res.data.token_version);
+        });
     }
 }
 

@@ -1,22 +1,22 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-account-username__register">
+    <el-card class="m-card">
         <card-header></card-header>
         <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon>
             <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" placeholder="用户名">
+                <el-input v-model.trim="form.username" size="large" :placeholder="$t('username.name')">
                     <template #prepend
                         ><el-icon><UserFilled></UserFilled></el-icon
                     ></template>
                 </el-input>
             </el-form-item>
-            <el-form-item prop="password">
+            <el-form-item prop="password" class="m-password">
                 <el-input
                     v-model.trim="form.password"
                     type="password"
                     size="large"
                     show-password
-                    placeholder="输入密码"
+                    :placeholder="$t('common.password')"
                 >
                     <template #prepend
                         ><el-icon><Lock></Lock></el-icon
@@ -25,7 +25,7 @@
             </el-form-item>
             <el-form-item class="u-terms">
                 <el-checkbox v-model="agreement" class="u-checkbox"
-                    >我已阅读同意
+                    >{{ $t("common.read") }}
                     <a v-for="(item, index) in agreements" :key="index" :href="item.href" target="_blank"
                         >《{{ item.name }}》
                         {{ index === agreements.length - 1 ? "" : "、" }}
@@ -33,19 +33,21 @@
                 </el-checkbox>
             </el-form-item>
             <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit"
-                    >注册</el-button
-                >
+                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
+                    $t("common.register")
+                }}</el-button>
             </el-form-item>
             <el-form-item class="m-footer">
-                <p class="u-login">已有账号? <a :href="loginLink">登录 &raquo;</a></p>
+                <p class="u-login">
+                    {{ $t("common.hadAccount") }} <a :href="loginLink">{{ $t("common.login") }} &raquo;</a>
+                </p>
             </el-form-item>
         </el-form>
     </el-card>
 </template>
 
 <script>
-import { checkUsername, registerByUsername } from "@/service/account";
+import { checkUsername, registerByUsername } from "@/service/username";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
 export default {
@@ -82,13 +84,13 @@ export default {
 
             rules: {
                 username: [
-                    { required: true, message: "请输入用户名", trigger: "blur" },
+                    { required: true, message: this.$t("username.namePlaceholder"), trigger: "blur" },
                     { validator: this.check, trigger: "blur" },
-                    { min: 3, max: 20, message: "长度在 3 到 20 个字符", trigger: "blur" },
+                    { min: 3, max: 20, message: this.$t("username.nameError"), trigger: "blur" },
                 ],
                 password: [
-                    { required: true, message: "请输入密码", trigger: "blur" },
-                    { min: 6, max: 30, message: "长度在 6 到 30 个字符", trigger: "blur" },
+                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
                 ],
             },
 
@@ -111,16 +113,16 @@ export default {
     methods: {
         async check(rule, value, callback) {
             if (!value) {
-                callback(new Error("请输入用户名"));
+                callback(new Error(this.$t("username.namePlaceholder")));
             } else {
                 // 长度最小3，最大20，禁止任何符号，不能是纯数字，必须以字母开头
                 const regex = /^[a-zA-Z][a-zA-Z0-9]{2,19}$/;
                 if (!regex.test(value)) {
-                    callback(new Error("用户名需以字母开头，长度在 3 到 20 个字符"));
+                    callback(new Error(this.$t("username.nameValidate")));
                 } else {
                     const res = await checkUsername(value);
                     if (res) {
-                        callback(new Error("用户名已存在"));
+                        callback(new Error(this.$t("username.nameExist")));
                     } else {
                         callback();
                     }
@@ -131,7 +133,7 @@ export default {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
                     registerByUsername(this.form, { app: this.app }).then(() => {
-                        this.$message.success("注册成功");
+                        this.$message.success(this.$t("username.registerSuccess"));
                         this.$router.push({ name: "username-login", query: { app: this.app } });
                     });
                 }

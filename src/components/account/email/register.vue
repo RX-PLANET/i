@@ -1,22 +1,22 @@
 <template>
-    <el-card class="m-account-email__register">
+    <el-card class="m-card">
         <card-header></card-header>
 
         <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon v-if="success === null">
             <el-form-item prop="email">
-                <el-input v-model.trim="form.email" size="large" placeholder="邮箱地址">
+                <el-input v-model.trim="form.email" size="large" :placeholder="$t('email.address')">
                     <template #prepend
                         ><el-icon><Message></Message></el-icon
                     ></template>
                 </el-input>
             </el-form-item>
-            <el-form-item prop="password">
+            <el-form-item prop="password" class="m-password">
                 <el-input
                     v-model.trim="form.password"
                     type="password"
                     size="large"
                     show-password
-                    placeholder="输入密码"
+                    :placeholder="$t('common.password')"
                 >
                     <template #prepend
                         ><el-icon><Lock></Lock></el-icon
@@ -25,7 +25,7 @@
             </el-form-item>
             <el-form-item class="u-terms">
                 <el-checkbox v-model="agreement" class="u-checkbox"
-                    >我已阅读同意
+                    >{{ $t("common.read") }}
                     <a v-for="(item, index) in agreements" :key="index" :href="item.href" target="_blank"
                         >《{{ item.name }}》
                         {{ index === agreements.length - 1 ? "" : "、" }}
@@ -33,18 +33,27 @@
                 </el-checkbox>
             </el-form-item>
             <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit"
-                    >注册</el-button
-                >
+                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
+                    $t("common.register")
+                }}</el-button>
             </el-form-item>
             <el-form-item class="m-footer">
-                <p class="u-login">已有账号? <a :href="loginLink">登录 &raquo;</a></p>
+                <p class="u-login">
+                    {{ $t("common.hadAccount") }} <a :href="loginLink">{{ $t("common.login") }} &raquo;</a>
+                </p>
             </el-form-item>
         </el-form>
 
         <main class="m-main" v-if="success == true">
-            <el-alert title="等待验证" type="success" :description="successDesc" show-icon :closable="false">
+            <el-alert
+                :title="$t('email.waitVerify')"
+                type="success"
+                :description="successDesc"
+                show-icon
+                :closable="false"
+            >
             </el-alert>
+            <el-button class="u-button u-back" type="primary" @click="onBack">{{ $t("common.back") }}</el-button>
         </main>
 
         <main class="m-main" v-if="success == false"></main>
@@ -52,7 +61,7 @@
 </template>
 
 <script>
-import { checkEmail, registerByEmail } from "@/service/account";
+import { checkEmail, registerByEmail } from "@/service/email";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
 
@@ -90,13 +99,13 @@ export default {
 
             rules: {
                 email: [
-                    { required: true, message: "请输入邮箱地址", trigger: "blur" },
-                    { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
+                    { required: true, message: this.$t("email.addressPlaceholder"), trigger: "blur" },
+                    { type: "email", message: this.$t("email.addressError"), trigger: ["blur", "change"] },
                     { validator: this.check, trigger: "blur" },
                 ],
                 password: [
-                    { required: true, message: "请输入密码", trigger: "blur" },
-                    { min: 6, max: 30, message: "长度在 6 到 30 个字符", trigger: "blur" },
+                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
                 ],
             },
 
@@ -114,7 +123,7 @@ export default {
             return path.href;
         },
         successDesc() {
-            return `已向您的邮箱${this.form.email}发送了一封验证邮件，点击激活链接即可注册成功！邮件有效期为24小时。`;
+            return this.$t("email.successDesc");
         },
     },
     mounted() {
@@ -124,11 +133,11 @@ export default {
     methods: {
         async check(rule, value, callback) {
             if (!value) {
-                callback(new Error("请输入邮箱地址"));
+                callback(new Error(this.$t("email.addressPlaceholder")));
             } else {
                 const res = await checkEmail(value);
                 if (res) {
-                    callback(new Error("邮箱已被注册"));
+                    callback(new Error(this.$t("email.emailRegistered")));
                 }
                 callback();
             }
@@ -141,6 +150,9 @@ export default {
                     });
                 }
             });
+        },
+        onBack() {
+            this.$router.push({ name: "email-login", query: { app: this.app } });
         },
     },
 };

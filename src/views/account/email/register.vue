@@ -1,6 +1,6 @@
 <template>
-    <div class="p-account-email__register">
-        <register app="miipet" />
+    <div class="p-account p-account-email__register">
+        <register :app="app" />
     </div>
 </template>
 
@@ -11,9 +11,22 @@ export default {
     components: {
         register,
     },
+    data() {
+        return {
+            app: "",
+        };
+    },
+    mounted() {
+        const search = new URLSearchParams(document.location.search);
+
+        if (search.has("app")) {
+            this.app = search.get("app");
+        }
+    },
 };
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/email/register.less";
 </style>

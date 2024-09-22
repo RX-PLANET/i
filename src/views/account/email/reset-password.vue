@@ -1,30 +1,35 @@
 <template>
-    <div class="p-account-email__register p-reset-password">
-        <el-card class="m-account-email__register">
+    <div class="p-account p-reset-password">
+        <el-card class="m-card">
             <card-header></card-header>
             <el-alert
                 type="warning"
                 show-icon
-                title="找回密码，请填写绑定的邮箱"
+                :title="$t('email.findPassword')"
                 class="u-alert"
                 :closable="false"
             ></el-alert>
             <el-form :model="form" ref="resetForm" :rules="rules" size="large" v-if="step != 3">
                 <el-form-item prop="email">
-                    <el-input v-model.trim="form.email" :disabled="!!interval" size="large" placeholder="邮箱地址">
+                    <el-input
+                        v-model.trim="form.email"
+                        :disabled="!!interval"
+                        size="large"
+                        :placeholder="$t('email.address')"
+                    >
                         <template #prepend
                             ><el-icon><Message></Message></el-icon
                         ></template>
                         <template #append v-if="sent">
                             <span @click="onResetPassword"
-                                >重新发送 (<span>{{ interval }}s</span>)</span
+                                >{{ $t("email.resend") }} (<span>{{ interval }}s</span>)</span
                             >
                         </template>
                     </el-input>
                 </el-form-item>
                 <template v-if="step == 1">
                     <el-form-item prop="code">
-                        <el-input v-model.trim="form.code" size="large" placeholder="验证码">
+                        <el-input v-model.trim="form.code" size="large" :placeholder="$t('email.code')">
                             <template #prepend
                                 ><el-icon><Message></Message></el-icon
                             ></template>
@@ -36,7 +41,7 @@
                             type="password"
                             size="large"
                             show-password
-                            placeholder="输入新密码"
+                            :placeholder="$t('email.newPassword')"
                         >
                             <template #prepend
                                 ><el-icon><Lock></Lock></el-icon
@@ -49,7 +54,7 @@
                             type="password"
                             size="large"
                             show-password
-                            placeholder="确认新密码"
+                            :placeholder="$t('email.confirmPassword')"
                         >
                             <template #prepend
                                 ><el-icon><Lock></Lock></el-icon
@@ -58,13 +63,19 @@
                     </el-form-item>
                 </template>
                 <el-form-item>
-                    <el-button class="u-button" type="primary" @click="onNextStep">下一步</el-button>
+                    <el-button class="u-button" type="primary" @click="onNextStep">{{ $t("email.next") }}</el-button>
                 </el-form-item>
             </el-form>
             <main class="m-main" v-if="step == 3">
-                <el-alert title="重设成功" type="success" description="您的密码已重设" show-icon :closable="false">
+                <el-alert
+                    :title="$t('email.resetSuccess')"
+                    type="success"
+                    :description="$t('email.resetSuccessDesc')"
+                    show-icon
+                    :closable="false"
+                >
                 </el-alert>
-                <a class="u-skip el-button u-button el-button--primary" :href="loginLink">立即登录</a>
+                <a class="u-skip el-button u-button el-button--primary" :href="loginLink">{{ $t("common.login") }}</a>
             </main>
         </el-card>
     </div>
@@ -72,7 +83,7 @@
 
 <script>
 import CardHeader from "@/components/common/card-header.vue";
-import { checkEmail, findPassword, resetPassword } from "@/service/account";
+import { checkEmail, findPassword, resetPassword } from "@/service/email";
 export default {
     name: "ResetPassword",
     components: {
@@ -202,5 +213,6 @@ export default {
 </script>
 
 <style lang="less">
+@import "@/assets/css/account/index.less";
 @import "@/assets/css/account/email/register.less";
 </style>
