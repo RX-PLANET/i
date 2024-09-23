@@ -1,16 +1,36 @@
 <template>
     <el-card class="m-card">
-        <card-header></card-header>
+        <card-header :title="$t('common.register')"></card-header>
 
-        <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon v-if="success === null">
+        <el-form
+            class="m-form"
+            hide-required-asterisk
+            ref="registerForm"
+            :model="form"
+            :rules="rules"
+            size="large"
+            status-icon
+            label-position="top"
+            v-if="success === null"
+        >
             <el-form-item prop="email">
+                <template #label>
+                    <div class="m-form-label">
+                        <span>{{ $t("email.address") }}</span>
+                    </div>
+                </template>
                 <el-input v-model.trim="form.email" size="large" :placeholder="$t('email.address')">
-                    <template #prepend
+                    <!-- <template #prepend
                         ><el-icon><Message></Message></el-icon
-                    ></template>
+                    ></template> -->
                 </el-input>
             </el-form-item>
             <el-form-item prop="password" class="m-password">
+                <template #label>
+                    <div class="m-form-label">
+                        <span>{{ $t("common.password") }}</span>
+                    </div>
+                </template>
                 <el-input
                     v-model.trim="form.password"
                     type="password"
@@ -18,9 +38,9 @@
                     show-password
                     :placeholder="$t('common.password')"
                 >
-                    <template #prepend
+                    <!-- <template #prepend
                         ><el-icon><Lock></Lock></el-icon
-                    ></template>
+                    ></template> -->
                 </el-input>
             </el-form-item>
             <el-form-item class="u-terms">
@@ -36,11 +56,6 @@
                 <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
                     $t("common.register")
                 }}</el-button>
-            </el-form-item>
-            <el-form-item class="m-footer">
-                <p class="u-login">
-                    {{ $t("common.hadAccount") }} <a :href="loginLink">{{ $t("common.login") }} &raquo;</a>
-                </p>
             </el-form-item>
         </el-form>
 
@@ -58,6 +73,9 @@
 
         <main class="m-main" v-if="success == false"></main>
     </el-card>
+    <div class="m-misc">
+        {{ $t("common.hadAccount") }} <a class="u-link" :href="loginLink">{{ $t("common.login") }} &raquo;</a>
+    </div>
 </template>
 
 <script>
