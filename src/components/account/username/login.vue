@@ -37,7 +37,7 @@
             </el-form-item>
         </el-form>
 
-        <main v-else class="m-main">
+        <main v-else class="m-card-main">
             <el-alert
                 :title="$t('common.loginSuccess')"
                 type="success"

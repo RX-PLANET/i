@@ -1,81 +1,58 @@
 <!-- 公共组件 邮件地址注册 -->
 <template>
-    <el-card class="m-card">
+    <div class="m-card m-login-card">
         <card-header :title="$t('common.login')"></card-header>
-        <el-form
-            class="m-form"
-            hide-required-asterisk
-            ref="loginForm"
-            label-position="top"
-            :model="form"
-            :rules="rules"
-            size="large"
-            v-if="!success"
-        >
-            <el-form-item prop="email">
-                <template #label>
-                    <div class="m-form-label">
-                        <span>{{ $t("email.address") }}</span>
-                    </div>
-                </template>
-                <el-input v-model.trim="form.email" size="large">
-                    <!-- <template #prepend
-                        ><el-icon><Message></Message></el-icon
-                    ></template> -->
-                </el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-                <template #label>
-                    <div class="m-form-label">
-                        <span>{{ $t("common.password") }}</span>
-                        <span class="u-resetpwd">
-                            <a :href="resetPwdLink">{{ $t("email.forgetPassword") }}?</a>
-                        </span>
-                    </div>
-                </template>
-                <el-input
-                    v-model.trim="form.password"
-                    @keydown.enter="onLogin"
-                    type="password"
-                    size="large"
-                    show-password
-                    :placeholder="$t('common.password')"
-                >
-                    <!-- <template #prepend
-                        ><el-icon><Lock></Lock></el-icon
-                    ></template> -->
-                </el-input>
-            </el-form-item>
-            <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
-            <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onLogin">{{
-                    $t("common.login")
-                }}</el-button>
-            </el-form-item>
-            <!-- <el-form-item class="m-footer">
-                <p class="u-login">
-                    {{ $t("common.noAccount") }} <a :href="registerLink">{{ $t("common.registerNow") }} &raquo;</a>
-                </p>
-                <p class="u-resetpwd">
-                    <a :href="resetPwdLink">{{ $t("email.forgetPassword") }}?</a>
-                </p>
-            </el-form-item> -->
-        </el-form>
 
-        <main v-else class="m-main">
-            <el-alert
-                :title="$t('common.loginSuccess')"
-                type="success"
-                :description="`${$t('common.loginSuccess')}(#^.^#)`"
-                show-icon
-                :closable="false"
+        <div class="m-card-main" v-if="!success">
+            <el-form
+                class="m-card-form"
+                hide-required-asterisk
+                ref="loginForm"
+                label-position="top"
+                :model="form"
+                :rules="rules"
+                size="large"
             >
-            </el-alert>
-            <a class="u-skip el-button u-button el-button--primary" :href="redirect">{{ redirect_button }}</a>
-        </main>
-    </el-card>
-    <div class="m-misc">
-        {{ $t("common.noAccount") }} <a class="u-link" :href="registerLink">{{ $t("common.registerNow") }} 👉</a>
+                <el-form-item prop="email">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("email.address") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.email" size="large"> </el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("common.password") }}</span>
+                            <span class="u-resetpwd">
+                                <a :href="resetPwdLink">{{ $t("email.forgetPassword") }}?</a>
+                            </span>
+                        </div>
+                    </template>
+                    <el-input
+                        v-model.trim="form.password"
+                        @keydown.enter="onLogin"
+                        type="password"
+                        size="large"
+                        show-password
+                    >
+                    </el-input>
+                </el-form-item>
+            </el-form>
+            <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
+            <el-button class="u-btn u-submit" type="primary" @click="onLogin">{{ $t("common.login") }}</el-button>
+        </div>
+
+        <div class="m-card-main" v-else>
+            <el-alert :title="$t('common.loginSuccess')" type="success" show-icon :closable="false"> </el-alert>
+            <a class="el-button u-btn el-button--primary u-skip" :href="redirect">{{ redirect_button }}</a>
+        </div>
+    </div>
+    <div class="m-footer">
+        <div class="m-footer-skip">
+            {{ $t("common.noAccount") }} <a class="u-link" :href="registerLink">{{ $t("common.registerNow") }} 👉</a>
+        </div>
     </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="p-account p-account-email p-account-email--register">
         <el-row class="m-container" justify="center">
-            <div class="m-block m-block-span2">
+            <div class="m-register">
                 <logo :app="app" />
                 <register :app="app" />
             </div>

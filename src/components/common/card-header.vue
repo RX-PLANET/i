@@ -1,5 +1,5 @@
 <template>
-    <div class="m-header">
+    <div class="m-card__header">
         <h4 class="u-title">{{ title }}</h4>
     </div>
 </template>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.m-header {
+.m-card__header {
     border-bottom: 1px solid #f9f9f9;
     line-height: 30px;
     -ms-grid-row-align: center;

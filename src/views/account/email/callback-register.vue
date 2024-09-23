@@ -3,7 +3,7 @@
         <el-card class="m-card">
             <card-header></card-header>
 
-            <main class="m-main">
+            <main class="m-card-main">
                 <el-alert v-if="!success" :title="title" type="error" show-icon :closable="false" center> </el-alert>
                 <el-alert v-else type="success" show-icon :closable="false">
                     <template #title

@@ -1,10 +1,10 @@
 <template>
     <div class="m-card m-register-card">
-        <card-header class="m-card__header" :title="$t('common.register')"></card-header>
+        <card-header :title="$t('common.register')"></card-header>
 
-        <div class="m-primary" v-if="success === null">
+        <div class="m-card-main" v-if="success === null">
             <el-form
-                class="m-form"
+                class="m-card-form"
                 hide-required-asterisk
                 ref="registerForm"
                 :model="form"
@@ -15,7 +15,7 @@
             >
                 <el-form-item prop="nickname">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("email.nickname") }}</span>
                         </div>
                     </template>
@@ -23,7 +23,7 @@
                 </el-form-item>
                 <el-form-item prop="lang">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("email.lang") }}</span>
                         </div>
                     </template>
@@ -31,7 +31,7 @@
                 </el-form-item>
                 <el-form-item prop="email">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("email.address") }}</span>
                         </div>
                     </template>
@@ -43,7 +43,7 @@
                 </el-form-item>
                 <el-form-item prop="_code">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("email.code") }}</span>
                         </div>
                     </template>
@@ -55,7 +55,7 @@
                 </el-form-item>
                 <el-form-item prop="password" class="m-password">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("common.password") }}</span>
                         </div>
                     </template>
@@ -67,7 +67,7 @@
                 </el-form-item>
                 <el-form-item prop="password" class="m-password">
                     <template #label>
-                        <div class="m-form-label">
+                        <div class="m-card-form-label">
                             <span>{{ $t("common.passwordConfirm") }}</span>
                         </div>
                     </template>
@@ -89,7 +89,7 @@
             }}</el-button>
         </div>
 
-        <main class="m-primary" v-if="success == true">
+        <main class="m-card-main" v-if="success == true">
             <el-alert
                 class="m-alert"
                 :title="$t('email.registerSuccess')"
@@ -104,7 +104,7 @@
             }}</el-button>
         </main>
 
-        <main class="m-primary" v-if="success == false">
+        <main class="m-card-main" v-if="success == false">
             <el-alert
                 class="m-alert"
                 :title="$t('email.registerFailed')"

@@ -6,7 +6,7 @@
                 <el-card class="m-card">
                     <card-header :title="$t('email.resetPassword')"></card-header>
                     <el-form
-                        class="m-form"
+                        class="m-card-form"
                         :model="form"
                         ref="resetForm"
                         label-position="top"
@@ -18,7 +18,7 @@
                         <p class="u-reset-tips">{{ $t("email.findPassword") }}</p>
                         <el-form-item prop="email">
                             <template #label>
-                                <div class="m-form-label">
+                                <div class="m-card-form-label">
                                     <span>{{ $t("email.address") }}</span>
                                 </div>
                             </template>
@@ -41,7 +41,7 @@
                         <template v-if="step == 1">
                             <el-form-item prop="code">
                                 <template #label>
-                                    <div class="m-form-label">
+                                    <div class="m-card-form-label">
                                         <span>{{ $t("email.code") }}</span>
                                     </div>
                                 </template>
@@ -53,7 +53,7 @@
                             </el-form-item>
                             <el-form-item prop="password1">
                                 <template #label>
-                                    <div class="m-form-label">
+                                    <div class="m-card-form-label">
                                         <span>{{ $t("email.newPassword") }}</span>
                                     </div>
                                 </template>
@@ -71,7 +71,7 @@
                             </el-form-item>
                             <el-form-item prop="password2">
                                 <template #label>
-                                    <div class="m-form-label">
+                                    <div class="m-card-form-label">
                                         <span>{{ $t("email.confirmPassword") }}</span>
                                     </div>
                                 </template>
@@ -94,7 +94,7 @@
                             }}</el-button>
                         </el-form-item>
                     </el-form>
-                    <main class="m-main" v-if="step == 3">
+                    <main class="m-card-main" v-if="step == 3">
                         <el-alert
                             :title="$t('email.resetSuccess')"
                             type="success"

@@ -1,8 +1,8 @@
 <template>
     <div class="p-account p-account-email__login">
         <el-row class="m-container" justify="center">
-            <div class="m-col">
-                <logo />
+            <div class="m-login">
+                <logo :app="app" />
                 <login :app="app"></login>
             </div>
         </el-row>
