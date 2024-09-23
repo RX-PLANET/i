@@ -5,10 +5,17 @@ import { createStore } from "vuex";
 const store = {
     state: {
         user: {},
+
+        navExpanded: false,
     },
     mutations: {
         SET_USER(state, user) {
             state.user = user;
+        },
+        SET_NAV(state, val) {
+            state.navExpanded = val;
+
+            localStorage.setItem("nav_expanded", state.navExpanded);
         },
     },
     getters: {
