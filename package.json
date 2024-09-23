@@ -20,6 +20,7 @@
         "cross-env": "^7.0.3",
         "element-plus": "^2.7.7",
         "fingerprintjs2": "^2.1.4",
+        "mitt": "^3.0.1",
         "vue": "^3.2.13",
         "vue-i18n": "^9.13.1",
         "vue-router": "^4.0.16",

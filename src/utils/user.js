@@ -226,6 +226,7 @@ class User {
 
             if (token_version == version) {
                 console.log("版本预检通过");
+                localStorage.setItem("token_version", version);
                 return true;
             } else {
                 console.log("版本预检失败，清空缓存");
@@ -245,9 +246,8 @@ class User {
     /**
      * 加载默认配置
      */
-    getTitanDefaultConf() {
+    getDefaultConf() {
         return axios.get(`${getCdnLink("/common/system/conf/miipet_default.json")}`).then((res) => {
-            console.log("miipet_default_conf", res);
             sessionStorage.setItem("miipet_default_conf", JSON.stringify(res.data));
 
             return this.checkVersion(res.data.token_version);
