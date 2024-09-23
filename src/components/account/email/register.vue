@@ -17,22 +17,22 @@
                 status-icon
                 label-position="top"
             >
-                <el-form-item prop="nickname">
+                <!-- <el-form-item prop="nickname">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("email.nickname") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.nickname" size="large" :maxlength="20"> </el-input>
-                </el-form-item>
-                <el-form-item prop="invite_code">
+                </el-form-item> -->
+                <!-- <el-form-item prop="invite_code">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("email.invite_code") }}</span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.invite_code" size="large"> </el-input>
-                </el-form-item>
+                </el-form-item> -->
                 <el-form-item prop="email">
                     <template #label>
                         <div class="m-card-form-label">
@@ -41,14 +41,14 @@
                     </template>
                     <el-input v-model.trim="form.email" size="large"> </el-input>
                 </el-form-item>
-                <el-form-item prop="code" class="m-code">
+                <el-form-item prop="code" class="u-code">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("email.code") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.code" size="large"> </el-input>
-                    <el-button class="u-send-btn" size="small" @click="senCode" :disabled="interval > 0"
+                    <el-button class="u-btn-send" size="small" @click="senCode" :disabled="interval > 0"
                         >{{ $t("email.send") }}<span v-if="interval">({{ interval }}s)</span></el-button
                     >
                 </el-form-item>
@@ -138,20 +138,20 @@ export default {
     data() {
         return {
             form: {
-                nickname: "",
+                // nickname: "",
                 email: "",
                 password: "",
                 password1: "",
                 lang: "",
                 code: "",
-                invite_code: "",
+                // invite_code: "",
             },
 
             rules: {
-                nickname: [
-                    { required: true, message: this.$t("email.nicknamePlaceholder"), trigger: "blur" },
-                    { validator: this.checkNickname, trigger: "blur" },
-                ],
+                // nickname: [
+                //     { required: true, message: this.$t("email.nicknamePlaceholder"), trigger: "blur" },
+                //     { validator: this.checkNickname, trigger: "blur" },
+                // ],
                 email: [
                     { required: true, message: this.$t("email.addressPlaceholder"), trigger: "blur" },
                     { type: "email", message: this.$t("email.addressError"), trigger: ["blur", "change"] },

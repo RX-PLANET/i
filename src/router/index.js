@@ -34,7 +34,7 @@ const router = createRouter({
 // 5.Global Guard
 router.beforeEach((to, from, next) => {
     // Set Title
-    document.title = to.meta.title || "Mii";
+    document.title = to.meta.title || "User Center";
     next();
 });
 

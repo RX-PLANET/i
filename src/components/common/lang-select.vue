@@ -54,14 +54,15 @@ export default {
     .u-select-label {
         height: 24px;
         line-height: 20px;
-        padding: 16px 20px;
+        padding: 16px 12px;
     }
     .el-select {
+        width: 120px;
         .el-input__wrapper,
         .el-select__wrapper {
-            min-width: 150px;
             height: 24px;
             line-height: 20px;
+            min-width: auto;
         }
     }
 }
