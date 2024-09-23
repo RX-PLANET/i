@@ -1,6 +1,10 @@
 <template>
     <div class="m-card__header">
         <h4 class="u-title">{{ title }}</h4>
+
+        <div class="m-right">
+            <slot name="right"></slot>
+        </div>
     </div>
 </template>
 
@@ -31,6 +35,8 @@ export default {
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    .pr;
+    justify-content: space-between;
     .u-title {
         margin: 0;
         font-size: 16px;

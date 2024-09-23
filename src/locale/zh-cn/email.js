@@ -16,9 +16,13 @@ export default {
     // UI Errors
     addressPlaceholder: "请输入邮箱地址",
     addressError: "请输入正确的邮箱地址",
+    nicknamePlaceholder: "请输入昵称",
+    nicknameError: "请输入正确的昵称",
 
     // UI Messages
     // Register
+    send: "发送验证码",
+    sendSuccess: "发送成功",
     registerSuccess: "注册成功",
     registerSuccessDesc: "恭喜，您现在已经是「RX星球」的一员啦！",
 

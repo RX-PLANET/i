@@ -40,7 +40,7 @@ export function registerByEmail(data, params) {
  * @returns
  */
 export function activeByEmail(data, params) {
-    return $uc({ mute: true }).put("/api/uc/user/account/email/active", data, {
+    return $uc({ mute: true }).post("/api/uc/user/account/email/active", data, {
         params,
     });
 }

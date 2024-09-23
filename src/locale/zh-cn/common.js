@@ -13,7 +13,9 @@ export default {
     loginSuccess: "登录成功",
     loginSuccessDesc: "欢迎回来，宝！",
     passwordPlaceholder: "请输入密码",
+    password2Placeholder: "请再次输入密码",
     passwordError: "长度在 6 到 30 个字符",
+    passwordError2: "两次输入密码不一致",
     read: "我已阅读并同意",
     terms: "服务条款",
 };

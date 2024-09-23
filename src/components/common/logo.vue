@@ -19,7 +19,8 @@ export default {
     },
     computed: {
         logoUrl() {
-            return require("../../assets/img/logo/" + (this.app || DEFAULT_APP) + ".svg");
+            // return require("../../assets/img/logo/" + (this.app || DEFAULT_APP) + ".svg");
+            return require("@/assets/img/logo/" + "iruxu.svg");
         },
         homepageUrl() {
             // TODO: 从配置文件中读取

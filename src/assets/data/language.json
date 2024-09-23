@@ -1,0 +1,94 @@
+{
+    "languages": [
+        {
+            "langCode": "en-US",
+            "name": "English",
+            "country": "United States",
+            "countryCode": "us"
+        },
+        {
+            "langCode": "en-GB",
+            "name": "English",
+            "country": "United Kingdom",
+            "countryCode": "gb"
+        },
+        {
+            "langCode": "zh-CN",
+            "name": "简体中文",
+            "country": "中国",
+            "countryCode": "cn"
+        },
+        {
+            "langCode": "zh-TW",
+            "name": "繁體中文",
+            "country": "中国台湾",
+            "countryCode": "cn"
+        },
+        {
+            "langCode": "ja-JP",
+            "name": "日本語",
+            "country": "日本",
+            "countryCode": "jp"
+        },
+        {
+            "langCode": "ko-KR",
+            "name": "한국어",
+            "country": "대한민국",
+            "countryCode": "kr"
+        },
+        {
+            "langCode": "es-ES",
+            "name": "Español",
+            "country": "España",
+            "countryCode": "es"
+        },
+        {
+            "langCode": "fr-FR",
+            "name": "Français",
+            "country": "France",
+            "countryCode": "fr"
+        },
+        {
+            "langCode": "de-DE",
+            "name": "Deutsch",
+            "country": "Deutschland",
+            "countryCode": "de"
+        },
+        {
+            "langCode": "it-IT",
+            "name": "Italiano",
+            "country": "Italia",
+            "countryCode": "it"
+        },
+        {
+            "langCode": "pt-BR",
+            "name": "Português",
+            "country": "Brasil",
+            "countryCode": "br"
+        },
+        {
+            "langCode": "ru-RU",
+            "name": "Русский",
+            "country": "Россия",
+            "countryCode": "ru"
+        },
+        {
+            "langCode": "ar-SA",
+            "name": "العربية",
+            "country": "المملكة العربية السعودية",
+            "countryCode": "sa"
+        },
+        {
+            "langCode": "hi-IN",
+            "name": "हिन्दी",
+            "country": "भारत",
+            "countryCode": "in"
+        },
+        {
+            "langCode": "tr-TR",
+            "name": "Türkçe",
+            "country": "Türkiye",
+            "countryCode": "tr"
+        }
+    ]
+}

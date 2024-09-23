@@ -16,9 +16,13 @@ export default {
     // UI Errors
     addressPlaceholder: "Please enter your email address",
     addressError: "Please enter a valid email address",
+    nicknamePlaceholder: "Please enter your nickname",
+    nicknameError: "Please enter a valid nickname",
 
     // UI Messages
     // Register
+    send: "Send Code",
+    sendSuccess: "Send Success",
     registerSuccess: "Register Success",
     registerSuccessDesc: "Congratulations, you are now a member of RX Planet!",
 

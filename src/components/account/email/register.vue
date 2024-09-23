@@ -1,6 +1,10 @@
 <template>
     <div class="m-card m-register-card">
-        <card-header :title="$t('common.register')"></card-header>
+        <card-header :title="$t('common.register')">
+            <template #right>
+                <lang-select :lang="form.lang" @change="changeLang" />
+            </template>
+        </card-header>
 
         <div class="m-card-main" v-if="success === null">
             <el-form
@@ -19,15 +23,15 @@
                             <span>{{ $t("email.nickname") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.nickname" size="large"> </el-input>
+                    <el-input v-model.trim="form.nickname" size="large" :maxlength="20"> </el-input>
                 </el-form-item>
-                <el-form-item prop="_invite_code">
+                <el-form-item prop="invite_code">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("email.invite_code") }}</span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.lang" size="large"> </el-input>
+                    <el-input v-model.trim="form.invite_code" size="large"> </el-input>
                 </el-form-item>
                 <el-form-item prop="email">
                     <template #label>
@@ -37,13 +41,16 @@
                     </template>
                     <el-input v-model.trim="form.email" size="large"> </el-input>
                 </el-form-item>
-                <el-form-item prop="_code">
+                <el-form-item prop="code" class="m-code">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("email.code") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.email" size="large"> </el-input>
+                    <el-input v-model.trim="form.code" size="large"> </el-input>
+                    <el-button class="u-send-btn" size="small" @click="senCode" :disabled="interval > 0"
+                        >{{ $t("email.send") }}<span v-if="interval">({{ interval }}s)</span></el-button
+                    >
                 </el-form-item>
                 <el-form-item prop="password" class="m-password">
                     <template #label>
@@ -53,13 +60,13 @@
                     </template>
                     <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
                 </el-form-item>
-                <el-form-item prop="password" class="m-password">
+                <el-form-item prop="password1" class="m-password">
                     <template #label>
                         <div class="m-card-form-label">
                             <span>{{ $t("common.passwordConfirm") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
+                    <el-input v-model.trim="form.password1" type="password" size="large" show-password> </el-input>
                 </el-form-item>
             </el-form>
             <div class="u-terms">
@@ -111,9 +118,10 @@
 </template>
 
 <script>
-import { checkEmail, registerByEmail } from "@/service/email";
+import { checkEmail, registerByEmail, activeByEmail } from "@/service/email";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
+import LangSelect from "@/components/common/lang-select.vue";
 
 export default {
     name: "EmailRegister",
@@ -125,15 +133,25 @@ export default {
     },
     components: {
         CardHeader,
+        LangSelect,
     },
     data() {
         return {
             form: {
+                nickname: "",
                 email: "",
                 password: "",
+                password1: "",
+                lang: "",
+                code: "",
+                invite_code: "",
             },
 
             rules: {
+                nickname: [
+                    { required: true, message: this.$t("email.nicknamePlaceholder"), trigger: "blur" },
+                    { validator: this.checkNickname, trigger: "blur" },
+                ],
                 email: [
                     { required: true, message: this.$t("email.addressPlaceholder"), trigger: "blur" },
                     { type: "email", message: this.$t("email.addressError"), trigger: ["blur", "change"] },
@@ -143,6 +161,20 @@ export default {
                     { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
                     { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
                 ],
+                password1: [
+                    { required: true, message: this.$t("common.password2Placeholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    {
+                        validator: (rule, value, callback) => {
+                            if (value !== this.form.password) {
+                                callback(new Error(this.$t("common.passwordError2")));
+                            } else {
+                                callback();
+                            }
+                        },
+                        trigger: "blur",
+                    },
+                ],
             },
 
             agreement: false,
@@ -150,6 +182,9 @@ export default {
             success: null,
 
             terms: "/doc/terms",
+
+            interval: 0,
+            timer: null,
         };
     },
     computed: {
@@ -164,6 +199,9 @@ export default {
     mounted() {
         // 生成特征码
         User.generateFingerprint();
+
+        // 获取浏览器语言|系统语言
+        this.form.lang = navigator.language;
     },
     methods: {
         async check(rule, value, callback) {
@@ -177,12 +215,51 @@ export default {
                 callback();
             }
         },
+        checkNickname(rule, value, callback) {
+            // 不允许有空格和特殊符号
+            if (!value) {
+                callback(new Error(this.$t("email.nicknamePlaceholder")));
+            } else if (!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test(value)) {
+                callback(new Error(this.$t("email.nicknameError")));
+            } else {
+                callback();
+            }
+        },
+        // 发送验证码
+        senCode() {
+            if (!this.form.email) {
+                this.$refs.registerForm.validateField("email");
+                return;
+            }
+            registerByEmail({ email: this.form.email }, { app: this.app }).then(() => {
+                this.$message.success(this.$t("email.sendSuccess"));
+                this.interval = 60;
+                this.timer = setInterval(() => {
+                    this.interval--;
+                    if (this.interval <= 0) {
+                        clearInterval(this.timer);
+                    }
+                }, 1000);
+            });
+        },
         onRegister() {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
-                    registerByEmail(this.form, { app: this.app }).then(() => {
-                        this.success = true;
-                    });
+                    const data = {
+                        lang: this.form.lang,
+                        email: this.form.email,
+                        password: this.form.password,
+                        invite_code: this.form.invite_code,
+                        code: this.form.code,
+                        nickname: this.form.nickname,
+                    };
+                    activeByEmail(data, { app: this.app })
+                        .then(() => {
+                            this.success = true;
+                        })
+                        .catch(() => {
+                            this.success = false;
+                        });
                 }
             });
         },
@@ -191,6 +268,9 @@ export default {
         },
         onBack() {
             this.success = null;
+        },
+        changeLang(lang) {
+            this.form.lang = lang;
         },
     },
 };

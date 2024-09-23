@@ -129,8 +129,8 @@ export default {
 
             rules: {
                 email: [
-                    { required: true, message: "请输入邮箱地址", trigger: "blur" },
-                    { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" },
+                    { required: true, message: this.$t("email.addressPlaceholder"), trigger: "blur" },
+                    { type: "email", message: this.$t("email.addressError"), trigger: ["blur", "change"] },
                     { validator: this.check, trigger: "blur" },
                 ],
                 code: [
@@ -140,16 +140,16 @@ export default {
                 ],
                 // password1和password2必须相同，且均在6-30位之间
                 password1: [
-                    { required: true, message: "请输入密码", trigger: "blur" },
-                    { min: 6, max: 30, message: "密码长度在6-30位之间", trigger: "blur" },
+                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
                 ],
                 password2: [
-                    { required: true, message: "请再次输入密码", trigger: "blur" },
-                    { min: 6, max: 30, message: "密码长度在6-30位之间", trigger: "blur" },
+                    { required: true, message: this.$t("common.password2Placeholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             if (value !== this.form.password1) {
-                                callback(new Error("两次输入密码不一致"));
+                                callback(new Error(this.$t("common.passwordError2")));
                             } else {
                                 callback();
                             }
