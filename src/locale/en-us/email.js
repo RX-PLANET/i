@@ -4,6 +4,10 @@ export default {
     nickname: "Nickname",
     lang: "Language",
     code: "Code",
+    invite_code: "Invite Code",
+    next: "Next",
+    newPassword: "New Password",
+    confirmPassword: "Confirm Password",
 
     // UI Placeholders
     forgetPassword: "Forgot Password",
@@ -14,6 +18,7 @@ export default {
     addressError: "Please enter a valid email address",
 
     // UI Messages
+    // Register
     registerSuccess: "Register Success",
     registerSuccessDesc: "Congratulations, you are now a member of RX Planet!",
 
@@ -24,10 +29,11 @@ export default {
     registerFailed: "Registration failed",
     registerFailedDesc: "Registration failed, please try again later",
 
+    // Login
     loginFailed: "Login failed, please check the email and password",
-    next: "Next",
-    newPassword: "New Password",
-    confirmPassword: "Confirm Password",
+
+    // Reset
+    resetEmailPlaceholder: "yourname@example.com",
     illegalRequest: "Illegal request",
     resend: "Resend",
     resetSuccess: "Reset Success",

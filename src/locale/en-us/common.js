@@ -1,4 +1,5 @@
 export default {
+    // UI Labels
     login: "Login",
     password: "Password",
     passwordConfirm: "Confirm Password",
@@ -6,11 +7,13 @@ export default {
     noAccount: "Don't have an account?",
     hadAccount: "Already have an account?",
     registerNow: "Register Now",
+    back: "Back",
+
+    // Account Messages
     loginSuccess: "Login Success",
-    welcomeBack: "Welcome Back",
+    loginSuccessDesc: "Dear, Welcome back!",
     passwordPlaceholder: "Please enter your password",
     passwordError: "Length between 6 and 30 characters",
-    back: "Back",
     read: "I have read and agree to",
     terms: "Terms of Service",
 };

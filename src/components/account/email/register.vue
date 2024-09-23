@@ -16,15 +16,15 @@
                 <el-form-item prop="nickname">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("email.nickname") }}</span>
+                            <span>{{ $t("email.nickname") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.nickname" size="large"> </el-input>
                 </el-form-item>
-                <el-form-item prop="lang">
+                <el-form-item prop="_invite_code">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("email.lang") }}</span>
+                            <span>{{ $t("email.invite_code") }}</span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.lang" size="large"> </el-input>
@@ -32,50 +32,34 @@
                 <el-form-item prop="email">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("email.address") }}</span>
+                            <span>{{ $t("email.address") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.email" size="large">
-                        <!-- <template #prepend
-                        ><el-icon><Message></Message></el-icon
-                    ></template> -->
-                    </el-input>
+                    <el-input v-model.trim="form.email" size="large"> </el-input>
                 </el-form-item>
                 <el-form-item prop="_code">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("email.code") }}</span>
+                            <span>{{ $t("email.code") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.email" size="large">
-                        <!-- <template #prepend
-                        ><el-icon><Message></Message></el-icon
-                    ></template> -->
-                    </el-input>
+                    <el-input v-model.trim="form.email" size="large"> </el-input>
                 </el-form-item>
                 <el-form-item prop="password" class="m-password">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("common.password") }}</span>
+                            <span>{{ $t("common.password") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.password" type="password" size="large" show-password>
-                        <!-- <template #prepend
-                        ><el-icon><Lock></Lock></el-icon
-                    ></template> -->
-                    </el-input>
+                    <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
                 </el-form-item>
                 <el-form-item prop="password" class="m-password">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("common.passwordConfirm") }}</span>
+                            <span>{{ $t("common.passwordConfirm") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
-                    <el-input v-model.trim="form.password" type="password" size="large" show-password>
-                        <!-- <template #prepend
-                        ><el-icon><Lock></Lock></el-icon
-                    ></template> -->
-                    </el-input>
+                    <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
                 </el-form-item>
             </el-form>
             <div class="u-terms">

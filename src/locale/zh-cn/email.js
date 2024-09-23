@@ -4,6 +4,10 @@ export default {
     nickname: "昵称",
     lang: "语言",
     code: "验证码",
+    invite_code: "邀请码",
+    next: "下一步",
+    newPassword: "新密码",
+    confirmPassword: "确认密码",
 
     // UI Placeholders
     forgetPassword: "忘记密码",
@@ -14,6 +18,7 @@ export default {
     addressError: "请输入正确的邮箱地址",
 
     // UI Messages
+    // Register
     registerSuccess: "注册成功",
     registerSuccessDesc: "恭喜，您现在已经是「RX星球」的一员啦！",
 
@@ -23,10 +28,11 @@ export default {
     registerFailed: "注册失败",
     registerFailedDesc: "请检查提交信息是否正确，或稍后再试",
 
+    // Login
     loginFailed: "登录失败, 请检查邮箱和密码",
-    next: "下一步",
-    newPassword: "新密码",
-    confirmPassword: "确认密码",
+
+    // Reset
+    resetEmailPlaceholder: "yourname@example.com",
     illegalRequest: "非法请求",
     resend: "重新发送",
     resetSuccess: "重置成功",

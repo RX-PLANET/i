@@ -57,10 +57,11 @@
             }
         }
 
-        .u-btn {
-            box-shadow: 0 2px 6px #acb5f6;
-            background-color: #6777ef;
-            border-color: #6777ef;
+        .u-btn,
+        .el-button {
+            box-shadow: 0 2px 6px @primary-shadow;
+            background-color: @primary;
+            border-color: @primary;
             padding: 0 1.5rem;
             font-size: 12px;
             font-weight: 600;
@@ -75,6 +76,19 @@
                 border-color: transparent !important;
                 background-color: @primary-hover !important;
             }
+        }
+
+        .u-back {
+            margin-top: 20px;
+        }
+        .u-skip {
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        .u-tips {
+            color: @primary-danger;
+            padding: 10px 0;
+            .fz(13px);
         }
     }
 
@@ -103,16 +117,16 @@
         }
 
         .el-input__wrapper {
-            background-color: #fdfdff;
+            background-color: @primary-bgc-light;
             background-clip: padding-box;
-            border: 1px solid #e4e6fc;
+            border: 1px solid @primary-border-light;
             border-radius: 0.25rem;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             box-shadow: none !important;
 
             &.is-focus {
-                background-color: #e5eefe;
-                border-color: #95a0f4;
+                background-color: @primary-bgc;
+                border-color: @primary-border;
                 outline: none !important;
                 box-shadow: none !important;
             }
@@ -124,17 +138,17 @@
         .mt(20px);
         .clearfix;
 
-        .el-form-item__content {
-            .flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        // .el-form-item__content {
+        //     .flex;
+        //     align-items: center;
+        //     justify-content: space-between;
+        // }
 
         .m-footer-skip {
             margin: 3rem 0;
             .x;
             font-size: 14px;
-            color: #98a6ad;
+            color: @primary-tips;
 
             .u-link {
                 font-weight: 500;
@@ -153,7 +167,7 @@
             .bold;
         }
         &.el-alert--error {
-            --el-color-error-light-9: #fffef8;
+            --el-color-error-light-9: #fff5b9;
             border: 1px solid @primary-danger;
         }
     }

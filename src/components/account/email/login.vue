@@ -45,7 +45,15 @@
         </div>
 
         <div class="m-card-main" v-else>
-            <el-alert :title="$t('common.loginSuccess')" type="success" show-icon :closable="false"> </el-alert>
+            <el-alert
+                class="m-alert"
+                :title="$t('common.loginSuccess')"
+                type="success"
+                :description="$t('common.loginSuccessDesc')"
+                show-icon
+                :closable="false"
+            >
+            </el-alert>
             <a class="el-button u-btn el-button--primary u-skip" :href="redirect">{{ redirect_button }}</a>
         </div>
     </div>
