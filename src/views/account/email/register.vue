@@ -1,8 +1,8 @@
 <template>
-    <div class="p-account p-account-email__register">
+    <div class="p-account p-account-email p-account-email--register">
         <el-row class="m-container" justify="center">
-            <div class="m-col">
-                <logo />
+            <div class="m-block m-block-span2">
+                <logo :app="app" />
                 <register :app="app" />
             </div>
         </el-row>
@@ -34,6 +34,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "@/assets/css/account/index.less";
+@import "@/assets/css/account/common.less";
 @import "@/assets/css/account/email/register.less";
 </style>

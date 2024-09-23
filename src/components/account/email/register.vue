@@ -1,80 +1,128 @@
 <template>
-    <el-card class="m-card">
-        <card-header :title="$t('common.register')"></card-header>
+    <div class="m-card m-register-card">
+        <card-header class="m-card__header" :title="$t('common.register')"></card-header>
 
-        <el-form
-            class="m-form"
-            hide-required-asterisk
-            ref="registerForm"
-            :model="form"
-            :rules="rules"
-            size="large"
-            status-icon
-            label-position="top"
-            v-if="success === null"
-        >
-            <el-form-item prop="email">
-                <template #label>
-                    <div class="m-form-label">
-                        <span>{{ $t("email.address") }}</span>
-                    </div>
-                </template>
-                <el-input v-model.trim="form.email" size="large" :placeholder="$t('email.address')">
-                    <!-- <template #prepend
+        <div class="m-primary" v-if="success === null">
+            <el-form
+                class="m-form"
+                hide-required-asterisk
+                ref="registerForm"
+                :model="form"
+                :rules="rules"
+                size="large"
+                status-icon
+                label-position="top"
+            >
+                <el-form-item prop="nickname">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("email.nickname") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.nickname" size="large"> </el-input>
+                </el-form-item>
+                <el-form-item prop="lang">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("email.lang") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.lang" size="large"> </el-input>
+                </el-form-item>
+                <el-form-item prop="email">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("email.address") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.email" size="large">
+                        <!-- <template #prepend
                         ><el-icon><Message></Message></el-icon
                     ></template> -->
-                </el-input>
-            </el-form-item>
-            <el-form-item prop="password" class="m-password">
-                <template #label>
-                    <div class="m-form-label">
-                        <span>{{ $t("common.password") }}</span>
-                    </div>
-                </template>
-                <el-input
-                    v-model.trim="form.password"
-                    type="password"
-                    size="large"
-                    show-password
-                    :placeholder="$t('common.password')"
-                >
-                    <!-- <template #prepend
+                    </el-input>
+                </el-form-item>
+                <el-form-item prop="_code">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("email.code") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.email" size="large">
+                        <!-- <template #prepend
+                        ><el-icon><Message></Message></el-icon
+                    ></template> -->
+                    </el-input>
+                </el-form-item>
+                <el-form-item prop="password" class="m-password">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("common.password") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.password" type="password" size="large" show-password>
+                        <!-- <template #prepend
                         ><el-icon><Lock></Lock></el-icon
                     ></template> -->
-                </el-input>
-            </el-form-item>
-            <el-form-item class="u-terms">
+                    </el-input>
+                </el-form-item>
+                <el-form-item prop="password" class="m-password">
+                    <template #label>
+                        <div class="m-form-label">
+                            <span>{{ $t("common.passwordConfirm") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.password" type="password" size="large" show-password>
+                        <!-- <template #prepend
+                        ><el-icon><Lock></Lock></el-icon
+                    ></template> -->
+                    </el-input>
+                </el-form-item>
+            </el-form>
+            <div class="u-terms">
                 <el-checkbox v-model="agreement" class="u-checkbox"
                     >{{ $t("common.read") }}
-                    <a v-for="(item, index) in agreements" :key="index" :href="item.href" target="_blank"
-                        >《{{ item.name }}》
-                        {{ index === agreements.length - 1 ? "" : "、" }}
-                    </a>
+                    <a :href="terms" target="_blank">《{{ $t("common.terms") }}》 </a>
                 </el-checkbox>
-            </el-form-item>
-            <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
-                    $t("common.register")
-                }}</el-button>
-            </el-form-item>
-        </el-form>
+            </div>
+            <el-button class="u-btn u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
+                $t("common.register")
+            }}</el-button>
+        </div>
 
-        <main class="m-main" v-if="success == true">
+        <main class="m-primary" v-if="success == true">
             <el-alert
-                :title="$t('email.waitVerify')"
+                class="m-alert"
+                :title="$t('email.registerSuccess')"
                 type="success"
-                :description="successDesc"
+                :description="$t('email.registerSuccessDesc')"
                 show-icon
                 :closable="false"
             >
             </el-alert>
-            <el-button class="u-button u-back" type="primary" @click="onBack">{{ $t("common.back") }}</el-button>
+            <el-button size="large" class="u-btn u-back" type="primary" @click="goLogin">{{
+                $t("common.login")
+            }}</el-button>
         </main>
 
-        <main class="m-main" v-if="success == false"></main>
-    </el-card>
-    <div class="m-misc">
-        {{ $t("common.hadAccount") }} <a class="u-link" :href="loginLink">{{ $t("common.login") }} &raquo;</a>
+        <main class="m-primary" v-if="success == false">
+            <el-alert
+                class="m-alert"
+                :title="$t('email.registerFailed')"
+                type="error"
+                :description="$t('email.registerFailedDesc')"
+                show-icon
+                :closable="false"
+            >
+            </el-alert>
+            <el-button size="large" class="u-btn u-back" type="primary" @click="onBack">{{
+                $t("common.back")
+            }}</el-button>
+        </main>
+    </div>
+    <div class="m-footer">
+        <div class="m-footer-skip">
+            {{ $t("common.hadAccount") }} <a class="u-link" :href="loginLink">{{ $t("common.login") }} &raquo;</a>
+        </div>
     </div>
 </template>
 
@@ -89,20 +137,6 @@ export default {
         app: {
             type: String,
             default: "",
-        },
-        agreements: {
-            // 协议
-            type: Array,
-            default: () => [
-                {
-                    name: "用户协议",
-                    href: "https://www.jx3box.com/about/license",
-                },
-                {
-                    name: "隐私政策",
-                    href: "https://www.jx3box.com/about/privacy",
-                },
-            ],
         },
     },
     components: {
@@ -130,6 +164,8 @@ export default {
             agreement: false,
 
             success: null,
+
+            terms: "/doc/terms",
         };
     },
     computed: {
@@ -139,9 +175,6 @@ export default {
         loginLink() {
             const path = this.$router.resolve({ name: "email-login", query: { app: this.app } });
             return path.href;
-        },
-        successDesc() {
-            return this.$t("email.successDesc");
         },
     },
     mounted() {
@@ -169,8 +202,11 @@ export default {
                 }
             });
         },
-        onBack() {
+        goLogin() {
             this.$router.push({ name: "email-login", query: { app: this.app } });
+        },
+        onBack() {
+            this.success = null;
         },
     },
 };

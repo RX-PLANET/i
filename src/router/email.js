@@ -17,7 +17,7 @@ export default [
                 name: "email-register",
                 component: EmailRegister,
                 meta: {
-                    title: "注册 - 邮箱注册",
+                    title: "注册 - Register",
                 },
             },
             {

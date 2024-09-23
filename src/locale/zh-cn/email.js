@@ -1,13 +1,29 @@
 export default {
-    address: "邮箱地址",
-    addressPlaceholder: "请输入邮箱地址",
-    addressError: "请输入正确的邮箱地址",
+    // UI Labels
+    address: "邮箱",
+    nickname: "昵称",
+    lang: "语言",
+    code: "验证码",
+
+    // UI Placeholders
     forgetPassword: "忘记密码",
     emailRegistered: "邮箱已被注册",
-    successDesc: "已向您的邮箱{email}发送了一封验证邮件，点击激活链接即可注册成功！邮件有效期为24小时。",
+
+    // UI Errors
+    addressPlaceholder: "请输入邮箱地址",
+    addressError: "请输入正确的邮箱地址",
+
+    // UI Messages
+    registerSuccess: "注册成功",
+    registerSuccessDesc: "恭喜，您现在已经是「RX星球」的一员啦！",
+
     waitVerify: "等待验证",
+    successDesc: "已向您的邮箱{email}发送了一封验证邮件，点击激活链接即可注册成功！邮件有效期为24小时。",
+
+    registerFailed: "注册失败",
+    registerFailedDesc: "请检查提交信息是否正确，或稍后再试",
+
     loginFailed: "登录失败, 请检查邮箱和密码",
-    code: "验证码",
     next: "下一步",
     newPassword: "新密码",
     confirmPassword: "确认密码",

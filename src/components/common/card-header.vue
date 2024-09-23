@@ -10,13 +10,33 @@ export default {
     props: {
         title: {
             type: String,
-            default: "Mii",
+            default: "iruxu",
         },
     },
     data: function () {
-        return {
-            homepage: "https://www.jx3box.com",
-        };
+        return {};
     },
 };
 </script>
+
+<style scoped lang="less">
+.m-header {
+    border-bottom: 1px solid #f9f9f9;
+    line-height: 30px;
+    -ms-grid-row-align: center;
+    align-self: center;
+    width: 100%;
+    min-height: 70px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    .u-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 28px;
+        color: @primary;
+    }
+}
+</style>

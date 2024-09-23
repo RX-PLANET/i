@@ -1,6 +1,7 @@
 export default {
     login: "Login",
     password: "Password",
+    passwordConfirm: "Confirm Password",
     register: "Register",
     noAccount: "Don't have an account?",
     hadAccount: "Already have an account?",
@@ -11,4 +12,5 @@ export default {
     passwordError: "Length between 6 and 30 characters",
     back: "Back",
     read: "I have read and agree to",
+    terms: "Terms of Service",
 };

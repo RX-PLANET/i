@@ -1,5 +1,5 @@
 <template>
-    <div class="p-account p-account-email__register">
+    <div class="p-account p-account-email--register">
         <el-card class="m-card">
             <card-header></card-header>
 
@@ -72,6 +72,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "@/assets/css/account/index.less";
+@import "@/assets/css/account/common.less";
 @import "@/assets/css/account/email/register.less";
 </style>

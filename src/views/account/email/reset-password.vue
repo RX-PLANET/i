@@ -251,6 +251,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "@/assets/css/account/index.less";
+@import "@/assets/css/account/common.less";
 @import "@/assets/css/account/email/register.less";
 </style>
