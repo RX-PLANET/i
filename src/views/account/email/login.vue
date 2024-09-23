@@ -1,15 +1,22 @@
 <template>
     <div class="p-account p-account-email__login">
-        <login :app="app"></login>
+        <el-row class="m-container" justify="center">
+            <div class="m-col">
+                <logo />
+                <login :app="app"></login>
+            </div>
+        </el-row>
     </div>
 </template>
 
 <script>
 import login from "@/components/account/email/login.vue";
+import Logo from "@/components/common/logo.vue";
 export default {
     name: "AccountEmailLogin",
     components: {
         login,
+        Logo,
     },
     data() {
         return {

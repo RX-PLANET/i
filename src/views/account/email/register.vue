@@ -1,15 +1,22 @@
 <template>
     <div class="p-account p-account-email__register">
-        <register :app="app" />
+        <el-row class="m-container" justify="center">
+            <div class="m-col">
+                <logo />
+                <register :app="app" />
+            </div>
+        </el-row>
     </div>
 </template>
 
 <script>
 import register from "@/components/account/email/register.vue";
+import Logo from "@/components/common/logo.vue";
 export default {
     name: "AccountEmailRegister",
     components: {
         register,
+        Logo,
     },
     data() {
         return {

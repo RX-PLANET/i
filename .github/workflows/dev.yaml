@@ -22,11 +22,11 @@ jobs:
                   npm run build-dev
 
             ## TODO:下方修改1处
-            # - name: GrayEnv
-            #   uses: appleboy/scp-action@v0.1.4
-            #   with:
-            #       host: ${{ secrets.HOST_NANJING2 }}
-            #       username: ${{ secrets.DEPLOY_USER }}
-            #       key: ${{ secrets.DEPLOY_KEY }}
-            #       source: os/*
-            #       target: /www/wwwroot/jx3box/test
+            - name: GrayEnv
+              uses: appleboy/scp-action@v0.1.4
+              with:
+                  host: ${{ secrets.DEV_HOST }}
+                  username: ${{ secrets.DEV_USER }}
+                  key: ${{ secrets.DEV_KEY }}
+                  source: dist/*
+                  target: /www/wwwroot/iruxu/i/dev
