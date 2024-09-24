@@ -1,16 +1,22 @@
 @navbar-brand-color: #22252a;
 @navbar-link-color: #676f7e;
+@aside-bgcolor: #f9fafe;
+@aside-active-bgcolor: #eff2ff;
 
 .c-aside {
     width: @aside-width;
     background-color: @aside-bgcolor;
     border-right: 1px solid transparent;
+    box-shadow: 0px 0px 20px rgba(94, 98, 120, 0.04);
     height: 100%;
     padding: 1rem 0;
     position: fixed;
     left: @aside-width-sm;
     transform: translateX(0);
     transition: transform 0.3s ease-in-out;
+
+    scrollbar-width: thin;
+    scrollbar-color: #f1f1f4;
 
     &.is-close {
         transform: translateX(-100%);
@@ -78,22 +84,15 @@
 
         &.active {
             color: @navbar-brand-color;
-            background-color: #dbdde1;
+            background-color: @aside-active-bgcolor;
         }
     }
 
     .m-collapse {
-        transition: height 0.3s ease-in-out;
         height: 0;
+
+        transition: height 0.3s ease;
         overflow: hidden;
-
-        // &:not(.show) {
-        //     .none;
-        // }
-
-        &.show {
-            height: auto;
-        }
     }
 
     .m-collapse-nav {
@@ -154,16 +153,27 @@
     .flex;
     flex-direction: column;
     height: 100%;
+    gap: 10px;
 
     .u-app-item {
         .size(40px);
         padding: 0.5rem;
         .pointer;
+        background-color: #fff;
+        .r(3px);
+        &.active {
+            background-color: @primary;
+        }
+        &:hover {
+            background-color: @aside-active-bgcolor;
+        }
     }
 
     .u-toggle {
         margin-top: auto;
         transform: rotate(0deg);
+        border: none;
+        background: none;
     }
 
     .u-toggle--active {

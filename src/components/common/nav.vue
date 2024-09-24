@@ -2,7 +2,7 @@
     <aside class="c-aside" :class="{ 'is-close': !navExpanded }">
         <nav class="c-nav">
             <a class="c-nav__brand" href="/dashboard">
-                <img class="u-logo" src="../../assets/img/test.svg" svg-inline alt="" />
+                <!-- <img class="u-logo" src="../../assets/img/test.svg" svg-inline alt="" /> -->
                 Dashboard
             </a>
 
@@ -14,7 +14,7 @@
                             <span class="u-title">{{ item.title }}</span>
                         </a>
 
-                        <div class="m-collapse" :class="{ show: false }">
+                        <div class="m-collapse" :class="{ expanded: false }">
                             <nav class="m-collapse-nav">
                                 <a
                                     class="u-nav-link u-nav-link--child"
