@@ -7,12 +7,6 @@
             "countryCode": "us"
         },
         {
-            "langCode": "en-GB",
-            "name": "English",
-            "country": "United Kingdom",
-            "countryCode": "gb"
-        },
-        {
             "langCode": "zh-CN",
             "name": "简体中文",
             "country": "中国",
@@ -21,8 +15,8 @@
         {
             "langCode": "zh-TW",
             "name": "繁體中文",
-            "country": "中国台湾",
-            "countryCode": "cn"
+            "country": "台湾",
+            "countryCode": "tw"
         },
         {
             "langCode": "ja-JP",
@@ -73,22 +67,58 @@
             "countryCode": "ru"
         },
         {
-            "langCode": "ar-SA",
-            "name": "العربية",
-            "country": "المملكة العربية السعودية",
-            "countryCode": "sa"
-        },
-        {
-            "langCode": "hi-IN",
-            "name": "हिन्दी",
-            "country": "भारत",
-            "countryCode": "in"
-        },
-        {
             "langCode": "tr-TR",
             "name": "Türkçe",
             "country": "Türkiye",
             "countryCode": "tr"
+        },
+        {
+            "langCode": "cs-CZ",
+            "name": "Čeština",
+            "country": "Česká republika",
+            "countryCode": "cz"
+        },
+        {
+            "langCode": "da-DK",
+            "name": "Dansk",
+            "country": "Danmark",
+            "countryCode": "dk"
+        },
+        {
+            "langCode": "id-ID",
+            "name": "Indonesia",
+            "country": "Indonesia",
+            "countryCode": "id"
+        },
+        {
+            "langCode": "hu-HU",
+            "name": "Magyar",
+            "country": "Magyarország",
+            "countryCode": "hu"
+        },
+        {
+            "langCode": "nl-NL",
+            "name": "Nederlands",
+            "country": "Nederland",
+            "countryCode": "nl"
+        },
+        {
+            "langCode": "no-NO",
+            "name": "Norsk",
+            "country": "Norge",
+            "countryCode": "no"
+        },
+        {
+            "langCode": "pl-PL",
+            "name": "Polski",
+            "country": "Polska",
+            "countryCode": "pl"
+        },
+        {
+            "langCode": "sv-SE",
+            "name": "Svenska",
+            "country": "Sverige",
+            "countryCode": "se"
         }
     ]
 }

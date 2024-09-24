@@ -1,7 +1,7 @@
 <template>
     <div class="w-select c-lang-select">
         <div class="u-select-label"><span class="fi" :class="flag"></span></div>
-        <el-select class="u-select" v-model="current" popper-class="c-lang-select__pop">
+        <el-select class="u-select" v-model="current" popper-class="c-lang-select__pop" @change="onLangChange">
             <el-option v-for="item in languages" :key="item.langCode" :label="item.name" :value="item.langCode">
                 <span class="fi" :class="`fi-${item.countryCode}`"></span>
                 <span>{{ item.name }}</span>
@@ -13,12 +13,13 @@
 <script>
 import Lang from "@/assets/data/language.json";
 import "flag-icons/css/flag-icons.min.css";
+import User from "@/utils/user";
 export default {
     name: "LangSelect",
     props: {
         lang: {
             type: String,
-            default: "",
+            default: "zh-CN",
         },
     },
     data() {
@@ -45,7 +46,14 @@ export default {
             immediate: true,
         },
     },
-    methods: {},
+    methods: {
+        onLangChange(lang) {
+            this.$emit("change", lang);
+
+            this.$i18n.locale = lang;
+            User.setLocale(lang);
+        },
+    },
 };
 </script>
 

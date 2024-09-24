@@ -6,14 +6,14 @@ import User from "@/utils/user";
 import enUs from "./en-us";
 import zhCn from "./zh-cn";
 const lang = {
-    "en-us": enUs,
-    "zh-cn": zhCn,
+    "en-US": enUs,
+    "zh-CN": zhCn,
 };
 
 // 2. Create i18n instance with options
 const i18n = createI18n({
     locale: User.getLocale(), // set locale
-    fallbackLocale: "en-us", // set fallback locale
+    fallbackLocale: "zh-CN", // set fallback locale
     messages: lang, // set locale messages
     // If you need to specify other options, you can set other options
     // ...

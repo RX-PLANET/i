@@ -48,7 +48,11 @@
                         </div>
                     </template>
                     <el-input v-model.trim="form.code" size="large"> </el-input>
-                    <el-button class="u-btn-send" size="small" @click="senCode" :disabled="interval > 0"
+                    <el-button
+                        class="u-btn-send"
+                        size="small"
+                        @click="senCode"
+                        :disabled="interval > 0 || !emailChecked"
                         >{{ $t("email.send") }}<span v-if="interval">({{ interval }}s)</span></el-button
                     >
                 </el-form-item>
@@ -75,9 +79,7 @@
                     <a :href="terms" target="_blank">《{{ $t("common.terms") }}》 </a>
                 </el-checkbox>
             </div>
-            <el-button class="u-btn u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
-                $t("common.register")
-            }}</el-button>
+            <el-button class="u-btn u-submit" type="primary" @click="onRegister">{{ $t("common.register") }}</el-button>
         </div>
 
         <main class="m-card-main" v-if="success == true">
@@ -180,6 +182,7 @@ export default {
             agreement: false,
 
             success: null,
+            emailChecked: false,
 
             terms: "/doc/terms",
 
@@ -201,7 +204,7 @@ export default {
         User.generateFingerprint();
 
         // 获取浏览器语言|系统语言
-        this.form.lang = navigator.language;
+        this.form.lang = User.getLocale();
     },
     methods: {
         async check(rule, value, callback) {
@@ -211,7 +214,9 @@ export default {
                 const res = await checkEmail(value);
                 if (res) {
                     callback(new Error(this.$t("email.emailRegistered")));
+                    return;
                 }
+                this.emailChecked = true;
                 callback();
             }
         },
@@ -249,9 +254,9 @@ export default {
                         lang: this.form.lang,
                         email: this.form.email,
                         password: this.form.password,
-                        invite_code: this.form.invite_code,
+                        // invite_code: this.form.invite_code,
                         code: this.form.code,
-                        nickname: this.form.nickname,
+                        // nickname: this.form.nickname,
                     };
                     activeByEmail(data, { app: this.app })
                         .then(() => {

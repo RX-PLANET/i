@@ -1,7 +1,11 @@
 <!-- 公共组件 邮件地址注册 -->
 <template>
     <div class="m-card m-login-card">
-        <card-header :title="$t('common.login')"></card-header>
+        <card-header :title="$t('common.login')">
+            <template #right>
+                <lang-select :lang="lang" />
+            </template>
+        </card-header>
 
         <div class="m-card-main" v-if="!success">
             <el-form
@@ -68,10 +72,12 @@
 import { loginByEmail } from "@/service/email";
 import CardHeader from "@/components/common/card-header.vue";
 import User from "@/utils/user";
+import LangSelect from "@/components/common/lang-select.vue";
 export default {
     name: "EmailLogin",
     components: {
         CardHeader,
+        LangSelect,
     },
     props: {
         app: {
@@ -124,6 +130,9 @@ export default {
             });
 
             return path.href;
+        },
+        lang() {
+            return User.getLocale();
         },
     },
     mounted() {

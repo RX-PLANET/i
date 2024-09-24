@@ -72,9 +72,11 @@
             height: auto;
             box-sizing: border-box;
 
-            &:hover {
-                border-color: transparent !important;
-                background-color: @primary-hover !important;
+            &:not(.is-disabled) {
+                &:hover {
+                    border-color: transparent !important;
+                    background-color: @primary-hover !important;
+                }
             }
         }
 

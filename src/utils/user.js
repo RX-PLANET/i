@@ -188,9 +188,9 @@ class User {
     getLocale() {
         const _val = localStorage.getItem(User.LOCALE);
         if (!_val) {
-            return "zh-cn";
+            return navigator.language;
         } else {
-            return _val.toLowerCase();
+            return _val;
         }
     }
 
