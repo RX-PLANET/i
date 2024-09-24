@@ -24,10 +24,11 @@ module.exports = {
             //     target: process.env["DEV_SERVER"] == "true" ? "localhost" : "remote",
             // },
         },
+        port: 21009,
     },
 
     //❤️ define path for static files ~
-    publicPath:process.env.NODE_ENV === "development" ? "/" : process.env.STATIC_PATH,
+    publicPath: process.env.NODE_ENV === "development" ? "/" : process.env.STATIC_PATH,
 
     //❤️ Webpack configuration
     chainWebpack: (config) => {

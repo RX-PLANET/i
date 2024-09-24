@@ -125,12 +125,26 @@
             border-radius: 0.25rem;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
             box-shadow: none !important;
+            padding: 0;
 
             &.is-focus {
                 background-color: @primary-bgc;
                 border-color: @primary-border;
                 outline: none !important;
                 box-shadow: none !important;
+            }
+
+            &.is-disabled {
+                background-color: #f2f3ff;
+            }
+
+            .el-input__inner {
+                padding: 1px 15px;
+                .r(3px);
+            }
+            .el-input__suffix {
+                .pa;
+                .rt(10px,0);
             }
         }
     }
@@ -139,12 +153,6 @@
     .m-footer {
         .mt(20px);
         .clearfix;
-
-        // .el-form-item__content {
-        //     .flex;
-        //     align-items: center;
-        //     justify-content: space-between;
-        // }
 
         .m-footer-skip {
             margin: 3rem 0;
