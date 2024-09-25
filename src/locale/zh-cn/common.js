@@ -18,4 +18,12 @@ export default {
     passwordError2: "两次输入密码不一致",
     read: "我已阅读并同意",
     terms: "服务条款",
+
+    // Route Name
+    dashboard: "个人中心",
+    usernameLogin: "登录 - 用户名登录",
+    usernameRegister: "注册 - 用户名注册",
+    emailLogin: "登录 - 邮箱登录",
+    emailRegister: "注册 - 邮箱注册",
+    emailResetPassword: "重置密码 - 邮箱重置",
 };

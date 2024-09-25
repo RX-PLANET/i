@@ -3,13 +3,13 @@
         <nav class="c-nav">
             <a class="c-nav__brand" href="/dashboard">
                 <!-- <img class="u-logo" src="../../assets/img/test.svg" svg-inline alt="" /> -->
-                Dashboard
+                {{ $t("common.route.dashboard") }}
             </a>
 
             <div class="c-collapse">
                 <nav class="c-collapse-nav">
                     <div class="m-nav-item" @click="onNavItemClick" v-for="item in nav" :key="item.title">
-                        <a href="#" class="u-nav-link" :class="{ active: active }">
+                        <a href="#" class="u-nav-link" :class="{ active: isParentActive(item.children) }">
                             <el-icon class="u-icon"><component :is="item.icon"></component></el-icon>
                             <span class="u-title">{{ item.title }}</span>
                         </a>
@@ -18,9 +18,10 @@
                             <nav class="m-collapse-nav">
                                 <a
                                     class="u-nav-link u-nav-link--child"
-                                    :class="{ active: active }"
+                                    :class="{ active: isActive(child.routeName) }"
                                     v-for="child in item.children"
                                     :key="child.title"
+                                    @click.stop="onChildClick(child)"
                                     >{{ child.title }}</a
                                 >
                             </nav>
@@ -34,53 +35,86 @@
 
 <script>
 import { mapState } from "vuex";
+import nav from "@/assets/data/nav";
 export default {
     name: "Nav",
     data() {
         return {
-            nav: [
-                {
-                    title: "Dashboards",
-                    icon: "menu",
-                    children: [
-                        {
-                            title: "Default",
-                            route: "/dashboard/index",
-                            routeName: "dashboard-index",
-                        },
-                    ],
-                },
-            ],
+            nav,
 
-            active: "dashboard-index",
+            active: "",
         };
     },
     computed: {
         ...mapState(["navExpanded"]),
+        routeName() {
+            return this.$route.name;
+        },
+    },
+    watch: {
+        routeName: {
+            immediate: true,
+            handler(newVal) {
+                this.active = newVal;
+            },
+        },
+    },
+    mounted() {
+        this.init();
     },
     methods: {
         onNavItemClick(e) {
             e.preventDefault();
 
-            e.target.classList.toggle("collapsed");
+            // 确保点击的是父元素
+            if (e.target.classList.contains("u-title") || e.target.classList.contains("u-nav-link")) {
+                // 找到最近的 .m-nav-item 元素
+                const navItem = e.target.closest(".m-nav-item");
+                if (!navItem) return;
 
-            const nextElement = e.target.nextElementSibling;
+                navItem.classList.toggle("collapsed");
 
-            // 判断是否有子菜单
-            if (nextElement) {
-                nextElement.classList.toggle("show");
+                const nextElement = navItem.querySelector(".m-collapse");
 
-                // 设置height实现动画效果
-                if (nextElement.classList.contains("show")) {
-                    nextElement.style.height = nextElement.scrollHeight + "px";
-                } else {
-                    nextElement.style.height = "0";
+                // 判断是否有子菜单
+                if (nextElement) {
+                    nextElement.classList.toggle("show");
+
+                    // 设置height实现动画效果
+                    if (nextElement.classList.contains("show")) {
+                        nextElement.style.height = nextElement.scrollHeight + "px";
+                    } else {
+                        nextElement.style.height = "0";
+                    }
                 }
             }
         },
         // 判断是否激活, 用于高亮,子激活父也激活
         isActive(routeName) {
             return this.active === routeName;
+        },
+        isParentActive(children) {
+            return children.some((child) => child.routeName === this.active);
+        },
+        // 初始化
+        init() {
+            // 为当前激活的菜单添加.show
+            const activeNav = document.querySelector(`.u-nav-link.active`);
+            if (activeNav) {
+                const parent = activeNav.closest(".m-nav-item");
+                if (parent) {
+                    parent.classList.add("collapsed");
+                    const nextElement = parent.querySelector(".m-collapse");
+                    if (nextElement) {
+                        nextElement.classList.add("show");
+                        nextElement.style.height = nextElement.scrollHeight + "px";
+                    }
+                }
+            }
+        },
+        onChildClick(child) {
+            this.active = child.routeName;
+            this.$router.push({ name: child.routeName });
         },
     },
 };

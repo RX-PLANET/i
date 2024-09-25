@@ -16,6 +16,11 @@ const routesModules = files.keys().reduce((modules, modulePath) => {
 }, {});
 
 export const constantRoutes = [
+    {
+        name: "index",
+        path: "/",
+        redirect: "/dashboard",
+    },
     ...flatten(
         filter(routesModules, (module) => {
             return module;

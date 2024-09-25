@@ -27,7 +27,7 @@
                                         v-model.trim="form.email"
                                         :disabled="step != 0"
                                         size="large"
-                                        :placeholder="$t('email.resetEmailPlaceholder')"
+                                        placeholder="yourname@example.com"
                                     >
                                     </el-input>
                                     <el-button v-if="sent" class="u-btn" type="primary" plain @click="onResetPassword"
@@ -174,7 +174,7 @@ export default {
     },
     mounted() {
         const search = new URLSearchParams(location.search);
-        this.app = search.get("app");
+        this.app = search.get("app") || "miipet";
 
         if (this.timer) {
             clearInterval(this.timer);

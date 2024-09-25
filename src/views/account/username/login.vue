@@ -21,6 +21,8 @@ export default {
 
         if (search.has("app")) {
             this.app = search.get("app");
+        } else {
+            this.app = "miipet";
         }
     },
 };

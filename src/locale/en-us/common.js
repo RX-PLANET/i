@@ -18,4 +18,12 @@ export default {
     passwordError2: "The two passwords do not match",
     read: "I have read and agree to",
     terms: "Terms of Service",
+
+    // Route Name
+    dashboard: "Dashboard",
+    usernameLogin: "Login - Username",
+    usernameRegister: "Register - Username",
+    emailLogin: "Login - Email",
+    emailRegister: "Register - Email",
+    emailResetPassword: "Reset Password - Email",
 };

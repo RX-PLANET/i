@@ -55,7 +55,7 @@ export default {
         parse() {
             let search = new URLSearchParams(document.location.search);
             this.token = search.get("token");
-            this.app = search.get("app");
+            this.app = search.get("app") || "miipet";
         },
         verify() {
             activeByEmail({ token: this.token }, { app: this.app })

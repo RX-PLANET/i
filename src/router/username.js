@@ -2,6 +2,12 @@ const DefaultLayout = () => import("@/layouts/default.vue");
 const UsernameLogin = () => import("../views/account/username/login.vue");
 const UsernameRegister = () => import("../views/account/username/register.vue");
 
+import { i18n } from "@/locale";
+
+const {
+    global: { t },
+} = i18n;
+
 export default [
     {
         path: "/account/username",
@@ -15,7 +21,7 @@ export default [
                 name: "username-login",
                 component: UsernameLogin,
                 meta: {
-                    title: "登录 - 用户名登录",
+                    title: t("common.usernameLogin"),
                 },
             },
             {
@@ -23,7 +29,7 @@ export default [
                 name: "username-register",
                 component: UsernameRegister,
                 meta: {
-                    title: "注册 - 用户名注册",
+                    title: t("common.usernameRegister"),
                 },
             },
         ],
