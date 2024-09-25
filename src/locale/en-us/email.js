@@ -42,6 +42,6 @@ export default {
     resend: "Resend",
     resetSuccess: "Reset Success",
     resetSuccessDesc: "Your password has been reset successfully",
-    findPassword: "Retrieve password, please fill in the bound email",
+    findPassword: "We will send an email containing the reset verification code to your mailbox.",
     resetPassword: "Reset Password",
 };
