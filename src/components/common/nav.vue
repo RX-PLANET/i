@@ -3,7 +3,7 @@
         <nav class="c-nav">
             <a class="c-nav__brand" href="/dashboard">
                 <!-- <img class="u-logo" src="../../assets/img/test.svg" svg-inline alt="" /> -->
-                {{ $t("common.route.dashboard") }}
+                {{ $t("common.dashboard") }}
             </a>
 
             <div class="c-collapse">
