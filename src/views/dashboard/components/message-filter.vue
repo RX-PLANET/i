@@ -1,5 +1,5 @@
 <template>
-    <div class="m-message-filter el-card is-always-shadow">
+    <div class="m-message-filter w-card">
         <div
             class="u-item"
             :class="level === item.value ? 'is-active' : ''"

@@ -1,15 +1,18 @@
 <template>
     <div class="p-message">
-        <messageBox :initApp="initApp"></messageBox>
+        <page-header></page-header>
+        <messageBox class="l-dashboard-primary" :initApp="initApp"></messageBox>
     </div>
 </template>
 
 <script>
 import messageBox from "./components/message-box.vue";
+import pageHeader from "@/components/common/page-header.vue";
 export default {
     name: "dashboard-notification-message",
     components: {
         messageBox,
+        pageHeader,
     },
     computed: {
         initApp() {
@@ -21,6 +24,6 @@ export default {
 
 <style lang="less">
 .p-message {
-    padding: 20px;
+    min-height: 100vh;
 }
 </style>

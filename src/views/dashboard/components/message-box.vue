@@ -1,7 +1,7 @@
 <template>
     <div class="m-message-box">
         <messageFilter :initApp="initApp" @update="updateSearch"></messageFilter>
-        <div class="m-messages el-card is-always-shadow">
+        <div class="m-messages w-card">
             <div class="m-table">
                 <div class="m-table-header">
                     <div class="u-op">
@@ -59,9 +59,31 @@
                                 <!-- 内容 -->
                                 <div class="m-table-body__column u-content is-flex">
                                     <span>{{ row.content }}</span>
+                                </div>
+                                <!-- 备注 -->
+                                <!-- <div class="m-table-body__column u-remark">
+                                    {{ row.remark }}
+                                </div> -->
+                                <!-- 时间 -->
+                                <div class="m-table-body__column u-time">
+                                    {{ formatDate(row.created_at, "datetime") }}
+                                </div>
+                                <!-- 操作 -->
+                                <div class="m-table-body__column u-op">
+                                    <!-- <el-button class="u-edit" circle plain label="备注" @click="handleRemark(row)" icon="Edit">
+                                    </el-button> -->
+                                    <el-button
+                                        class="u-view"
+                                        circle
+                                        plain
+                                        icon="View"
+                                        label="详情"
+                                        @click="handleRemark(row)"
+                                    >
+                                    </el-button>
                                     <a
                                         v-if="row.link"
-                                        class="u-detail"
+                                        class="u-detail el-button is-plain is-circle"
                                         :href="toDetail(row)"
                                         target="_blank"
                                         @click.stop="handleRead(row)"
@@ -70,38 +92,6 @@
                                             <Link />
                                         </el-icon>
                                     </a>
-                                </div>
-                                <!-- 备注 -->
-                                <div class="m-table-body__column u-remark">
-                                    {{ row.remark }}
-                                    <el-icon class="u-edit" @click="handleRemark(row)">
-                                        <Edit></Edit>
-                                    </el-icon>
-                                </div>
-                                <!-- 时间 -->
-                                <div class="m-table-body__column u-time">
-                                    {{ formatDate(row.created_at, "datetime") }}
-                                </div>
-                                <!-- 操作 -->
-                                <div class="m-table-body__column u-op">
-                                    <el-button-group size="small">
-                                        <el-tooltip
-                                            class="box-item"
-                                            effect="dark"
-                                            content="设为已读"
-                                            placement="top"
-                                            v-if="row.status === 0"
-                                        >
-                                            <el-button label="设为已读" @click="handleRead(row)">
-                                                <el-icon class="u-icon"><Check /></el-icon>
-                                            </el-button>
-                                        </el-tooltip>
-                                        <el-tooltip effect="dark" content="删除" placement="top">
-                                            <el-button label="删除" @click="handleDelete(row)">
-                                                <el-icon class="u-icon"><Delete /></el-icon>
-                                            </el-button>
-                                        </el-tooltip>
-                                    </el-button-group>
                                 </div>
                             </div>
                         </div>
@@ -461,8 +451,8 @@ export default {
 .m-message-box {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
+    gap: 32px;
+    font-size: 16px;
     .m-messages {
         flex: 1;
         .r(10px);
@@ -499,17 +489,17 @@ export default {
     .m-table-body__row {
         .flex;
         align-items: center;
-        justify-content: space-between;
+        // justify-content: space-between;
         padding: 20px;
         border-bottom: 1px dashed #eee;
         overflow: hidden;
         overflow-x: auto;
         .scrollbar();
         &:hover {
-            background-color: #ececec;
+            background-color: #f7f7f7;
         }
         &.is-read {
-            color: #999;
+            .tm(0.6);
         }
     }
     .m-table-body__column {
@@ -517,25 +507,39 @@ export default {
         align-items: center;
         justify-content: flex-start;
         gap: 5px;
-        font-size: 12px;
-        width: 100px;
         flex: none;
         &.u-checkbox {
-            width: 50px;
+            width: 40px;
+            margin-right: 0;
+            justify-content: center;
+        }
+        &.u-level {
+            width: 120px;
+            justify-content: center;
         }
         &.u-content {
-            width: 200px;
             overflow: hidden;
+            flex: 1;
+            .nobreak;
+        }
+        &.u-remark {
+            .db;
+            .w(160px);
+            .nobreak;
+            padding: 0 20px;
         }
         &.u-time {
-            width: 160px;
+            width: 200px;
+            padding-left: 20px;
+            .fz(13px);
+            color: #555;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
         }
         &.u-op {
-            .flex;
+            width: 160px;
             justify-content: flex-end;
-        }
-        .u-edit {
-            cursor: pointer;
+            padding: 0 20px;
+            gap: 0;
         }
     }
     .m-pagination {
@@ -547,9 +551,6 @@ export default {
         .m-table-body__row:last-child {
             border-bottom: none;
         }
-    }
-    .el-checkbox {
-        margin-right: 20px;
     }
     .el-checkbox .el-checkbox__inner {
         background: #f1f1f4;
