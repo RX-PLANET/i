@@ -48,8 +48,8 @@
 
 <script>
 import { checkUsername, registerByUsername } from "@/service/username";
-import CardHeader from "@/components/common/card-header.vue";
-import User from "@/utils/user";
+import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
+import User from "@iruxu/pkg-common/utils/user";
 export default {
     name: "UsernameRegister",
     components: {

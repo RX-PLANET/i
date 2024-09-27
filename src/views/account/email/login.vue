@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import login from "@/components/account/email/login.vue";
-import Logo from "@/components/common/logo.vue";
+import login from "@iruxu/pkg-widget/src/components/account/email/login.vue";
+import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
     name: "AccountEmailLogin",
     components: {

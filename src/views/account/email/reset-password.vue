@@ -112,9 +112,9 @@
 </template>
 
 <script>
-import CardHeader from "@/components/common/card-header.vue";
+import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import { checkEmail, findPassword, resetPassword } from "@/service/email";
-import Logo from "@/components/common/logo.vue";
+import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
     name: "ResetPassword",
     components: {

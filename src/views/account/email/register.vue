@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import register from "@/components/account/email/register.vue";
-import Logo from "@/components/common/logo.vue";
+import register from "@iruxu/pkg-widget/src/components/account/email/register.vue";
+import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
     name: "AccountEmailRegister",
     components: {
