@@ -1,46 +1,35 @@
 <template>
     <div class="m-message-filter w-card">
-        <div
-            class="u-item"
-            :class="level === item.value ? 'is-active' : ''"
-            v-for="item in levelList"
-            :key="item.value"
-            @click="levelChange(item.value)"
-        >
-            <el-icon v-if="level !== item.value"><Star /></el-icon>
-            <el-icon v-else color="#409EFF"><StarFilled /></el-icon>
-            <b>{{ item.label }}</b>
+        <div class="m-group">
+            <div
+                class="u-item"
+                :class="app === item.value ? 'is-active' : ''"
+                v-for="item in apps"
+                :key="item.value"
+                @click="appChange(item.value)"
+            >
+                <img class="u-img" src="@/assets/img/test.svg" />
+                <b>{{ item.label }}</b>
+            </div>
         </div>
-        <el-divider></el-divider>
-        <div
-            class="u-item"
-            :class="status === item.value ? 'is-active' : ''"
-            v-for="item in statusList"
-            :key="item.value"
-            @click="statusChange(item.value)"
-        >
-            <el-icon v-if="status !== item.value"><Star /></el-icon>
-            <el-icon v-else color="#409EFF"><StarFilled /></el-icon>
-            <b>{{ item.label }}</b>
-        </div>
-        <el-divider></el-divider>
-        <div
-            class="u-item"
-            :class="app === item.value ? 'is-active' : ''"
-            v-for="item in appList"
-            :key="item.value"
-            @click="appChange(item.value)"
-        >
-            <el-icon v-if="app !== item.value"><Star /></el-icon>
-            <el-icon v-else color="#409EFF"><StarFilled /></el-icon>
-            <b>{{ item.label }}</b>
+        <div class="m-group">
+            <div
+                class="u-item"
+                :class="level === item.value ? 'is-active' : ''"
+                v-for="item in levels"
+                :key="item.value"
+                @click="levelChange(item.value)"
+            >
+                <div class="u-icon" :class="`u-icon-${item.value}`"></div>
+                <b>{{ item.label }}</b>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import { apps } from "@/assets/data/config/app";
-const { level, status } = require("@/assets/data/message.json");
+import { levels } from "@/assets/data/message.js";
 export default {
     name: "MessageFilter",
     props: {
@@ -55,19 +44,17 @@ export default {
     },
     data() {
         return {
-            levelList: level,
-            statusList: status,
-            appList: apps,
+            levels,
+            apps,
 
             app: "",
             level: "",
-            status: "",
         };
     },
     computed: {
         params() {
-            const { status, level, app } = this;
-            return { status, level, app };
+            const { level, app } = this;
+            return { level, app };
         },
     },
     watch: {
@@ -90,9 +77,6 @@ export default {
         levelChange(val) {
             this.level = val === this.level ? "" : val;
         },
-        statusChange(val) {
-            this.status = val === this.status ? "" : val;
-        },
         appChange(val) {
             this.app = val === this.app ? "" : val;
         },
@@ -102,30 +86,82 @@ export default {
 
 <style lang="less">
 .m-message-filter {
+    .flex;
+    flex-direction: column;
+    gap: 2.5rem;
     width: 280px;
-    padding: 20px;
+    padding: 2rem 2.5rem;
     box-sizing: border-box;
     .r(10px);
     @media screen and (max-width: @phone) {
         width: 100%;
     }
-
+    .m-group {
+        .flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
     .u-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 10px 20px;
+        padding: 0.64rem 1rem;
         width: 100%;
         box-sizing: border-box;
         cursor: pointer;
-        .r(10px);
+        .r(0.85rem);
         font-size: 14px;
         user-select: none;
+        font-size: 13px;
+
+        .u-img {
+            .size(20px);
+        }
+
+        .u-icon {
+            @size: 14px;
+            position: relative;
+            border: 2px solid rgba(#ccc, 0.3);
+            .size(@size);
+            .r(50%);
+            box-sizing: border-box;
+            &::after {
+                width: calc(@size / 2);
+                height: calc(@size);
+                border: 2px solid #ccc;
+                border-radius: 0 100% 100% 0/50%;
+                border-left: none;
+
+                position: absolute;
+                right: -2px;
+                top: -2px;
+                content: "";
+                box-sizing: border-box;
+            }
+            &-3 {
+                border-color: rgba(#f14c41, 0.3);
+                &::after {
+                    border-color: #f14c41;
+                }
+            }
+            &-2 {
+                border-color: rgba(#75cc68, 0.3);
+                &::after {
+                    border-color: #75cc68;
+                }
+            }
+            &-1 {
+                border-color: rgba(#7239ea, 0.3);
+                &::after {
+                    border-color: #7239ea;
+                }
+            }
+        }
 
         &:hover,
         &.is-active {
             color: #409eff;
-            background-color: #f8f8f8;
+            background-color: #f9f9f9;
         }
     }
 }

@@ -26,4 +26,9 @@ export default {
     emailLogin: "Login - Email",
     emailRegister: "Register - Email",
     emailResetPassword: "Reset Password - Email",
+
+    // messagebox
+    messagebox: {
+        success: "Operation successful",
+    },
 };

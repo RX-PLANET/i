@@ -11,27 +11,65 @@
                             :indeterminate="isIndeterminate"
                             @change="handleCheckAllChange"
                         ></el-checkbox>
-                        <el-button
-                            icon="Delete"
-                            type="info"
-                            plain
-                            :disabled="!multipleSelection.length"
-                            @click="batchDelete"
-                        ></el-button>
-                        <el-tooltip class="box-item" effect="dark" content="全部设为已读" placement="top">
-                            <el-button icon="Check" type="info" plain @click="handleReadAll"></el-button>
+                        <el-tooltip
+                            class="u-box-item"
+                            effect="light"
+                            :content="$t('message.toolbar.refresh')"
+                            placement="top"
+                        >
+                            <div class="u-op-icon u-refresh" @click="loadData">
+                                <el-icon><Refresh /></el-icon>
+                            </div>
                         </el-tooltip>
-                    </div>
-                    <div class="u-search">
-                        <el-input v-model="searchKey" placeholder="Search" clearable>
-                            <template #prefix>
-                                <el-icon><Search></Search></el-icon>
+                        <el-tooltip
+                            class="u-box-item"
+                            effect="light"
+                            :content="$t('message.toolbar.read_config')"
+                            placement="top"
+                        >
+                            <div class="u-op-icon u-read" @click="handleReadAll">
+                                <el-icon><Message /></el-icon>
+                            </div>
+                        </el-tooltip>
+                        <el-tooltip
+                            class="u-box-item"
+                            effect="light"
+                            :content="$t('message.toolbar.delete')"
+                            placement="top"
+                        >
+                            <div
+                                class="u-op-icon u-delete"
+                                :class="!multipleSelection.length ? 'is-disabled' : ''"
+                                @click="batchDelete"
+                            >
+                                <el-icon><Delete /></el-icon>
+                            </div>
+                        </el-tooltip>
+                        <el-dropdown>
+                            <span class="u-op-icon">
+                                <el-icon class="el-icon--right"><arrow-down /></el-icon>
+                            </span>
+                            <template #dropdown>
+                                <el-dropdown-menu>
+                                    <el-dropdown-item
+                                        v-for="item in statusList"
+                                        :key="item.value"
+                                        @click="onStatusChange(item.value)"
+                                    >
+                                        {{ item.label }}
+                                    </el-dropdown-item>
+                                </el-dropdown-menu>
                             </template>
-                        </el-input>
+                        </el-dropdown>
                     </div>
+                    <el-input class="u-search" v-model="searchKey" placeholder="Search inbox">
+                        <template #prefix>
+                            <el-icon><Search></Search></el-icon>
+                        </template>
+                    </el-input>
                 </div>
                 <!-- table body -->
-                <div class="m-table-body">
+                <div class="m-table-body" v-loading="loading">
                     <div class="m-table-body__item" v-for="group in tableData" :key="group.id">
                         <div class="m-table-body__title">
                             {{ group.label }}
@@ -70,28 +108,33 @@
                                 </div>
                                 <!-- 操作 -->
                                 <div class="m-table-body__column u-op">
-                                    <!-- <el-button class="u-edit" circle plain label="备注" @click="handleRemark(row)" icon="Edit">
-                                    </el-button> -->
-                                    <el-button
-                                        class="u-view"
-                                        circle
-                                        plain
-                                        icon="View"
-                                        label="详情"
-                                        @click="handleRemark(row)"
+                                    <el-tooltip
+                                        class="u-box-item"
+                                        effect="light"
+                                        :content="$t('message.table.detail')"
+                                        placement="top"
                                     >
-                                    </el-button>
-                                    <a
-                                        v-if="row.link"
-                                        class="u-detail el-button is-plain is-circle"
-                                        :href="toDetail(row)"
-                                        target="_blank"
-                                        @click.stop="handleRead(row)"
+                                        <el-button class="u-view" circle plain icon="View" @click="handleRemark(row)">
+                                        </el-button>
+                                    </el-tooltip>
+                                    <el-tooltip
+                                        class="u-box-item"
+                                        effect="light"
+                                        :content="$t('message.table.link')"
+                                        placement="top"
                                     >
-                                        <el-icon>
-                                            <Link />
-                                        </el-icon>
-                                    </a>
+                                        <a
+                                            v-if="row.link"
+                                            class="u-detail el-button is-plain is-circle"
+                                            :href="toDetail(row)"
+                                            target="_blank"
+                                            @click.stop="handleRead(row)"
+                                        >
+                                            <el-icon>
+                                                <Link />
+                                            </el-icon>
+                                        </a>
+                                    </el-tooltip>
                                 </div>
                             </div>
                         </div>
@@ -125,9 +168,9 @@ dayjs.extend(isYesterday);
 dayjs.extend(isBetween);
 dayjs.extend(isSameOrBefore);
 import { flattenDeep, pickBy } from "lodash";
-import { v4 as uuidv4 } from "uuid";
-import { formatDate } from "@/utils/index";
-const { level, status } = require("@/assets/data/message.json");
+import { v4 as uuidV4 } from "uuid";
+import { formatDate, removeEmpty } from "@/utils/index";
+import { levels, statusList } from "@/assets/data/message.js";
 import { getMessages, delMessages, updateMessage, readAllMessages } from "@/service/message";
 
 import messageFilter from "./message-filter.vue";
@@ -148,6 +191,7 @@ export default {
             tableData: [],
             originList: [],
             search: {},
+            status: "",
             searchKey: "",
 
             page: 1,
@@ -158,52 +202,52 @@ export default {
             isIndeterminate: false,
             multipleSelection: [],
 
-            levelList: level,
-            statusList: status,
+            levelList: levels,
+            statusList: statusList,
             timeTypes: [
                 {
-                    id: uuidv4(),
-                    label: "今天",
+                    id: uuidV4(),
+                    label: this.$t("message.time.today"),
                     value: 7,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周六",
+                    id: uuidV4(),
+                    label: this.$t("message.time.saturday"),
                     value: 6,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周五",
+                    id: uuidV4(),
+                    label: this.$t("message.time.friday"),
                     value: 5,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周四",
+                    id: uuidV4(),
+                    label: this.$t("message.time.thursday"),
                     value: 4,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周三",
+                    id: uuidV4(),
+                    label: this.$t("message.time.wednesday"),
                     value: 3,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周二",
+                    id: uuidV4(),
+                    label: this.$t("message.time.tuesday"),
                     value: 2,
                 },
                 {
-                    id: uuidv4(),
-                    label: "周一",
+                    id: uuidV4(),
+                    label: this.$t("message.time.monday"),
                     value: 1,
                 },
                 {
-                    id: uuidv4(),
-                    label: "上周",
+                    id: uuidV4(),
+                    label: this.$t("message.time.last"),
                     value: -1,
                 },
                 {
-                    id: uuidv4(),
-                    label: "更早",
+                    id: uuidV4(),
+                    label: this.$t("message.time.earlier"),
                     value: -2,
                 },
             ],
@@ -215,6 +259,7 @@ export default {
                 per: this.per,
                 page: this.page,
                 _search: this.searchKey,
+                status: this.status,
                 ...this.search,
             };
             return _params;
@@ -236,13 +281,23 @@ export default {
         },
     },
     methods: {
+        onStatusChange(status) {
+            this.status = status;
+        },
         formatDate,
         loadData() {
-            getMessages(this.params).then((res) => {
-                const { list, total } = res.data.data;
-                this.originList = list;
-                this.total = total;
-            });
+            this.loading = true;
+            getMessages(removeEmpty(this.params))
+                .then((res) => {
+                    this.multipleSelection = [];
+                    this.checkAll = false;
+                    const { list, total } = res.data.data;
+                    this.originList = list;
+                    this.total = total;
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
         },
         checkChange(row) {
             const index = this.originList.findIndex((item) => item.id === row.id);
@@ -266,7 +321,7 @@ export default {
             };
             updateMessage(id, data).then(() => {
                 this.$notify({
-                    title: "操作成功",
+                    title: this.$t("common.messagebox.success"),
                     type: "success",
                     duration: 2000,
                 });
@@ -375,7 +430,7 @@ export default {
                     }
                     updateMessage(id, data).then(() => {
                         this.$notify({
-                            title: "操作成功",
+                            title: this.$t("common.messagebox.success"),
                             type: "success",
                             duration: 2000,
                         });
@@ -386,6 +441,7 @@ export default {
                 .catch(() => {});
         },
         batchDelete() {
+            if (!this.multipleSelection.length) return;
             this.handleDelete(this.multipleSelection);
         },
         handleDelete(data) {
@@ -409,7 +465,7 @@ export default {
                     delMessages(id)
                         .then(() => {
                             this.$notify({
-                                title: "操作成功",
+                                title: this.$t("common.messagebox.success"),
                                 type: "success",
                                 duration: 2000,
                             });
@@ -427,13 +483,18 @@ export default {
             this.loadData();
         },
         handleReadAll() {
+            const app = this.search.app || "";
+            const id = this.multipleSelection.map((item) => item.id).join(",") || "";
             const data = {};
-            if (this.search?.app) {
-                data.app = this.search.app;
+            if (app) {
+                data.app = app;
+            }
+            if (id) {
+                data.id = id;
             }
             readAllMessages(data).then(() => {
                 this.$notify({
-                    title: "操作成功",
+                    title: this.$t("common.messagebox.success"),
                     type: "success",
                     duration: 2000,
                 });
@@ -448,127 +509,5 @@ export default {
 </script>
 
 <style lang="less">
-.m-message-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
-    font-size: 16px;
-    .m-messages {
-        flex: 1;
-        .r(10px);
-        @media screen and(max-width:@phone) {
-            width: 100%;
-        }
-    }
-    .m-table-header {
-        .flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 20px;
-        border-bottom: 1px solid #eee;
-
-        .el-button + .el-button {
-            margin-left: 0;
-        }
-        .el-input__wrapper {
-            background-color: #f9f9f9;
-            box-shadow: none;
-        }
-    }
-    .u-op {
-        .flex;
-        gap: 10px;
-        align-items: center;
-    }
-    .m-table-body__title {
-        padding: 10px 20px;
-        border-bottom: 1px solid #eee;
-    }
-    .m-table-body__row {
-        .flex;
-        align-items: center;
-        // justify-content: space-between;
-        padding: 20px;
-        border-bottom: 1px dashed #eee;
-        overflow: hidden;
-        overflow-x: auto;
-        .scrollbar();
-        &:hover {
-            background-color: #f7f7f7;
-        }
-        &.is-read {
-            .tm(0.6);
-        }
-    }
-    .m-table-body__column {
-        .flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 5px;
-        flex: none;
-        &.u-checkbox {
-            width: 40px;
-            margin-right: 0;
-            justify-content: center;
-        }
-        &.u-level {
-            width: 120px;
-            justify-content: center;
-        }
-        &.u-content {
-            overflow: hidden;
-            flex: 1;
-            .nobreak;
-        }
-        &.u-remark {
-            .db;
-            .w(160px);
-            .nobreak;
-            padding: 0 20px;
-        }
-        &.u-time {
-            width: 200px;
-            padding-left: 20px;
-            .fz(13px);
-            color: #555;
-            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-        }
-        &.u-op {
-            width: 160px;
-            justify-content: flex-end;
-            padding: 0 20px;
-            gap: 0;
-        }
-    }
-    .m-pagination {
-        margin-top: 20px;
-        .flex;
-        justify-content: center;
-    }
-    .m-table-body__item:last-child {
-        .m-table-body__row:last-child {
-            border-bottom: none;
-        }
-    }
-    .el-checkbox .el-checkbox__inner {
-        background: #f1f1f4;
-        .r(5px);
-        .size(18px);
-        border: none;
-    }
-    .el-checkbox__input.is-checked .el-checkbox__inner {
-        background-color: #409eff;
-    }
-    .el-checkbox__inner:after {
-        height: 10px;
-        width: 5px;
-        left: 6px;
-        top: 2px;
-    }
-    .el-checkbox__input.is-indeterminate .el-checkbox__inner:before {
-        top: 8px;
-    }
-}
+@import "@/assets/css/account/message/message.less";
 </style>

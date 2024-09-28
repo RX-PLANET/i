@@ -26,4 +26,9 @@ export default {
     emailLogin: "登录 - 邮箱登录",
     emailRegister: "注册 - 邮箱注册",
     emailResetPassword: "重置密码 - 邮箱重置",
+
+    // messagebox
+    messagebox: {
+        success: "操作成功",
+    },
 };

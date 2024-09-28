@@ -1,10 +1,20 @@
+import { i18n } from "@/locale";
+
+const {
+    global: { t },
+} = i18n;
+
 export const apps = [
     {
+        value: "",
+        label: t("message.all"),
+    },
+    {
         value: "miipet",
-        label: "米宠",
+        label: t("message.app.miipet"),
     },
     {
         value: "2kog",
-        label: "2KOG",
+        label: t("message.app.2kog"),
     },
 ];
