@@ -100,9 +100,51 @@
             justify-content: center;
         }
         &.u-content {
+            margin-left: 18px;
             overflow: hidden;
             flex: 1;
             .nobreak;
+
+            .u-icon {
+                margin-right: 2px;
+                @size: 14px;
+                position: relative;
+                border: 2px solid rgba(#ccc, 0.3);
+                .size(@size);
+                .r(50%);
+                box-sizing: border-box;
+                &::after {
+                    width: calc(@size / 2);
+                    height: calc(@size);
+                    border: 2px solid #ccc;
+                    border-radius: 0 100% 100% 0/50%;
+                    border-left: none;
+
+                    position: absolute;
+                    right: -2px;
+                    top: -2px;
+                    content: "";
+                    box-sizing: border-box;
+                }
+                &-3 {
+                    border-color: rgba(#f14c41, 0.3);
+                    &::after {
+                        border-color: #f14c41;
+                    }
+                }
+                &-2 {
+                    border-color: rgba(#75cc68, 0.3);
+                    &::after {
+                        border-color: #75cc68;
+                    }
+                }
+                &-1 {
+                    border-color: rgba(#7239ea, 0.3);
+                    &::after {
+                        border-color: #7239ea;
+                    }
+                }
+            }
         }
         &.u-remark {
             .db;

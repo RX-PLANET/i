@@ -88,14 +88,15 @@
                                 </div>
 
                                 <!-- 等级 -->
-                                <div class="m-table-body__column u-level">
+                                <!-- <div class="m-table-body__column u-level">
                                     <el-icon :color="getLevel(row.level)?.color" size="16">
                                         <component :is="getLevel(row.level)?.icon"></component>
                                     </el-icon>
                                     <span>{{ getLevel(row.level)?.label }}</span>
-                                </div>
+                                </div> -->
                                 <!-- 内容 -->
                                 <div class="m-table-body__column u-content is-flex">
+                                    <div class="u-icon" :class="`u-icon-${row.level}`"></div>
                                     <span>{{ row.content }}</span>
                                 </div>
                                 <!-- 备注 -->
