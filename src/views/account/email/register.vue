@@ -3,7 +3,7 @@
         <el-row class="m-container" justify="center">
             <div class="m-register">
                 <logo :app="app" />
-                <register :app="app" />
+                <register :app="app" :loginLink="loginLink" />
             </div>
         </el-row>
     </div>
@@ -22,6 +22,12 @@ export default {
         return {
             app: "",
         };
+    },
+    computed: {
+        loginLink() {
+            const path = this.$router.resolve({ name: "email-login" });
+            return path.href;
+        },
     },
     mounted() {
         const search = new URLSearchParams(document.location.search);

@@ -1,9 +1,9 @@
 <template>
-    <div class="p-account p-account-email__login">
+    <div class="p-account p-account-email--login">
         <el-row class="m-container" justify="center">
             <div class="m-login">
                 <logo :app="app" />
-                <login :app="app"></login>
+                <login :app="app" :registerLink="registerLink" :resetPwdLink="resetPwdLink"></login>
             </div>
         </el-row>
     </div>
@@ -22,6 +22,16 @@ export default {
         return {
             app: "",
         };
+    },
+    computed: {
+        registerLink() {
+            const path = this.$router.resolve({ name: "email-register" });
+            return path.href;
+        },
+        resetPwdLink() {
+            const path = this.$router.resolve({ name: "email-reset-password" });
+            return path.href;
+        },
     },
     mounted() {
         const search = new URLSearchParams(document.location.search);
