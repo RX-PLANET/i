@@ -8,6 +8,7 @@ export default {
     hadAccount: "Already have an account?",
     registerNow: "Register Now",
     back: "Back",
+    backToHome: "Back to Home",
 
     // Account Messages
     loginSuccess: "Login Success",
@@ -26,6 +27,10 @@ export default {
     emailLogin: "Login - Email",
     emailRegister: "Register - Email",
     emailResetPassword: "Reset Password - Email",
+    phoneRegister: "Register - Phone",
+    phoneLogin: "Login - Phone",
+    phoneCodeLogin: "Login - Phone Code",
+    phoneResetPassword: "Reset Password - Phone",
 
     // messagebox
     messagebox: {

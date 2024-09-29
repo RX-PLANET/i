@@ -8,6 +8,7 @@ export default {
     hadAccount: "已有账号?",
     registerNow: "立即注册",
     back: "返回",
+    backToHome: "返回首页",
 
     // Account Messages
     loginSuccess: "登录成功",
@@ -26,6 +27,10 @@ export default {
     emailLogin: "登录 - 邮箱登录",
     emailRegister: "注册 - 邮箱注册",
     emailResetPassword: "重置密码 - 邮箱重置",
+    phoneRegister: "注册 - 手机注册",
+    phoneLogin: "登录 - 手机登录",
+    phoneCodeLogin: "登录 - 验证码登录",
+    phoneResetPassword: "重置密码 - 手机重置",
 
     // messagebox
     messagebox: {

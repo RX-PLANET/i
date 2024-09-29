@@ -1,21 +1,21 @@
 <template>
-    <div class="p-account p-account-username__register">
+    <div class="p-account p-account-phone--login">
         <el-row class="m-container" justify="center">
-            <div class="m-register">
+            <div class="m-login">
                 <logo :app="app" />
-                <register :app="app" :loginLink="loginLink" />
+                <login :app="app" :registerLink="registerLink" :resetPwdLink="resetPwdLink"></login>
             </div>
         </el-row>
     </div>
 </template>
 
 <script>
-import Register from "@iruxu/pkg-widget/src/components/account/username/register.vue";
+import login from "@iruxu/pkg-widget/src/components/account/phone/login.vue";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
-    name: "AccountUsernameRegister",
+    name: "AccountPhoneLogin",
     components: {
-        Register,
+        login,
         Logo,
     },
     data() {
@@ -24,9 +24,14 @@ export default {
         };
     },
     computed: {
-        loginLink() {
-            const path = this.$router.resolve({ name: "username-login" });
+        registerLink() {
+            const path = this.$router.resolve({ name: "phone-register" });
             return path.href;
+        },
+        resetPwdLink() {
+            // const path = this.$router.resolve({ name: "phone-reset-password" });
+            // return path.href;
+            return "";
         },
     },
     mounted() {
@@ -43,5 +48,5 @@ export default {
 
 <style lang="less">
 @import "@/assets/css/account/common.less";
-@import "@/assets/css/account/username/register.less";
+@import "@/assets/css/account/email/login.less";
 </style>

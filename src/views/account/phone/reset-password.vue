@@ -1,21 +1,21 @@
 <template>
-    <div class="p-account p-account-username__register">
+    <div class="p-account p-account-email p-account-email--register">
         <el-row class="m-container" justify="center">
             <div class="m-register">
                 <logo :app="app" />
-                <register :app="app" :loginLink="loginLink" />
+                <resetPassword :app="app" :loginLink="loginLink" />
             </div>
         </el-row>
     </div>
 </template>
 
 <script>
-import Register from "@iruxu/pkg-widget/src/components/account/username/register.vue";
+import resetPassword from "@/components/account/phone/reset-password.vue";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
-    name: "AccountUsernameRegister",
+    name: "AccountPhoneResetPassword",
     components: {
-        Register,
+        resetPassword,
         Logo,
     },
     data() {
@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         loginLink() {
-            const path = this.$router.resolve({ name: "username-login" });
+            const path = this.$router.resolve({ name: "phone-login" });
             return path.href;
         },
     },
@@ -43,5 +43,5 @@ export default {
 
 <style lang="less">
 @import "@/assets/css/account/common.less";
-@import "@/assets/css/account/username/register.less";
+@import "@/assets/css/account/email/register.less";
 </style>

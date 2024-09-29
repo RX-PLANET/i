@@ -1,7 +1,6 @@
 const DefaultLayout = () => import("@/layouts/default.vue");
 const EmailRegister = () => import("@/views/account/email/register.vue");
 const EmailLogin = () => import("@/views/account/email/login.vue");
-// const EmailRegisterCallback = () => import("@/views/account/email/callback-register.vue");
 const EmailResetPassword = () => import("@/views/account/email/reset-password.vue");
 
 import { i18n } from "@/locale";

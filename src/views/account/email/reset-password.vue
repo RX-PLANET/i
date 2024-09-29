@@ -4,7 +4,7 @@
             <div class="m-reset-password">
                 <logo :app="app" />
                 <div class="m-card">
-                    <card-header :title="$t('email.resetPassword')"></card-header>
+                    <card-header :title="$t('account.email.resetPassword')"></card-header>
                     <div class="m-card-main" v-if="step != 3">
                         <el-form
                             class="m-card-form"
@@ -15,11 +15,11 @@
                             :rules="rules"
                             size="large"
                         >
-                            <p class="u-tips" v-if="step == 0">🌟 {{ $t("email.findPassword") }}</p>
+                            <p class="u-tips" v-if="step == 0">🌟 {{ $t("account.email.findPassword") }}</p>
                             <el-form-item prop="email">
                                 <template #label>
                                     <div class="m-card-form-label">
-                                        <span>{{ $t("email.address") }}</span>
+                                        <span>{{ $t("account.email.address") }}</span>
                                     </div>
                                 </template>
                                 <div class="m-reset-password__email">
@@ -31,7 +31,7 @@
                                     >
                                     </el-input>
                                     <el-button v-if="sent" class="u-btn" type="primary" plain @click="onResetPassword"
-                                        >{{ $t("email.resend") }} (<span>{{ interval }}s</span>)</el-button
+                                        >{{ $t("account.email.resend") }} (<span>{{ interval }}s</span>)</el-button
                                     >
                                 </div>
                             </el-form-item>
@@ -39,16 +39,20 @@
                                 <el-form-item prop="code">
                                     <template #label>
                                         <div class="m-card-form-label">
-                                            <span>{{ $t("email.code") }}</span>
+                                            <span>{{ $t("account.email.code") }}</span>
                                         </div>
                                     </template>
-                                    <el-input v-model.trim="form.code" size="large" :placeholder="$t('email.code')">
+                                    <el-input
+                                        v-model.trim="form.code"
+                                        size="large"
+                                        :placeholder="$t('account.email.code')"
+                                    >
                                     </el-input>
                                 </el-form-item>
                                 <el-form-item prop="password1">
                                     <template #label>
                                         <div class="m-card-form-label">
-                                            <span>{{ $t("email.newPassword") }}</span>
+                                            <span>{{ $t("account.email.newPassword") }}</span>
                                         </div>
                                     </template>
                                     <el-input
@@ -56,14 +60,14 @@
                                         type="password"
                                         size="large"
                                         show-password
-                                        :placeholder="$t('email.newPassword')"
+                                        :placeholder="$t('account.email.newPassword')"
                                     >
                                     </el-input>
                                 </el-form-item>
                                 <el-form-item prop="password2">
                                     <template #label>
                                         <div class="m-card-form-label">
-                                            <span>{{ $t("email.confirmPassword") }}</span>
+                                            <span>{{ $t("account.email.confirmPassword") }}</span>
                                         </div>
                                     </template>
                                     <el-input
@@ -71,14 +75,14 @@
                                         type="password"
                                         size="large"
                                         show-password
-                                        :placeholder="$t('email.confirmPassword')"
+                                        :placeholder="$t('account.email.confirmPassword')"
                                     >
                                     </el-input>
                                 </el-form-item>
                             </template>
                             <el-form-item>
                                 <el-button class="u-button u-submit" type="primary" @click="onNextStep">{{
-                                    $t("email.next")
+                                    $t("account.email.next")
                                 }}</el-button>
                             </el-form-item>
                         </el-form>
@@ -88,9 +92,9 @@
                     <main class="m-card-main" v-if="step == 3">
                         <el-alert
                             class="m-alert"
-                            :title="$t('email.resetSuccess')"
+                            :title="$t('account.email.resetSuccess')"
                             type="success"
-                            :description="$t('email.resetSuccessDesc')"
+                            :description="$t('account.email.resetSuccessDesc')"
                             show-icon
                             :closable="false"
                         >
@@ -129,8 +133,8 @@ export default {
 
             rules: {
                 email: [
-                    { required: true, message: this.$t("email.addressPlaceholder"), trigger: "blur" },
-                    { type: "email", message: this.$t("email.addressError"), trigger: ["blur", "change"] },
+                    { required: true, message: this.$t("account.email.addressPlaceholder"), trigger: "blur" },
+                    { type: "email", message: this.$t("account.email.addressError"), trigger: ["blur", "change"] },
                     { validator: this.check, trigger: "blur" },
                 ],
                 code: [

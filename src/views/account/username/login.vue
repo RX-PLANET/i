@@ -1,20 +1,33 @@
 <template>
     <div class="p-account p-account-username__login">
-        <login :app="app"></login>
+        <el-row class="m-container" justify="center">
+            <div class="m-login">
+                <logo :app="app" />
+                <login :app="app" :registerLink="registerLink"></login>
+            </div>
+        </el-row>
     </div>
 </template>
 
 <script>
-import login from "@/components/account/username/login.vue";
+import login from "@iruxu/pkg-widget/src/components/account/username/login.vue";
+import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 export default {
     name: "AccountUsernameLogin",
     components: {
         login,
+        Logo,
     },
     data() {
         return {
             app: "",
         };
+    },
+    computed: {
+        registerLink() {
+            const path = this.$router.resolve({ name: "username-register" });
+            return path.href;
+        },
     },
     mounted() {
         const search = new URLSearchParams(document.location.search);
