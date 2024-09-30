@@ -41,6 +41,7 @@ export default {
 <style lang="less">
 @import "~@/assets/css/account/common.less";
 @import "~@/assets/css/account/email/login.less";
+@import "~@/assets/css/account/phone/bind.less";
 .p-bind {
     .m-bind-main {
         margin: 0 60px;

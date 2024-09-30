@@ -4,7 +4,6 @@
 
 <script>
 import User from "@iruxu/pkg-common/utils/user";
-// import { getUserInfo } from "@/service/user";
 export default {
     name: "App",
     props: [],
@@ -18,10 +17,7 @@ export default {
     created: function () {},
     mounted: function () {
         if (User.isLogin()) {
-            // TODO: 获取用户信息
-            // getUserInfo().then((res) => {
-            //     this.$store.commit("SET_USER", res.data.data);
-            // });
+            this.$store.dispatch("getProfile");
         }
     },
 };

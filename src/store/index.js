@@ -1,5 +1,6 @@
 // 1.Dependency
 import { createStore } from "vuex";
+import { getUserInfo } from "@/service/user";
 
 // 2.Store
 const store = {
@@ -21,7 +22,13 @@ const store = {
     getters: {
         user: (state) => state.user,
     },
-    actions: {},
+    actions: {
+        getProfile({ commit }) {
+            getUserInfo().then((res) => {
+                commit("SET_USER", res.data.data);
+            });
+        },
+    },
 };
 
 export default createStore(store);

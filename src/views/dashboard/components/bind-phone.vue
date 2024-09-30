@@ -2,6 +2,12 @@
     <div class="m-bind-phone">
         <div class="u-pic"></div>
         <div class="m-info">
+            <h1 class="u-header">{{ $t("dashboard.bindPhone") }}</h1>
+            <div class="u-slogan">{{ $t("dashboard.bindPhoneAlert") }}</div>
+            <div class="m-current">
+                {{ $t("dashboard.currentBind") }}:
+                <span class="u-current">{{ profile.phone || $t("dashboard.noBind") }}</span>
+            </div>
             <div class="m-login-card m-card-main">
                 <el-form
                     class="m-card-form"
@@ -47,7 +53,6 @@
                 <el-button
                     type="primary"
                     size="large"
-                    icon="Position"
                     :disabled="!form.phone || !form.code"
                     @click="submit"
                     :loading="loading"
@@ -87,8 +92,13 @@ export default {
                     {
                         validator: (rule, value, callback) => {
                             const phone = `+${this.phoneCode}${value}`;
+
+                            if (phone === this.profile.phone) {
+                                this.phoneChecked = false;
+                                callback(new Error(this.$t("dashboard.sameError")));
+                            }
+
                             const phoneNumber = parsePhoneNumberFromString(phone);
-                            console.log(phoneNumber, phoneNumber?.isValid());
                             if (!phoneNumber || !phoneNumber?.isValid()) {
                                 this.phoneChecked = false;
                                 callback(new Error(this.$t("account.phone.numberError")));
@@ -107,6 +117,11 @@ export default {
             phoneChecked: false,
             loading: false,
         };
+    },
+    computed: {
+        profile() {
+            return this.$store.state.user;
+        },
     },
     methods: {
         sendCode() {
@@ -134,6 +149,8 @@ export default {
                             bindPhoneCode(params, { app: this.app })
                                 .then(() => {
                                     this.$message.success(this.$t("common.bindSuccess"));
+
+                                    this.$store.dispatch("getUserInfo");
                                 })
                                 .finally(() => {
                                     this.loading = false;
@@ -149,38 +166,4 @@ export default {
 };
 </script>
 
-<style lang="less">
-.m-bind-phone {
-    .flex;
-    align-items: center;
-    justify-content: center;
-    .pr;
-    // width: 900px;
-    .u-pic {
-        background: url("~@/assets/img/emailpic.svg") no-repeat 0 0;
-        background-size: auto 100%;
-        height: 500px;
-        width: 600px;
-    }
-    .u-header {
-        .bold;
-        font-size: 32px;
-        margin-bottom: 10px;
-        .x;
-    }
-
-    .u-slogan {
-        .fz(16px);
-        .x;
-        margin-bottom: 20px;
-    }
-    .m-info {
-        .pr;
-        right: 100px;
-    }
-
-    .m-login-card {
-        width: auto;
-    }
-}
-</style>
+<style lang="less"></style>
