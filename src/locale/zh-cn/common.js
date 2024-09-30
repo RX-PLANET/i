@@ -9,6 +9,7 @@ export default {
     registerNow: "立即注册",
     back: "返回",
     backToHome: "返回首页",
+    confirm: "确定",
 
     // Account Messages
     loginSuccess: "登录成功",
@@ -19,6 +20,7 @@ export default {
     passwordError2: "两次输入密码不一致",
     read: "我已阅读并同意",
     terms: "服务条款",
+    bindSuccess: "绑定成功",
 
     // Route Name
     dashboard: "个人中心",

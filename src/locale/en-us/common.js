@@ -9,6 +9,7 @@ export default {
     registerNow: "Register Now",
     back: "Back",
     backToHome: "Back to Home",
+    confirm: "Confirm",
 
     // Account Messages
     loginSuccess: "Login Success",
@@ -19,6 +20,7 @@ export default {
     passwordError2: "The two passwords do not match",
     read: "I have read and agree to",
     terms: "Terms of Service",
+    bindSuccess: "Bind Success",
 
     // Route Name
     dashboard: "Dashboard",

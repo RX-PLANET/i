@@ -11,10 +11,11 @@
         "build-preview": "vue-cli-service build --mode preview",
         "build-dev": "vue-cli-service build --mode development",
         "lint": "vue-cli-service lint",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "update": "npm install @iruxu/pkg-widget@latest --registry=https://registry.npmjs.org"
     },
     "dependencies": {
-        "@iruxu/pkg-widget": "^0.0.4",
+        "@iruxu/pkg-widget": "^0.0.6",
         "@vueuse/head": "^0.7.6",
         "axios": "^1.7.2",
         "core-js": "^3.8.3",
@@ -22,6 +23,7 @@
         "element-plus": "^2.7.7",
         "fingerprintjs2": "^2.1.4",
         "flag-icons": "^7.2.3",
+        "libphonenumber-js": "^1.11.9",
         "mitt": "^3.0.1",
         "vue": "^3.2.13",
         "vue-i18n": "^9.13.1",

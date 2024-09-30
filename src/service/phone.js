@@ -18,14 +18,28 @@ export async function checkPhoneCode(params) {
 // 绑定
 
 /**
- * 绑定手机号
+ * 绑定手机号 - 发送验证码
  * @param {Object} data
  * @param {String} data.phone 手机号
  * @param {Object} params
  * @param {String} params.app 应用标识
  */
-export function bindPhone(data, params) {
+export function sendBindCode(data, params) {
     return $uc().post("/api/uc/user/account/phone/bind", data, {
+        params,
+    });
+}
+
+/**
+ * 绑定手机号 - 认证验证码
+ * @param {Object} data
+ * @param {String} data.phone 手机号
+ * @param {String} data.code 验证码
+ * @param {Object} params
+ * @param {String} params.app 应用标识
+ */
+export function bindPhoneCode(data, params) {
+    return $uc().put("/api/uc/user/account/phone/verify", data, {
         params,
     });
 }
