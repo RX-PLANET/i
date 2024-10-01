@@ -7,7 +7,7 @@ export default {
     bindEmail: "Bind Email",
     bindEmailAlert: "Bind your email to receive message notifications",
     currentBind: "Current",
-    noBind: "No Bind",
+    noBind: "- None -",
     sameError: "The two bindings cannot be the same",
     sendEmailSuccess:
         "A verification email has been sent to your email {email}, click the verification link to bind successfully! The email is valid for 7 days.",

@@ -14,7 +14,7 @@
                         <el-tooltip
                             class="u-box-item"
                             effect="light"
-                            :content="$t('message.toolbar.refresh')"
+                            :content="$t('notification.message.toolbar.refresh')"
                             placement="top"
                         >
                             <div class="u-op-icon u-refresh" @click="loadData">
@@ -24,7 +24,7 @@
                         <el-tooltip
                             class="u-box-item"
                             effect="light"
-                            :content="$t('message.toolbar.read_config')"
+                            :content="$t('notification.message.toolbar.read_config')"
                             placement="top"
                         >
                             <div class="u-op-icon u-read" @click="handleReadAll">
@@ -34,7 +34,7 @@
                         <el-tooltip
                             class="u-box-item"
                             effect="light"
-                            :content="$t('message.toolbar.delete')"
+                            :content="$t('notification.message.toolbar.delete')"
                             placement="top"
                         >
                             <div
@@ -112,7 +112,7 @@
                                     <el-tooltip
                                         class="u-box-item"
                                         effect="light"
-                                        :content="$t('message.table.detail')"
+                                        :content="$t('notification.message.table.detail')"
                                         placement="top"
                                     >
                                         <el-button class="u-view" circle plain icon="View" @click="handleRemark(row)">
@@ -121,7 +121,7 @@
                                     <el-tooltip
                                         class="u-box-item"
                                         effect="light"
-                                        :content="$t('message.table.link')"
+                                        :content="$t('notification.message.table.link')"
                                         placement="top"
                                     >
                                         <a

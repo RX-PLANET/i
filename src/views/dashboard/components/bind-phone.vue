@@ -7,6 +7,9 @@
             <div class="m-current">
                 {{ $t("dashboard.currentBind") }}:
                 <span class="u-current">{{ profile.phone || $t("dashboard.noBind") }}</span>
+                <span class="u-status--success" v-if="profile.phone"
+                    ><el-icon><CircleCheckFilled /></el-icon
+                ></span>
             </div>
             <div class="m-login-card m-card-main">
                 <el-form

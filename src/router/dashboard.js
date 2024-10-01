@@ -31,6 +31,8 @@ export default [
                     title: t("dashboard.bind"),
                 },
             },
+
+            // TODO:接入discord或slack等
         ],
     },
 ];
