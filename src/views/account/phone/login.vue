@@ -29,9 +29,8 @@ export default {
             return path.href;
         },
         resetPwdLink() {
-            // const path = this.$router.resolve({ name: "phone-reset-password" });
-            // return path.href;
-            return "";
+            const path = this.$router.resolve({ name: "phone-reset-password" });
+            return path.href;
         },
     },
     mounted() {
