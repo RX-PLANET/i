@@ -64,8 +64,8 @@ function addStyleResource(rule) {
     var preload_styles = [];
     preload_styles.push(
         path.resolve(__dirname, "./node_modules/csslab/base.less"),
-        path.resolve(__dirname, "./node_modules/csslab/reset.less"),
-        path.resolve(__dirname, "./src/assets/css/var.less")
+        path.resolve(__dirname, "./src/assets/css/var.less"),
+        path.resolve(__dirname, "./src/assets/css/mixin.less")
     );
     rule.use("style-resource").loader("style-resources-loader").options({
         patterns: preload_styles,

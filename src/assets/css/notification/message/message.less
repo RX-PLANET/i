@@ -33,7 +33,7 @@
             cursor: pointer;
             &:not(.is-disabled):hover {
                 background-color: #f1f4ff;
-                color: #2c9aff;
+                color: @primary;
             }
             &.is-disabled {
                 opacity: 0.5;
@@ -189,10 +189,10 @@
         border: none;
     }
     .el-checkbox__input.is-checked .el-checkbox__inner {
-        background-color: #409eff;
+        background-color: @primary;
     }
     .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-        background-color: #409eff;
+        background-color: @primary;
     }
     .el-checkbox__inner:after {
         height: 10px;
