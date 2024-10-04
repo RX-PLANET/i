@@ -1,4 +1,9 @@
 export default {
+    app: {
+        miipet: "MiiPet",
+        "2kog": "2KOG",
+    },
+
     // UI Labels
     login: "Login",
     password: "Password",

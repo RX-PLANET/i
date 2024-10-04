@@ -19,6 +19,7 @@ export default {
             urgent: "Urgent",
             previous: "Previous message",
             next: "Next message",
+            search: "Search",
         },
         table: {
             detail: "Detail",
@@ -38,10 +39,6 @@ export default {
             monday: "Monday",
             last: "Last Week",
             earlier: "Earlier",
-        },
-        app: {
-            miipet: "MiiPet",
-            "2kog": "2KOG",
         },
     },
     phone: {},

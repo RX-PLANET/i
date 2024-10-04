@@ -27,3 +27,6 @@ export default {
     min-height: 100vh;
 }
 </style>
+<style lang="less">
+@import "@/assets/css/notification/message/message.less";
+</style>

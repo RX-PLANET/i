@@ -62,7 +62,11 @@
                             </template>
                         </el-dropdown>
                     </div>
-                    <el-input class="u-search" v-model="searchKey" placeholder="Search inbox">
+                    <el-input
+                        class="u-search"
+                        v-model="searchKey"
+                        :placeholder="$t('notification.message.toolbar.search')"
+                    >
                         <template #prefix>
                             <el-icon><Search></Search></el-icon>
                         </template>
@@ -540,7 +544,3 @@ export default {
     },
 };
 </script>
-
-<style lang="less">
-@import "@/assets/css/account/message/message.less";
-</style>

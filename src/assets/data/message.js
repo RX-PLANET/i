@@ -5,10 +5,10 @@ const {
 } = i18n;
 
 export const levels = [
+    { value: "", label: t("notification.message.all") },
     { value: "3", label: t("notification.message.toolbar.urgent") },
     { value: "2", label: t("notification.message.toolbar.important") },
     { value: "1", label: t("notification.message.toolbar.normal") },
-    { value: "", label: t("notification.message.all") },
 ];
 
 export const statusList = [

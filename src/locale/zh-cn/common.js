@@ -1,4 +1,9 @@
 export default {
+    app: {
+        miipet: "米宠",
+        "2kog": "2KOG",
+    },
+
     // UI Labels
     login: "登录",
     password: "密码",

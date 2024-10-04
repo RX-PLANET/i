@@ -12,33 +12,35 @@ export default [
         name: "dashboard",
         component: layout,
         redirect: {
+            // TODO: 默认跳转到首页
             name: "dashboard-notification-message",
         },
         children: [
+            // 通知中心
             {
                 path: "notification/message",
                 name: "dashboard-notification-message",
-                component: () => import("@/views/dashboard/message"),
+                component: () => import("@/views/notification/message"),
                 meta: {
-                    title: t("dashboard.message"),
+                    title: t("notification.nav.message"),
                 },
             },
             {
                 path: "notification/message-detail/:id(\\d+)?",
                 name: "dashboard-notification-message-detail",
-                component: () => import("@/views/dashboard/message-detail"),
+                component: () => import("@/views/notification/message-detail"),
                 hidden: true,
                 meta: {
-                    title: t("dashboard.message"),
+                    title: t("notification.nav.message"),
                     activeMenu: "/dashboard/notification/message",
                 },
             },
             {
                 path: "notification/bind",
                 name: "dashboard-notification-bind",
-                component: () => import("@/views/dashboard/bind"),
+                component: () => import("@/views/notification/bind"),
                 meta: {
-                    title: t("dashboard.bind"),
+                    title: t("notification.nav.phone"),
                 },
             },
 

@@ -19,6 +19,7 @@ export default {
             urgent: "紧急",
             previous: "上一条",
             next: "下一条",
+            search: "搜索",
         },
         table: {
             detail: "详情",
@@ -38,10 +39,6 @@ export default {
             monday: "周一",
             last: "上周",
             earlier: "更早",
-        },
-        app: {
-            miipet: "米宠",
-            "2kog": "2KOG",
         },
     },
     phone: {},

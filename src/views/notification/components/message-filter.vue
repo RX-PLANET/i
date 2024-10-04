@@ -1,20 +1,20 @@
 <template>
     <div class="m-message-filter w-card">
-        <div class="m-group">
+        <div class="m-message-filter__group">
             <div
-                class="u-item"
+                class="m-message-filter__item"
                 :class="app === item.value ? 'is-active' : ''"
                 v-for="item in apps"
                 :key="item.value"
                 @click="appChange(item.value)"
             >
-                <img class="u-img" src="@/assets/img/test.svg" />
+                <img class="u-img" :src="getAppIcon(item.key)" />
                 <b>{{ item.label }}</b>
             </div>
         </div>
-        <div class="m-group">
+        <div class="m-message-filter__group">
             <div
-                class="u-item"
+                class="m-message-filter__item"
                 :class="level === item.value ? 'is-active' : ''"
                 v-for="item in levels"
                 :key="item.value"
@@ -89,6 +89,9 @@ export default {
         appChange(val) {
             this.app = val === this.app ? "" : val;
         },
+        getAppIcon(key) {
+            return require(`../../../assets/img/logo/${key}.svg`);
+        },
     },
 };
 </script>
@@ -98,80 +101,82 @@ export default {
     .flex;
     flex-direction: column;
     gap: 2.5rem;
-    width: 280px;
-    padding: 2rem 2.5rem;
+    width: 268px;
+    padding: 30px;
     box-sizing: border-box;
     .r(10px);
     @media screen and (max-width: @phone) {
         width: 100%;
     }
-    .m-group {
-        .flex;
-        flex-direction: column;
-        gap: 0.75rem;
+}
+.m-message-filter__group {
+    .flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.m-message-filter__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0.65rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    .r(0.65rem);
+    font-size: 14px;
+    user-select: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+
+    @size: 14px;
+
+    .u-img {
+        .size(14px);
     }
-    .u-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 0.64rem 1rem;
-        width: 100%;
+
+    .u-icon {
+        position: relative;
+        border: 2px solid rgba(#7239ea, 0.3);
+        .size(@size);
+        .r(50%);
         box-sizing: border-box;
-        cursor: pointer;
-        .r(0.85rem);
-        font-size: 14px;
-        user-select: none;
-        font-size: 13px;
+        &::after {
+            width: calc(@size / 2);
+            height: calc(@size);
+            border: 2px solid #7239ea;
+            border-radius: 0 100% 100% 0/50%;
+            border-left: none;
 
-        .u-img {
-            .size(20px);
-        }
-
-        .u-icon {
-            @size: 14px;
-            position: relative;
-            border: 2px solid rgba(#ccc, 0.3);
-            .size(@size);
-            .r(50%);
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            content: "";
             box-sizing: border-box;
+        }
+        &-3 {
+            border-color: rgba(#f14c41, 0.3);
             &::after {
-                width: calc(@size / 2);
-                height: calc(@size);
-                border: 2px solid #ccc;
-                border-radius: 0 100% 100% 0/50%;
-                border-left: none;
-
-                position: absolute;
-                right: -2px;
-                top: -2px;
-                content: "";
-                box-sizing: border-box;
-            }
-            &-3 {
-                border-color: rgba(#f14c41, 0.3);
-                &::after {
-                    border-color: #f14c41;
-                }
-            }
-            &-2 {
-                border-color: rgba(#75cc68, 0.3);
-                &::after {
-                    border-color: #75cc68;
-                }
-            }
-            &-1 {
-                border-color: rgba(#7239ea, 0.3);
-                &::after {
-                    border-color: #7239ea;
-                }
+                border-color: #f14c41;
             }
         }
-
-        &:hover,
-        &.is-active {
-            color: #409eff;
-            background-color: #f9f9f9;
+        &-2 {
+            border-color: rgba(#ffb532, 0.3);
+            &::after {
+                border-color: #ffb532;
+            }
         }
+        &-1 {
+            border-color: rgba(#75cc68, 0.3);
+            &::after {
+                border-color: #75cc68;
+            }
+        }
+    }
+
+    &:hover,
+    &.is-active {
+        color: @primary;
+        background-color: #f9f9f9;
     }
 }
 </style>

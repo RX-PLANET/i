@@ -283,5 +283,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "@/assets/css/account/message/detail.less";
+@import "@/assets/css/notification/message/detail.less";
 </style>

@@ -8,13 +8,16 @@ export const apps = [
     {
         value: "",
         label: t("notification.message.all"),
+        key: "all",
     },
     {
         value: "miipet",
-        label: t("notification.message.app.miipet"),
+        label: t("common.app.miipet"),
+        key: "miipet",
     },
     {
         value: "2kog",
-        label: t("notification.message.app.2kog"),
+        label: t("common.app.2kog"),
+        key: "2kog",
     },
 ];
