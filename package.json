@@ -15,7 +15,7 @@
         "update": "npm install @iruxu/pkg-widget@latest --registry=https://registry.npmjs.org"
     },
     "dependencies": {
-        "@iruxu/pkg-widget": "^0.0.8",
+        "@iruxu/pkg-widget": "^0.0.9",
         "@vueuse/head": "^0.7.6",
         "axios": "^1.7.2",
         "core-js": "^3.8.3",
