@@ -138,7 +138,7 @@ export default {
                                 callback();
                             }
                         },
-                        trigger: "change",
+                        trigger: "blur",
                     },
                 ],
                 password: [
