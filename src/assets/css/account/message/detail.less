@@ -1,0 +1,118 @@
+.p-message-detail {
+    min-height: 100vh;
+    .l-dashboard-primary {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        font-size: 14px;
+    }
+    .m-detail {
+        flex: 1;
+        .r(10px);
+        @media screen and(max-width:@phone) {
+            width: 100%;
+        }
+    }
+
+    .m-op {
+        .flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        font-size: 16px;
+
+        .el-icon--right {
+            margin-left: 0;
+        }
+        .u-op {
+            .flex;
+            gap: 6.5px;
+            align-items: center;
+        }
+        .u-op-icon {
+            background-color: #f9f9f9;
+            .size(34px);
+            border-radius: 7px;
+            .flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &:not(.is-disabled):hover {
+                background-color: #f1f4ff;
+                color: #2c9aff;
+            }
+            &.is-disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+
+        .u-page {
+            font-size: 12px;
+            color: #999;
+        }
+    }
+    .m-content {
+        padding: 2rem 2.5rem;
+        .u-title {
+            .flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            font-size: 20px;
+            .bold;
+            margin-bottom: 25px;
+        }
+        .u-level {
+            font-weight: normal;
+            border-radius: 7px;
+            font-size: 11px;
+            font-weight: 600;
+            background-color: #eee;
+            padding: 4px 6.5px;
+
+            &-3 {
+                background-color: rgba(#f14c41, 0.3);
+                color: #f14c41;
+            }
+            &-2 {
+                background-color: rgba(#75cc68, 0.3);
+                color: #75cc68;
+            }
+            &-1 {
+                background-color: rgba(#7239ea, 0.3);
+                color: #7239ea;
+            }
+        }
+        .u-desc {
+            .flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .u-avatar {
+            .flex;
+            align-items: center;
+            gap: 13px;
+            .u-img {
+                .size(50px);
+            }
+        }
+        .u-time {
+            font-size: 13px;
+            color: #999;
+        }
+        &.is-read {
+            .u-title,
+            .u-time {
+                color: #ccc;
+            }
+        }
+        .u-content {
+            padding: 16px 0;
+            line-height: 19.5px;
+        }
+    }
+}

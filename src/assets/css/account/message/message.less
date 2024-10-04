@@ -77,11 +77,16 @@
         overflow: hidden;
         overflow-x: auto;
         .scrollbar();
+        cursor: pointer;
         &:hover {
             background-color: #f7f7f7;
         }
         &.is-read {
-            .tm(0.6);
+            .u-content,
+            .u-time {
+                // .tm(0.6);
+                color: #ccc;
+            }
         }
     }
     .m-table-body__column {
@@ -183,6 +188,9 @@
         border: none;
     }
     .el-checkbox__input.is-checked .el-checkbox__inner {
+        background-color: #409eff;
+    }
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
         background-color: #409eff;
     }
     .el-checkbox__inner:after {

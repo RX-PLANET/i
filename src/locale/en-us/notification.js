@@ -8,6 +8,7 @@ export default {
     message: {
         all: "All",
         toolbar: {
+            back: "Return",
             refresh: "Refresh",
             read_config: "Set as read",
             delete: "Delete",
@@ -16,10 +17,16 @@ export default {
             normal: "Normal",
             important: "Important",
             urgent: "Urgent",
+            previous: "Previous message",
+            next: "Next message",
         },
         table: {
             detail: "Detail",
+            remark: "Remark",
+            remark_placeholder: "Please enter the remark",
             link: "Link",
+            del_mul_message: "Do you want to delete the corresponding message?",
+            del_message: "Do you want to delete this message?",
         },
         time: {
             today: "Today",

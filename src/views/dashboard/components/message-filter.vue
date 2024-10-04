@@ -73,6 +73,15 @@ export default {
             },
         },
     },
+    mounted() {
+        const params = this.$route.params;
+        if (params.app) {
+            this.app = params.app;
+        }
+        if (params.level) {
+            this.level = params.level;
+        }
+    },
     methods: {
         levelChange(val) {
             this.level = val === this.level ? "" : val;

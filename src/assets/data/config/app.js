@@ -7,14 +7,14 @@ const {
 export const apps = [
     {
         value: "",
-        label: t("message.all"),
+        label: t("notification.message.all"),
     },
     {
         value: "miipet",
-        label: t("message.app.miipet"),
+        label: t("notification.message.app.miipet"),
     },
     {
         value: "2kog",
-        label: t("message.app.2kog"),
+        label: t("notification.message.app.2kog"),
     },
 ];

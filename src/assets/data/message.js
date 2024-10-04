@@ -5,14 +5,14 @@ const {
 } = i18n;
 
 export const levels = [
-    { value: "3", label: t("message.toolbar.urgent") },
-    { value: "2", label: t("message.toolbar.important") },
-    { value: "1", label: t("message.toolbar.normal") },
-    { value: "", label: t("message.all") },
+    { value: "3", label: t("notification.message.toolbar.urgent") },
+    { value: "2", label: t("notification.message.toolbar.important") },
+    { value: "1", label: t("notification.message.toolbar.normal") },
+    { value: "", label: t("notification.message.all") },
 ];
 
 export const statusList = [
-    { value: "", label: t("message.all") },
-    { value: "0", label: t("message.toolbar.unread") },
-    { value: "1", label: t("message.toolbar.read") },
+    { value: "", label: t("notification.message.all") },
+    { value: "0", label: t("notification.message.toolbar.unread") },
+    { value: "1", label: t("notification.message.toolbar.read") },
 ];

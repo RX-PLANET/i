@@ -3,6 +3,9 @@ import { $uc } from "@iruxu/pkg-common/utils/api.js";
 export function getMessages(params) {
     return $uc().get("/api/uc/user/message/inbox", { params });
 }
+export function getMessage(id) {
+    return $uc().get(`/api/uc/user/message/inbox/${id}`);
+}
 // 获取当前用户未读消息数量
 export function getMessageUnreadCount(params) {
     return $uc().get("/api/uc/user/message/count", { params });

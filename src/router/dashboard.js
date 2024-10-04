@@ -24,6 +24,16 @@ export default [
                 },
             },
             {
+                path: "notification/message-detail/:id(\\d+)?",
+                name: "dashboard-notification-message-detail",
+                component: () => import("@/views/dashboard/message-detail"),
+                hidden: true,
+                meta: {
+                    title: t("dashboard.message"),
+                    activeMenu: "/dashboard/notification/message",
+                },
+            },
+            {
                 path: "notification/bind",
                 name: "dashboard-notification-bind",
                 component: () => import("@/views/dashboard/bind"),

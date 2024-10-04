@@ -36,6 +36,10 @@ export default {
 
     // messagebox
     messagebox: {
+        title: "温馨提示",
         success: "操作成功",
+        error: "操作失败",
+        confirm: "确定",
+        cancel: "取消",
     },
 };

@@ -82,9 +82,14 @@
                                 :class="row.status === 1 ? 'is-read' : ''"
                                 v-for="row in group.children"
                                 :key="row.id"
+                                @click="toDetail(row)"
                             >
                                 <div class="m-table-body__column u-checkbox">
-                                    <el-checkbox v-model="row.checked" @change="checkChange(row)"></el-checkbox>
+                                    <el-checkbox
+                                        v-model="row.checked"
+                                        @change="checkChange(row)"
+                                        @click.stop
+                                    ></el-checkbox>
                                 </div>
 
                                 <!-- 等级 -->
@@ -94,10 +99,10 @@
                                     </el-icon>
                                     <span>{{ getLevel(row.level)?.label }}</span>
                                 </div> -->
-                                <!-- 内容 -->
+                                <!-- 标题 -->
                                 <div class="m-table-body__column u-content is-flex">
                                     <div class="u-icon" :class="`u-icon-${row.level}`"></div>
-                                    <span>{{ row.content }}</span>
+                                    <span>{{ row.title || "-" }}</span>
                                 </div>
                                 <!-- 备注 -->
                                 <!-- <div class="m-table-body__column u-remark">
@@ -112,10 +117,16 @@
                                     <el-tooltip
                                         class="u-box-item"
                                         effect="light"
-                                        :content="$t('notification.message.table.detail')"
+                                        :content="$t('notification.message.table.remark')"
                                         placement="top"
                                     >
-                                        <el-button class="u-view" circle plain icon="View" @click="handleRemark(row)">
+                                        <el-button
+                                            class="u-view"
+                                            circle
+                                            plain
+                                            icon="View"
+                                            @click.stop="handleRemark(row)"
+                                        >
                                         </el-button>
                                     </el-tooltip>
                                     <el-tooltip
@@ -127,7 +138,7 @@
                                         <a
                                             v-if="row.link"
                                             class="u-detail el-button is-plain is-circle"
-                                            :href="toDetail(row)"
+                                            :href="toLink(row)"
                                             target="_blank"
                                             @click.stop="handleRead(row)"
                                         >
@@ -208,47 +219,47 @@ export default {
             timeTypes: [
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.today"),
+                    label: this.$t("notification.message.time.today"),
                     value: 7,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.saturday"),
+                    label: this.$t("notification.message.time.saturday"),
                     value: 6,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.friday"),
+                    label: this.$t("notification.message.time.friday"),
                     value: 5,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.thursday"),
+                    label: this.$t("notification.message.time.thursday"),
                     value: 4,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.wednesday"),
+                    label: this.$t("notification.message.time.wednesday"),
                     value: 3,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.tuesday"),
+                    label: this.$t("notification.message.time.tuesday"),
                     value: 2,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.monday"),
+                    label: this.$t("notification.message.time.monday"),
                     value: 1,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.last"),
+                    label: this.$t("notification.message.time.last"),
                     value: -1,
                 },
                 {
                     id: uuidV4(),
-                    label: this.$t("message.time.earlier"),
+                    label: this.$t("notification.message.time.earlier"),
                     value: -2,
                 },
             ],
@@ -302,7 +313,7 @@ export default {
         },
         checkChange(row) {
             const index = this.originList.findIndex((item) => item.id === row.id);
-            this.originList[index].checked = row.checked;
+            this.originList[index].checked = !!row.checked;
             const mIndex = this.multipleSelection.findIndex((item) => item.id === row.id);
             if (mIndex !== -1) {
                 this.multipleSelection.splice(mIndex, 1);
@@ -417,9 +428,9 @@ export default {
         },
         handleRemark(row) {
             const { id, remark } = row;
-            this.$prompt("请输入备注", "提示", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
+            this.$prompt(this.$t("notification.message.table.remark_placeholder"), this.$t("common.messagebox.title"), {
+                confirmButtonText: this.$t("common.messagebox.confirm"),
+                cancelButtonText: this.$t("common.messagebox.cancel"),
                 inputValue: remark,
             })
                 .then(({ value }) => {
@@ -456,9 +467,9 @@ export default {
                 id = data.id;
             }
             if (!id) return;
-            this.$confirm("警告", "是否要删除对应消息", {
-                confirmButtonText: "确定",
-                cancelButtonText: "取消",
+            this.$confirm(this.$t("notification.message.table.del_mul_message"), this.$t("common.messagebox.title"), {
+                confirmButtonText: this.$t("common.messagebox.confirm"),
+                cancelButtonText: this.$t("common.messagebox.cancel"),
                 type: "warning",
             })
                 .then(() => {
@@ -501,9 +512,30 @@ export default {
                 });
             });
         },
-        toDetail(row) {
+        toLink(row) {
             const { link } = row;
             return link;
+        },
+        toDetail({ id }) {
+            const data = {};
+            if (id) {
+                data.id = id + "";
+            }
+
+            readAllMessages(data)
+                .then(() => {})
+                .finally(() => {
+                    const index = this.originList.findIndex((item) => item.id === id);
+                    this.$router.push({
+                        path: `/dashboard/notification/message-detail/${id}`,
+                        query: {
+                            page: this.page,
+                            per: this.per,
+                            total: this.total,
+                            index: index,
+                        },
+                    });
+                });
         },
     },
 };

@@ -8,6 +8,7 @@ export default {
     message: {
         all: "全部",
         toolbar: {
+            back: "返回",
             refresh: "刷新",
             read_config: "设为已读",
             delete: "删除",
@@ -16,10 +17,16 @@ export default {
             normal: "普通",
             important: "重要",
             urgent: "紧急",
+            previous: "上一条",
+            next: "下一条",
         },
         table: {
             detail: "详情",
+            remark: "备注",
+            remark_placeholder: "请输入备注",
             link: "链接",
+            del_mul_message: "是否要删除对应消息",
+            del_message: "是否要删除该消息",
         },
         time: {
             today: "今天",

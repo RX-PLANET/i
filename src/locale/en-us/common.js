@@ -36,6 +36,10 @@ export default {
 
     // messagebox
     messagebox: {
+        title: "Kind tips",
         success: "Operation successful",
+        error: "Operation failed",
+        confirm: "Confirm",
+        cancel: "Cancel",
     },
 };
