@@ -72,9 +72,27 @@
                             <img class="u-img" src="@/assets/img/test.svg" />
                             <span>{{ detail.app || "-" }}</span>
                         </div>
-                        <div class="u-time">{{ formatDate(detail.created_at, "datetime") }}</div>
+                        <time class="u-time">{{ formatDate(detail.created_at, "datetime") }}</time>
                     </div>
                     <div class="u-content" v-html="detail.content"></div>
+                    <div class="u-meta">
+                        <span class="u-meta-key">
+                            {{ $t("notification.message.meta.link") }}
+                        </span>
+                        <a class="u-meta-val u-link" v-if="detail.link" :href="detail.link" target="_blank"
+                            ><el-icon><Link /></el-icon> {{ detail.link }}</a
+                        >
+                        <span class="u-meta-val u-misc" v-else>-</span>
+                    </div>
+                    <div class="u-meta">
+                        <span class="u-meta-key">
+                            {{ $t("notification.message.meta.misc") }}
+                        </span>
+                        <span class="u-meta-val u-misc" :class="`u-status-${detail.status}`">
+                            {{ detail.type || "-" }} ✿ {{ detail.subtype || "-" }} ✿ {{ detail.resource_type || "-" }} ✿
+                            {{ detail.resource_id || "-" }}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

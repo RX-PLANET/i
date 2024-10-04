@@ -177,6 +177,9 @@ export default {
     &.is-active {
         color: @primary;
         background-color: #f9f9f9;
+        b {
+            .bold;
+        }
     }
 }
 </style>

@@ -40,6 +40,10 @@ export default {
             last: "Last Week",
             earlier: "Earlier",
         },
+        meta: {
+            link: "Link",
+            misc: "Misc",
+        },
     },
     phone: {},
     email: {},

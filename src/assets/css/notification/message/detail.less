@@ -64,7 +64,7 @@
             align-items: center;
             font-size: 20px;
             .bold;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         .u-level {
             font-weight: normal;
@@ -91,6 +91,8 @@
             .flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
         }
         .u-avatar {
             .flex;
@@ -103,16 +105,46 @@
         .u-time {
             font-size: 13px;
             color: #999;
+            font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
         }
         &.is-read {
-            .u-title,
             .u-time {
                 color: #ccc;
             }
         }
         .u-content {
             padding: 16px 0;
-            line-height: 19.5px;
+            .fz(1rem,1.6);
+            border-bottom: 1px dotted #eee;
+            margin-bottom: 20px;
+        }
+        .u-meta {
+            .flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .u-meta-key {
+            background-color: #f9f9f9;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: #999;
+        }
+        .u-link {
+            color: @primary;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 1px 0 @primary;
+            &:hover {
+                color: lighten(@primary, 10%);
+                box-shadow: 0 1px 0 lighten(@primary, 10%);
+            }
+            gap: 3px;
+        }
+        .u-misc {
+            .fz(12px);
+            color: #999;
         }
     }
 }

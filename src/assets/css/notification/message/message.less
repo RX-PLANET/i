@@ -3,12 +3,9 @@
     flex-wrap: wrap;
     gap: 32px;
     font-size: 14px;
-    .m-messages {
+    .m-message-main {
         flex: 1;
         .r(10px);
-        @media screen and(max-width:@phone) {
-            width: 100%;
-        }
     }
     .m-table-header {
         .flex;
@@ -205,5 +202,14 @@
     }
     .el-checkbox__input.is-indeterminate .el-checkbox__inner:before {
         top: 8px;
+    }
+}
+
+@media screen and (max-width: @ipad) {
+    .m-message-filter {
+        .none;
+    }
+    .m-messages-main {
+        .w(100%);
     }
 }

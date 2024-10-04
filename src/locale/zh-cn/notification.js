@@ -40,6 +40,10 @@ export default {
             last: "上周",
             earlier: "更早",
         },
+        meta: {
+            link: "链接",
+            misc: "其它",
+        },
     },
     phone: {},
     email: {},

@@ -1,7 +1,7 @@
 <template>
     <div class="m-message-box">
         <messageFilter :initApp="initApp" @update="updateSearch"></messageFilter>
-        <div class="m-messages w-card">
+        <div class="m-message-main w-card">
             <div class="m-table">
                 <div class="m-table-header">
                     <div class="u-op">
