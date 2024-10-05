@@ -72,13 +72,16 @@
     }
 }
 .m-bind-block__pic {
-    background: url("~@/assets/img/emailpic.svg") no-repeat 0 0;
-    background-size: auto 100%;
     height: 600px;
     width: 600px;
+    .flex;
+    align-items: center;
     .pa;
     .lt(50px,0);
     .z(1);
+    img {
+        .size(100%,auto);
+    }
 }
 .m-bind-block__main {
     .pr;

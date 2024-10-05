@@ -2,7 +2,9 @@
     <div class="p-bind p-bind-email">
         <page-header></page-header>
         <div class="m-bind-email m-bind-block">
-            <div class="m-bind-block__pic"></div>
+            <div class="m-bind-block__pic">
+                <img src="@/assets/img/bind/email.svg" />
+            </div>
             <div class="m-bind-block__main">
                 <h1 class="u-header">{{ $t("notification.email.bindEmail") }}</h1>
                 <div class="u-slogan">{{ $t("notification.email.bindEmailAlert") }}</div>
@@ -135,7 +137,7 @@ export default {
                     this.loading = true;
                     verifyEmail({ code: this.form.code }, { app: this.app })
                         .then(() => {
-                            this.$message.success(this.$t("common.bindSuccess"));
+                            this.$message.success(this.$t("account.bindSuccess"));
 
                             this.$store.dispatch("getUserInfo");
                         })

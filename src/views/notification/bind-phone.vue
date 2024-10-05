@@ -2,7 +2,9 @@
     <div class="p-bind p-bind-phone">
         <page-header></page-header>
         <div class="m-bind-phone m-bind-block">
-            <div class="m-bind-block__pic"></div>
+            <div class="m-bind-block__pic">
+                <img src="@/assets/img/bind/phone.svg" />
+            </div>
             <div class="m-bind-block__main">
                 <h1 class="u-header">{{ $t("notification.phone.bindPhone") }}</h1>
                 <div class="u-slogan">{{ $t("notification.phone.bindPhoneAlert") }}</div>
@@ -157,7 +159,7 @@ export default {
                         .then(() => {
                             bindPhoneCode(params, { app: this.app })
                                 .then(() => {
-                                    this.$message.success(this.$t("common.bindSuccess"));
+                                    this.$message.success(this.$t("account.bindSuccess"));
 
                                     this.$store.dispatch("getUserInfo");
                                 })
