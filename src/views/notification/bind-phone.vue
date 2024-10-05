@@ -161,7 +161,7 @@ export default {
                                 .then(() => {
                                     this.$message.success(this.$t("account.bindSuccess"));
 
-                                    this.$store.dispatch("getUserInfo");
+                                    this.$store.dispatch("getProfile");
                                 })
                                 .finally(() => {
                                     this.loading = false;
