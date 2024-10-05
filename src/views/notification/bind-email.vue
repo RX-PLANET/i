@@ -137,7 +137,7 @@ export default {
                         .then(() => {
                             this.$message.success(this.$t("common.bindSuccess"));
 
-                            this.$store.dispatch("getUserInfo");
+                            this.$store.dispatch("getProfile");
                         })
                         .finally(() => {
                             this.loading = false;
