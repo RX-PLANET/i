@@ -45,6 +45,41 @@ export default {
             misc: "Misc",
         },
     },
-    phone: {},
-    email: {},
+    phone: {
+        bindPhone: "Bind Phone",
+        bindPhoneAlert: "Bind your phone to receive message notifications",
+        currentBind: "Current",
+        noBind: "- None -",
+        sameError: "The two bindings cannot be the same",
+        number: "Phone number",
+        code: "Code",
+        send: "Send Code",
+        sendSuccess: "Send Success",
+        confirm: "Confirm",
+
+        // UI Errors
+        numberPlaceholder: "Please enter your phone number",
+        numberError: "Please enter a valid phone number",
+        codePlaceholder: "Please enter the verification code",
+        codeError: "Please enter the correct verification code",
+    },
+    email: {
+        address: "Email",
+        bindEmail: "Bind Email",
+        bindEmailAlert: "Bind your email to receive message notifications",
+        currentBind: "Current",
+        noBind: "- None -",
+        sameError: "The two bindings cannot be the same",
+        sendEmailSuccess:
+            "A verification email has been sent to your email {email}, click the verification link to bind successfully! The email is valid for 7 days.",
+        verifyContent: `<h1>Waiting for Verification</h1><div>Please click on the verification link sent to your email address (<b>{url}</b>) to complete the verification.<br>This link is valid for 7 days; if exceeded, you will need to resubmit the verification request.</div>`,
+
+        addressPlaceholder: "Please enter your email address",
+        addressError: "Please enter a valid email address",
+        codePlaceholder: "Please enter the verification code",
+        codeError: "Please enter the correct verification code",
+        code: "Code",
+        send: "Send Code",
+        confirm: "Confirm",
+    },
 };

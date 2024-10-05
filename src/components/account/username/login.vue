@@ -17,7 +17,7 @@
                     type="password"
                     size="large"
                     show-password
-                    :placeholder="$t('common.password')"
+                    :placeholder="$t('account.password')"
                 >
                     <template #prepend
                         ><el-icon><Lock></Lock></el-icon
@@ -27,21 +27,21 @@
             <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
             <el-form-item>
                 <el-button class="u-button u-submit" type="primary" @click="onLogin" :disabled="!canSubmit">{{
-                    $t("common.login")
+                    $t("account.login")
                 }}</el-button>
             </el-form-item>
             <el-form-item class="m-footer">
                 <p class="u-login">
-                    {{ $t("common.noAccount") }} <a :href="registerLink">{{ $t("common.registerNow") }} &raquo;</a>
+                    {{ $t("account.noAccount") }} <a :href="registerLink">{{ $t("account.registerNow") }} &raquo;</a>
                 </p>
             </el-form-item>
         </el-form>
 
         <main v-else class="m-card-main">
             <el-alert
-                :title="$t('common.loginSuccess')"
+                :title="$t('account.loginSuccess')"
                 type="success"
-                :description="`${$t('common.loginSuccess')}(#^.^#)`"
+                :description="`${$t('account.loginSuccess')}(#^.^#)`"
                 show-icon
                 :closable="false"
             >
@@ -79,8 +79,8 @@ export default {
                     { min: 3, max: 20, message: this.$t("username.nameError"), trigger: "blur" },
                 ],
                 password: [
-                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.passwordError"), trigger: "blur" },
                 ],
             },
 
@@ -113,7 +113,7 @@ export default {
                 if (valid) {
                     loginByUsername(this.form, { app: this.app })
                         .then((res) => {
-                            this.$message.success(this.$t("common.loginSuccess"));
+                            this.$message.success(this.$t("account.loginSuccess"));
                             this.success = true;
 
                             User.update(res.data.data).then(() => {

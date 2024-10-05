@@ -38,6 +38,6 @@ export default {
 };
 </script>
 
-<style lang="less">
+<!-- <style lang="less">
 @import "~@/assets/css/common/nav.less";
-</style>
+</style> -->

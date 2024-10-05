@@ -53,4 +53,5 @@ export default {
 
 <style lang="less">
 @import "~@/assets/css/layouts/dashboard.less";
+@import "~@/assets/css/common/nav.less";
 </style>

@@ -46,7 +46,7 @@
                 <el-form-item prop="password" class="m-password">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("common.password") }}<i class="is-required">*</i></span>
+                            <span>{{ $t("account.password") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
@@ -54,7 +54,7 @@
                 <el-form-item prop="password1" class="m-password">
                     <template #label>
                         <div class="m-card-form-label">
-                            <span>{{ $t("common.passwordConfirm") }}<i class="is-required">*</i></span>
+                            <span>{{ $t("account.passwordConfirm") }}<i class="is-required">*</i></span>
                         </div>
                     </template>
                     <el-input v-model.trim="form.password1" type="password" size="large" show-password> </el-input>
@@ -76,13 +76,13 @@
             >
             </el-alert>
             <el-button size="large" class="u-btn u-back" type="primary" @click="goLogin">{{
-                $t("common.login")
+                $t("account.login")
             }}</el-button>
         </main>
     </div>
     <div class="m-footer">
         <div class="m-footer-skip">
-            <a class="u-link" :href="loginLink">← {{ $t("common.back") + $t("common.login") }}</a>
+            <a class="u-link" :href="loginLink">← {{ $t("account.back") + $t("account.login") }}</a>
         </div>
     </div>
 </template>
@@ -138,20 +138,20 @@ export default {
                                 callback();
                             }
                         },
-                        trigger: "change",
+                        trigger: "blur",
                     },
                 ],
                 password: [
-                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.passwordError"), trigger: "blur" },
                 ],
                 password1: [
-                    { required: true, message: this.$t("common.password2Placeholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.password2Placeholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.passwordError"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             if (value !== this.form.password) {
-                                callback(new Error(this.$t("common.passwordError2")));
+                                callback(new Error(this.$t("account.passwordError2")));
                             } else {
                                 callback();
                             }

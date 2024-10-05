@@ -6,18 +6,23 @@ const {
 
 const data = [
     {
-        title: t("dashboard.notification"),
+        title: t("notification.nav.index"),
         icon: "message", // 对应地址 @assets/img/icon/message.svg
         children: [
             {
-                title: t("dashboard.message"),
+                title: t("notification.nav.message"),
                 route: "/dashboard/notification/message",
                 routeName: "dashboard-notification-message",
             },
             {
-                title: t("dashboard.bind"),
-                route: "/dashboard/notification/bind",
-                routeName: "dashboard-notification-bind",
+                title: t("notification.nav.email"),
+                route: "/dashboard/notification/email",
+                routeName: "dashboard-notification-email",
+            },
+            {
+                title: t("notification.nav.phone"),
+                route: "/dashboard/notification/phone",
+                routeName: "dashboard-notification-phone",
             },
         ],
     },

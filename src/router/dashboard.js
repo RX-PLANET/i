@@ -36,9 +36,17 @@ export default [
                 },
             },
             {
-                path: "notification/bind",
-                name: "dashboard-notification-bind",
-                component: () => import("@/views/notification/bind"),
+                path: "notification/email",
+                name: "dashboard-notification-email",
+                component: () => import("@/views/notification/bind-email.vue"),
+                meta: {
+                    title: t("notification.nav.email"),
+                },
+            },
+            {
+                path: "notification/phone",
+                name: "dashboard-notification-phone",
+                component: () => import("@/views/notification/bind-phone.vue"),
                 meta: {
                     title: t("notification.nav.phone"),
                 },

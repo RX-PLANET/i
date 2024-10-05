@@ -1,0 +1,82 @@
+.p-bind {
+    min-height: 100vh;
+}
+.m-bind-block {
+    .flex;
+    align-items: center;
+    justify-content: center;
+    .pr;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 1200px;
+    height: 600px;
+
+    .m-current {
+        .x;
+        font-size: 14px;
+        color: #999;
+        .flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+    }
+
+    .u-current {
+        color: #fc922d;
+        .bold;
+    }
+    .u-status--success {
+        color: #8edc64;
+        align-items: center;
+        .flex;
+    }
+
+    .u-header {
+        .bold;
+        font-size: 32px;
+        margin-bottom: 10px;
+        .x;
+    }
+
+    .u-slogan {
+        .fz(16px);
+        .x;
+        margin-bottom: 20px;
+    }
+
+    .m-login-card {
+        width: auto;
+    }
+}
+.m-bind-block__pic {
+    background: url("~@/assets/img/emailpic.svg") no-repeat 0 0;
+    background-size: auto 100%;
+    height: 600px;
+    width: 600px;
+    .pa;
+    .lt(50px,0);
+    .z(1);
+}
+.m-bind-block__main {
+    .pr;
+    .z(2);
+    padding-left: 450px;
+}
+
+@media screen and (max-width: @notebook) {
+    .m-bind-block {
+        max-width: 1000px;
+    }
+}
+@media screen and (max-width: @mininote) {
+    .m-bind-block {
+        max-width: 800px;
+    }
+    .m-bind-block__pic {
+        .none;
+    }
+    .m-bind-block__main {
+        padding-left: 0;
+    }
+}
