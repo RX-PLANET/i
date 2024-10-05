@@ -15,9 +15,14 @@ const data = [
                 routeName: "dashboard-notification-message",
             },
             {
-                title: t("dashboard.bind"),
-                route: "/dashboard/notification/bind",
-                routeName: "dashboard-notification-bind",
+                title: t("dashboard.email"),
+                route: "/dashboard/notification/email",
+                routeName: "dashboard-notification-email",
+            },
+            {
+                title: t("dashboard.phone"),
+                route: "/dashboard/notification/phone",
+                routeName: "dashboard-notification-phone",
             },
         ],
     },

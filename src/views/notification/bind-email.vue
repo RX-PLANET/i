@@ -1,13 +1,14 @@
 <template>
-    <div class="m-bind-email m-bind-phone">
-        <template v-if="!showResult">
+    <div class="p-bind p-account">
+        <page-header></page-header>
+        <div class="m-bind-email m-bind-phone">
             <div class="u-pic"></div>
             <div class="m-info">
-                <h1 class="u-header">{{ $t("dashboard.bindEmail") }}</h1>
-                <div class="u-slogan">{{ $t("dashboard.bindEmailAlert") }}</div>
+                <h1 class="u-header">{{ $t("notification.email.bindEmail") }}</h1>
+                <div class="u-slogan">{{ $t("notification.email.bindEmailAlert") }}</div>
                 <div class="m-current">
-                    {{ $t("dashboard.currentBind") }}:
-                    <span class="u-current">{{ profile.email || $t("dashboard.noBind") }}</span>
+                    {{ $t("notification.email.currentBind") }}:
+                    <span class="u-current">{{ profile.email || $t("notification.email.noBind") }}</span>
                     <span class="u-status--success" v-if="profile.email"
                         ><el-icon><CircleCheckFilled /></el-icon
                     ></span>
@@ -26,7 +27,7 @@
                         <el-form-item prop="email">
                             <template #label>
                                 <div class="m-card-form-label">
-                                    <span>{{ $t("account.email.address") }}<i class="is-required">*</i></span>
+                                    <span>{{ $t("notification.email.address") }}<i class="is-required">*</i></span>
                                 </div>
                             </template>
                             <el-input v-model.trim="form.email" size="large"> </el-input>
@@ -34,16 +35,21 @@
                         <el-form-item prop="code" class="u-code">
                             <template #label>
                                 <div class="m-card-form-label">
-                                    <span>{{ $t("account.phone.code") }}<i class="is-required">*</i></span>
+                                    <span>{{ $t("notification.email.code") }}<i class="is-required">*</i></span>
                                 </div>
                             </template>
                             <el-input
                                 v-model.trim="form.code"
-                                :placeholder="$t('account.phone.code')"
+                                :placeholder="$t('notification.email.code')"
                                 size="large"
                             ></el-input>
-                            <el-button class="u-btn-send" size="small" @click="sendCode" :disabled="interval > 0"
-                                >{{ $t("account.phone.send") }}<span v-if="interval">({{ interval }}s)</span></el-button
+                            <el-button
+                                class="u-btn-send"
+                                size="small"
+                                @click="sendCode"
+                                :disabled="interval > 0 || !form.email"
+                                >{{ $t("notification.email.send")
+                                }}<span v-if="interval">({{ interval }}s)</span></el-button
                             >
                         </el-form-item>
                     </el-form>
@@ -58,15 +64,18 @@
                     >
                 </div>
             </div>
-        </template>
+        </div>
     </div>
 </template>
 
 <script>
 import { bindEmail, verifyEmail } from "@/service/email";
+import pageHeader from "@/components/common/page-header.vue";
 export default {
     name: "dashboard-bind-email",
-    components: {},
+    components: {
+        pageHeader,
+    },
     props: {
         app: {
             type: String,
@@ -81,20 +90,20 @@ export default {
             },
             rules: {
                 email: [
-                    { required: true, message: this.$t("account.email.addressPlaceholder"), trigger: "change" },
+                    { required: true, message: this.$t("notification.email.addressPlaceholder"), trigger: "change" },
                     {
                         validator: (rule, value, callback) => {
                             if (value === this.profile.email) {
-                                callback(new Error(this.$t("dashboard.sameError")));
+                                callback(new Error(this.$t("notification.email.sameError")));
                             } else {
                                 callback();
                             }
                         },
                         trigger: "change",
                     },
-                    { type: "email", message: this.$t("account.email.addressError"), trigger: "change" },
+                    { type: "email", message: this.$t("notification.email.addressError"), trigger: "change" },
                 ],
-                code: [{ required: true, message: this.$t("account.phone.codePlaceholder"), trigger: "change" }],
+                code: [{ required: true, message: this.$t("notification.phone.codePlaceholder"), trigger: "change" }],
             },
 
             interval: 0,
@@ -110,7 +119,7 @@ export default {
     methods: {
         sendCode() {
             bindEmail({ email: this.form.email }, { app: this.app }).then(() => {
-                this.$message.success(this.$t("account.email.sendSuccess"));
+                this.$message.success(this.$t("notification.email.sendSuccess"));
                 this.interval = 60;
                 const timer = setInterval(() => {
                     this.interval--;
@@ -145,5 +154,15 @@ export default {
     .m-login-card {
         .w(400px);
     }
+}
+</style>
+
+<style lang="less">
+@import "~@/assets/css/account/common.less";
+@import "~@/assets/css/account/email/login.less";
+@import "~@/assets/css/account/phone/bind.less";
+
+.p-account {
+    padding-top: 0;
 }
 </style>
