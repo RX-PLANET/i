@@ -1,5 +1,5 @@
 <template>
-    <div class="p-bind">
+    <div class="p-bind p-bind-phone">
         <page-header></page-header>
         <div class="m-bind-phone m-bind-block">
             <div class="m-bind-block__pic"></div>
@@ -175,12 +175,12 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "~@/assets/css/account/common.less";
 @import "~@/assets/css/account/email/login.less";
 @import "~@/assets/css/notification/bind/bind.less";
 
-.p-account {
+.p-bind-phone {
     .w-phonecode-select {
         /deep/.el-input__validateIcon {
             .none !important;

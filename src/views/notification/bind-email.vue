@@ -1,5 +1,5 @@
 <template>
-    <div class="p-bind">
+    <div class="p-bind p-bind-email">
         <page-header></page-header>
         <div class="m-bind-email m-bind-block">
             <div class="m-bind-block__pic"></div>
@@ -148,14 +148,6 @@ export default {
     },
 };
 </script>
-
-<style lang="less" scoped>
-.m-bind-email {
-    .m-login-card {
-        .w(400px);
-    }
-}
-</style>
 
 <style lang="less">
 @import "~@/assets/css/account/common.less";
