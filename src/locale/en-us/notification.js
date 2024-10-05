@@ -4,6 +4,7 @@ export default {
         message: "Message",
         phone: "Phone",
         email: "Email",
+        wechat: "WeChat",
     },
     message: {
         all: "All",

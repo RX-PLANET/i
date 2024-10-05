@@ -4,6 +4,7 @@ export default {
         message: "短消息",
         phone: "手机",
         email: "邮箱",
+        wechat: "微信",
     },
     message: {
         all: "全部",

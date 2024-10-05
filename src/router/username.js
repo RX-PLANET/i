@@ -21,7 +21,7 @@ export default [
                 name: "username-login",
                 component: UsernameLogin,
                 meta: {
-                    title: t("common.usernameLogin"),
+                    title: t("common.routes.usernameLogin"),
                 },
             },
             {
@@ -29,7 +29,7 @@ export default [
                 name: "username-register",
                 component: UsernameRegister,
                 meta: {
-                    title: t("common.usernameRegister"),
+                    title: t("common.routes.usernameRegister"),
                 },
             },
         ],

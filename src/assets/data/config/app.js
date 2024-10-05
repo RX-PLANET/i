@@ -8,7 +8,7 @@ export const apps = [
     {
         value: "",
         label: t("notification.message.all"),
-        key: "all",
+        key: "iruxu",
     },
     {
         value: "miipet",

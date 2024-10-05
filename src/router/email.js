@@ -22,7 +22,7 @@ export default [
                 name: "email-register",
                 component: EmailRegister,
                 meta: {
-                    title: t("common.emailRegister"),
+                    title: t("common.routes.emailRegister"),
                 },
             },
             // {
@@ -38,7 +38,7 @@ export default [
                 name: "email-login",
                 component: EmailLogin,
                 meta: {
-                    title: t("common.emailLogin"),
+                    title: t("common.routes.emailLogin"),
                 },
             },
             {
@@ -46,7 +46,7 @@ export default [
                 name: "email-reset-password",
                 component: EmailResetPassword,
                 meta: {
-                    title: t("common.emailResetPassword"),
+                    title: t("common.routes.emailResetPassword"),
                 },
             },
         ],

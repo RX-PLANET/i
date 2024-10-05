@@ -22,7 +22,7 @@ export default [
                 name: "phone-register",
                 component: PhoneRegister,
                 meta: {
-                    title: t("common.phoneRegister"),
+                    title: t("common.routes.phoneRegister"),
                 },
             },
             {
@@ -30,7 +30,7 @@ export default [
                 name: "phone-code-login",
                 component: PhoneCodeLogin,
                 meta: {
-                    title: t("common.phoneCodeLogin"),
+                    title: t("common.routes.phoneCodeLogin"),
                 },
             },
             {
@@ -38,7 +38,7 @@ export default [
                 name: "phone-login",
                 component: PhoneLogin,
                 meta: {
-                    title: t("common.phoneLogin"),
+                    title: t("common.routes.phoneLogin"),
                 },
             },
             {
@@ -46,7 +46,7 @@ export default [
                 name: "phone-reset-password",
                 component: PhoneResetPassword,
                 meta: {
-                    title: t("common.phoneResetPassword"),
+                    title: t("common.routes.phoneResetPassword"),
                 },
             },
         ],

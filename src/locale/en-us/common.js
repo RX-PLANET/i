@@ -7,16 +7,28 @@ export default {
 
     // Route Name
     routes: {
-        dashboard: "Dashboard",
+        // Account
         usernameLogin: "Login - Username",
         usernameRegister: "Register - Username",
+
         emailLogin: "Login - Email",
         emailRegister: "Register - Email",
         emailResetPassword: "Reset Password - Email",
+
         phoneRegister: "Register - Phone",
         phoneLogin: "Login - Phone",
         phoneCodeLogin: "Login - Phone Code",
         phoneResetPassword: "Reset Password - Phone",
+
+        // Notification
+        messageTitle: "Message",
+        messageDesc: "System message from all applications",
+
+        emailTitle: "Email Bind",
+        emailDesc: "Bind your email to receive important notifications.",
+
+        phoneTitle: "Phone Bind",
+        phoneDesc: "Bind your phone to receive important notifications.",
     },
 
     // messagebox

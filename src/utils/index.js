@@ -29,7 +29,7 @@ export function avatarUrl(url) {
         }
         return "https://cdn.uc.iruxu.com/" + url;
     }
-    return require("../assets/img/logo/iruxu.svg");
+    return require("../assets/img/logo/logo.svg");
 }
 
 /**

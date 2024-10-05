@@ -22,7 +22,8 @@ export default [
                 name: "dashboard-notification-message",
                 component: () => import("@/views/notification/message"),
                 meta: {
-                    title: t("notification.nav.message"),
+                    title: t("common.routes.messageTitle"),
+                    desc: t("common.routes.messageDesc"),
                 },
             },
             {
@@ -31,7 +32,8 @@ export default [
                 component: () => import("@/views/notification/message-detail"),
                 hidden: true,
                 meta: {
-                    title: t("notification.nav.message"),
+                    title: t("common.routes.messageTitle"),
+                    desc: t("common.routes.messageDesc"),
                     activeMenu: "/dashboard/notification/message",
                 },
             },
@@ -40,7 +42,8 @@ export default [
                 name: "dashboard-notification-email",
                 component: () => import("@/views/notification/bind-email.vue"),
                 meta: {
-                    title: t("notification.nav.email"),
+                    title: t("common.routes.emailTitle"),
+                    desc: t("common.routes.emailDesc"),
                 },
             },
             {
@@ -48,7 +51,8 @@ export default [
                 name: "dashboard-notification-phone",
                 component: () => import("@/views/notification/bind-phone.vue"),
                 meta: {
-                    title: t("notification.nav.phone"),
+                    title: t("common.routes.phoneTitle"),
+                    desc: t("common.routes.phoneDesc"),
                 },
             },
 

@@ -90,7 +90,7 @@ export default {
             this.app = val === this.app ? "" : val;
         },
         getAppIcon(key) {
-            return require(`../../../assets/img/logo/${key}.svg`);
+            return require(`../../../assets/img/nav/${key}.svg`);
         },
     },
 };
