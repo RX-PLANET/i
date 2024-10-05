@@ -1,5 +1,27 @@
 .p-bind {
     min-height: 100vh;
+
+    .el-button {
+        box-shadow: 0 2px 6px @primary-shadow;
+        background-color: @primary;
+        border-color: @primary;
+        padding: 0 1.5rem;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 40px;
+        letter-spacing: 0.5px;
+        display: block;
+        width: 100%;
+        height: auto;
+        box-sizing: border-box;
+
+        &:not(.is-disabled) {
+            &:hover {
+                border-color: transparent !important;
+                background-color: @primary-hover !important;
+            }
+        }
+    }
 }
 .m-bind-block {
     .flex;
