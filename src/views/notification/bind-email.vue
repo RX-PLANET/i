@@ -69,7 +69,9 @@
                         >{{ $t("notification.email.confirm") }}</el-button
                     >
 
-                    <a class="u-back" @click="onCancelEdit" v-if="isEdit">{{ $t("account.back") }}&raquo;</a>
+                    <a class="u-back" @click="onCancelEdit" v-if="isEdit"
+                        ><el-icon><ArrowLeftBold /></el-icon>{{ $t("account.back") }}</a
+                    >
                 </div>
             </div>
         </div>
