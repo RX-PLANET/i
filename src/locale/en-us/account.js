@@ -25,4 +25,6 @@ export default {
     read: "I have read and agree to",
     terms: "Terms of Service",
     bindSuccess: "Bind Success",
+    accountBind: "Account has been bound",
+    editBind: "Edit",
 };

@@ -17,7 +17,7 @@
 
 <script>
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
-import { activeByEmail } from "@/service/email";
+import { activeByEmail } from "@/service/account";
 export default {
     name: "AccountEmailActive",
     components: {

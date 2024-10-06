@@ -8,14 +8,18 @@
             <div class="m-bind-block__main">
                 <h1 class="u-header">{{ $t("notification.phone.bindPhone") }}</h1>
                 <div class="u-slogan">{{ $t("notification.phone.bindPhoneAlert") }}</div>
-                <div class="m-current">
-                    {{ $t("notification.phone.currentBind") }}:
-                    <span class="u-current">{{ profile.phone || $t("notification.phone.noBind") }}</span>
-                    <span class="u-status--success" v-if="profile.phone"
-                        ><el-icon><CircleCheckFilled /></el-icon
-                    ></span>
-                </div>
-                <div class="m-login-card m-card-main">
+                <template v-if="profile.phone && !isEdit">
+                    <div class="m-current">
+                        {{ $t("notification.phone.currentBind") }}:
+                        <span class="u-current">{{ profile.phone || $t("notification.phone.noBind") }}</span>
+                        <span class="u-status--success" v-if="profile.phone"
+                            ><el-icon><CircleCheckFilled /></el-icon
+                        ></span>
+                    </div>
+                    <div class="u-bind-tips">{{ $t("account.accountBind") }}</div>
+                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.editBind") }}</el-button>
+                </template>
+                <div class="m-login-card m-card-main" v-if="!profile.phone || isEdit">
                     <el-form
                         class="m-card-form"
                         hide-required-asterisk
@@ -67,6 +71,8 @@
                         style="width: 100%"
                         >{{ $t("notification.phone.confirm") }}</el-button
                     >
+
+                    <a class="u-back" @click="onCancelEdit" v-if="isEdit">{{ $t("account.back") }}&raquo;</a>
                 </div>
             </div>
         </div>
@@ -75,7 +81,7 @@
 
 <script>
 import phoneCodeSelect from "@iruxu/pkg-widget/src/components/common/phone-code-select.vue";
-import { sendBindCode, checkPhoneCode, bindPhoneCode } from "@/service/phone";
+import { sendBindCode, checkPhoneCode, bindPhoneCode } from "@/service/account";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import pageHeader from "@/components/common/page-header.vue";
 export default {
@@ -127,6 +133,8 @@ export default {
             interval: 0,
             phoneChecked: false,
             loading: false,
+
+            isEdit: false,
         };
     },
     computed: {
@@ -172,6 +180,13 @@ export default {
                         });
                 }
             });
+        },
+
+        onEditBind() {
+            this.isEdit = true;
+        },
+        onCancelEdit() {
+            this.isEdit = false;
         },
     },
 };

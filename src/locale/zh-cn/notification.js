@@ -1,5 +1,6 @@
 export default {
     nav: {
+        dashboard: "个人中心",
         index: "通知中心",
         message: "短消息",
         phone: "手机",
@@ -79,6 +80,7 @@ export default {
         codeError: "请输入正确的验证码",
         code: "验证码",
         send: "发送验证码",
+        sendSuccess: "发送成功",
         confirm: "确认",
     },
 };

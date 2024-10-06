@@ -8,14 +8,18 @@
             <div class="m-bind-block__main">
                 <h1 class="u-header">{{ $t("notification.email.bindEmail") }}</h1>
                 <div class="u-slogan">{{ $t("notification.email.bindEmailAlert") }}</div>
-                <div class="m-current">
-                    {{ $t("notification.email.currentBind") }}:
-                    <span class="u-current">{{ profile.email || $t("notification.email.noBind") }}</span>
-                    <span class="u-status--success" v-if="profile.email"
-                        ><el-icon><CircleCheckFilled /></el-icon
-                    ></span>
-                </div>
-                <div class="m-login-card m-card-main">
+                <template v-if="profile.email && !isEdit">
+                    <div class="m-current">
+                        {{ $t("notification.email.currentBind") }}:
+                        <span class="u-current">{{ profile.email || $t("notification.email.noBind") }}</span>
+                        <span class="u-status--success" v-if="profile.email"
+                            ><el-icon><CircleCheckFilled /></el-icon
+                        ></span>
+                    </div>
+                    <div class="u-bind-tips">{{ $t("account.accountBind") }}</div>
+                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.editBind") }}</el-button>
+                </template>
+                <div class="m-login-card m-card-main" v-if="!profile.email || isEdit">
                     <el-form
                         class="m-card-form"
                         hide-required-asterisk
@@ -64,6 +68,8 @@
                         style="width: 100%"
                         >{{ $t("notification.email.confirm") }}</el-button
                     >
+
+                    <a class="u-back" @click="onCancelEdit" v-if="isEdit">{{ $t("account.back") }}&raquo;</a>
                 </div>
             </div>
         </div>
@@ -71,7 +77,7 @@
 </template>
 
 <script>
-import { bindEmail, verifyEmail } from "@/service/email";
+import { bindEmail, verifyEmail } from "@/service/account";
 import pageHeader from "@/components/common/page-header.vue";
 export default {
     name: "dashboard-bind-email",
@@ -111,6 +117,8 @@ export default {
             interval: 0,
             timer: null,
             loading: false,
+
+            isEdit: false,
         };
     },
     computed: {
@@ -146,6 +154,13 @@ export default {
                         });
                 }
             });
+        },
+
+        onEditBind() {
+            this.isEdit = true;
+        },
+        onCancelEdit() {
+            this.isEdit = false;
         },
     },
 };

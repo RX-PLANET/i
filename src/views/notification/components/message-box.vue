@@ -187,7 +187,7 @@ import { flattenDeep, pickBy } from "lodash";
 import { v4 as uuidV4 } from "uuid";
 import { formatDate, removeEmpty } from "@/utils/index";
 import { levels, statusList } from "@/assets/data/message.js";
-import { getMessages, delMessages, updateMessage, readAllMessages } from "@/service/message";
+import { getMessages, delMessages, updateMessage, readAllMessages } from "@/service/notification";
 
 import messageFilter from "./message-filter.vue";
 export default {

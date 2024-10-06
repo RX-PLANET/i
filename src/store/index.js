@@ -1,6 +1,6 @@
 // 1.Dependency
 import { createStore } from "vuex";
-import { getUserInfo } from "@/service/user";
+import { getUserInfo } from "@/service/account";
 
 // 2.Store
 const store = {

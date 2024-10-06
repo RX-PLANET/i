@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { checkUsername, registerByUsername } from "@/service/username";
+import { checkUsername, registerByUsername } from "@/service/account";
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import User from "@iruxu/pkg-common/utils/user";
 export default {
