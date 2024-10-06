@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { checkPhoneCode, sendCode, resetPassword } from "@/service/phone";
+import { checkPhoneCode, sendCode, resetPasswordByPhone } from "@/service/account";
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import User from "@iruxu/pkg-common/utils/user";
 import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
@@ -206,7 +206,7 @@ export default {
                             password: this.form.password,
                             code: this.form.code,
                         };
-                        resetPassword(data, { app: this.app })
+                        resetPasswordByPhone(data, { app: this.app })
                             .then(() => {
                                 this.success = true;
                             })

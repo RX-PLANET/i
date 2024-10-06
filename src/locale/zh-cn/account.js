@@ -25,4 +25,6 @@ export default {
     read: "我已阅读并同意",
     terms: "服务条款",
     bindSuccess: "绑定成功",
+    accountBind: "当前账号已绑定成功",
+    editBind: "修改绑定",
 };

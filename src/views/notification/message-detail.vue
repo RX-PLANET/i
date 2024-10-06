@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { getMessages, delMessages, getMessage } from "@/service/message";
+import { getMessages, delMessages, getMessage } from "@/service/notification";
 import pageHeader from "@/components/common/page-header.vue";
 import messageFilter from "./components/message-filter.vue";
 import { arr2map } from "@/utils/index";

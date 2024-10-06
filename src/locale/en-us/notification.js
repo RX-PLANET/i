@@ -1,5 +1,6 @@
 export default {
     nav: {
+        dashboard: "Dashboard",
         index: "Notification",
         message: "Message",
         phone: "Phone",

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { loginByUsername } from "@/service/username";
+import { loginByUsername } from "@/service/account";
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import User from "@iruxu/pkg-common/utils/user";
 export default {
