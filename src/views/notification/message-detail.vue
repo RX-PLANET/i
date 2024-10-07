@@ -69,7 +69,7 @@
                     </div>
                     <div class="u-desc">
                         <div v-if="detail.app" class="u-avatar">
-                            <img class="u-img" src="@/assets/img/test.svg" />
+                            <img class="u-img" :src="getAppIcon(detail.app)" />
                             <span>{{ detail.app || "-" }}</span>
                         </div>
                         <time class="u-time">{{ formatDate(detail.created_at, "datetime") }}</time>
@@ -303,6 +303,9 @@ export default {
                     },
                 });
             }
+        },
+        getAppIcon(key) {
+            return require(`../../assets/img/app/${key}.svg`);
         },
     },
 };
