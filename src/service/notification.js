@@ -19,8 +19,9 @@ export function updateMessage(id, data) {
  * @param {*} app 应用
  * @returns
  */
-export function readAllMessages(data) {
-    return $uc().put(`/api/uc/user/message/count`, data);
+export function readAllMessages(id, data) {
+    const url = id ? `/api/uc/user/message/count?id=${id}` : `/api/uc/user/message/count`;
+    return $uc().put(url, data);
 }
 /**
  * 删除消息 多条记录用,分割

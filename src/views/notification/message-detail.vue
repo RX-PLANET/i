@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { getMessages, delMessages, getMessage } from "@/service/notification";
+import { getMessages, delMessages, getMessage, readAllMessages } from "@/service/notification";
 import pageHeader from "@/components/common/page-header.vue";
 import messageFilter from "./components/message-filter.vue";
 import { arr2map } from "@/utils/index";
@@ -150,6 +150,10 @@ export default {
         this.init();
     },
     methods: {
+        updateMessageStatus() {
+            const id = this.id + "";
+            readAllMessages(id);
+        },
         init() {
             const query = this.$route.query;
             if (query.page) {
@@ -209,6 +213,9 @@ export default {
             getMessage(this.id)
                 .then((res) => {
                     this.detail = res.data.data || {};
+                    if (this.detail.status === 0) {
+                        this.updateMessageStatus();
+                    }
                 })
                 .finally(() => {
                     this.loading = false;
@@ -262,21 +269,22 @@ export default {
         },
         handleNext() {
             if (this.nextDisabled) return;
-            const isLastPage = this.page === Math.floor(this.total / this.per);
+            const isLastPage = this.page === Math.ceil(this.total / this.per);
             const isLastMessage = this.index >= this.per - 1;
+            console.log(isLastMessage, isLastPage);
             if (isLastMessage && isLastPage) {
                 return;
             }
             if (isLastMessage && !isLastPage) {
                 this.page = this.page + 1;
                 this.loadMessages().then(() => {
-                    const id = this.ids[this.ids.length - 1];
+                    const id = this.ids[0];
                     this.$router.push({
                         path: `/dashboard/notification/message-detail/${id}`,
                         query: {
                             page: this.page,
                             per: this.per,
-                            index: this.ids.length - 1,
+                            index: 0,
                             total: this.total,
                         },
                     });

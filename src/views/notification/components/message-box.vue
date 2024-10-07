@@ -121,26 +121,20 @@
                                     <el-tooltip
                                         class="u-box-item"
                                         effect="light"
-                                        :content="$t('notification.message.table.remark')"
+                                        :content="$t('notification.message.table.detail')"
                                         placement="top"
                                     >
-                                        <el-button
-                                            class="u-view"
-                                            circle
-                                            plain
-                                            icon="View"
-                                            @click.stop="handleRemark(row)"
-                                        >
+                                        <el-button class="u-view" circle plain icon="View" @click.stop="toDetail(row)">
                                         </el-button>
                                     </el-tooltip>
                                     <el-tooltip
+                                        v-if="row.link"
                                         class="u-box-item"
                                         effect="light"
                                         :content="$t('notification.message.table.link')"
                                         placement="top"
                                     >
                                         <a
-                                            v-if="row.link"
                                             class="u-detail el-button is-plain is-circle"
                                             :href="toLink(row)"
                                             target="_blank"
@@ -505,10 +499,7 @@ export default {
             if (app) {
                 data.app = app;
             }
-            if (id) {
-                data.id = id;
-            }
-            readAllMessages(data).then(() => {
+            readAllMessages(id, data).then(() => {
                 this.$notify({
                     title: this.$t("common.messagebox.success"),
                     type: "success",
@@ -521,25 +512,16 @@ export default {
             return link;
         },
         toDetail({ id }) {
-            const data = {};
-            if (id) {
-                data.id = id + "";
-            }
-
-            readAllMessages(data)
-                .then(() => {})
-                .finally(() => {
-                    const index = this.originList.findIndex((item) => item.id === id);
-                    this.$router.push({
-                        path: `/dashboard/notification/message-detail/${id}`,
-                        query: {
-                            page: this.page,
-                            per: this.per,
-                            total: this.total,
-                            index: index,
-                        },
-                    });
-                });
+            const index = this.originList.findIndex((item) => item.id === id);
+            this.$router.push({
+                path: `/dashboard/notification/message-detail/${id}`,
+                query: {
+                    page: this.page,
+                    per: this.per,
+                    total: this.total,
+                    index: index,
+                },
+            });
         },
     },
 };
