@@ -2,13 +2,15 @@
     <aside class="c-aside c-aside-sm">
         <nav class="c-nav">
             <div class="c-aside__apps">
-                <img class="u-app-item" src="../../assets/img/test.png" alt="" />
-                <img class="u-app-item" src="../../assets/img/test.svg" alt="" />
+                <el-tooltip v-for="(item, index) in apps" :key="index" :content="item.label" placement="right">
+                    <div class="u-app-item" :class="{ active: item.key === app }" @click="toggleApp(item)">
+                        <img v-svg-inline :src="imgSrc(item.key)" alt="" />
+                    </div>
+                </el-tooltip>
                 <img
                     class="u-app-item u-toggle"
                     :class="{ 'u-toggle--active': navExpanded }"
                     src="../../assets/img/icon/expanded.svg"
-                    svg-inline
                     @click="toggle"
                 />
             </div>
@@ -19,20 +21,30 @@
 
 <script>
 import { mapMutations, mapState } from "vuex";
+import { apps } from "@/assets/data/config/app";
 export default {
     name: "MiniNav",
     data() {
-        return {};
+        return {
+            apps,
+        };
     },
     computed: {
-        ...mapState(["navExpanded"]),
+        ...mapState(["navExpanded", "app"]),
     },
     methods: {
         ...mapMutations({
             setNav: "SET_NAV",
+            setApp: "SET_APP",
         }),
         toggle() {
             this.setNav(!this.navExpanded);
+        },
+        imgSrc(key) {
+            return require(`../../assets/img/app/${key}.svg`);
+        },
+        toggleApp(item) {
+            this.setApp(item.key);
         },
     },
 };

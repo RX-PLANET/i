@@ -100,14 +100,14 @@
                         >
                         </el-alert>
                         <a class="u-skip el-button u-btn el-button--primary" :href="loginLink">{{
-                            $t("common.login")
+                            $t("account.login")
                         }}</a>
                     </main>
                 </div>
 
                 <div class="m-footer">
                     <div class="m-footer-skip">
-                        <a class="u-link" :href="loginLink">← {{ $t("common.back") + $t("common.login") }}</a>
+                        <a class="u-link" :href="loginLink">← {{ $t("account.back") + $t("account.login") }}</a>
                     </div>
                 </div>
             </div>

@@ -14,6 +14,7 @@ export default {
     back: "返回",
     backToHome: "返回首页",
     confirm: "确定",
+    logout: "退出登录",
 
     // Account Messages
     loginSuccess: "登录成功",

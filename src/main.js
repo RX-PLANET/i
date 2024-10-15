@@ -23,8 +23,19 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);
 }
 
-// import svgIcon from "@/utils/svgIcon";
-// app.use(svgIcon);
+// import Vue plugin
+import VueSvgInlinePlugin from "vue-svg-inline-plugin";
+
+// import polyfills for IE if you want to support it
+import "vue-svg-inline-plugin/src/polyfills";
+
+// use Vue plugin with options
+app.use(VueSvgInlinePlugin, {
+    attributes: {
+        data: ["src"],
+        remove: ["alt"],
+    },
+});
 
 import { i18n } from "@/locale";
 app.use(i18n);

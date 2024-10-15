@@ -10,6 +10,7 @@
                             v-model="checkAll"
                             :indeterminate="isIndeterminate"
                             @change="handleCheckAllChange"
+                            :disabled="!originList.length"
                         ></el-checkbox>
                         <el-tooltip
                             class="u-box-item"

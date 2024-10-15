@@ -7,7 +7,7 @@
                 <el-alert v-if="!success" :title="title" type="error" show-icon :closable="false" center> </el-alert>
                 <el-alert v-else type="success" show-icon :closable="false">
                     <template #title
-                        >验证成功，<a :href="loginLink">{{ $t("common.login") }}</a></template
+                        >验证成功，<a :href="loginLink">{{ $t("account.login") }}</a></template
                     >
                 </el-alert>
             </main>

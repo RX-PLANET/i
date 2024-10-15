@@ -163,16 +163,25 @@
     gap: 10px;
 
     .u-app-item {
-        // .size(40px);
+        .size(40px);
+        box-sizing: border-box;
         padding: 0.5rem;
         .pointer;
         background-color: #fff;
         .r(3px);
-        &.active {
-            background-color: @primary;
-        }
         &:hover {
             background-color: @aside-active-bgcolor;
+        }
+        &.active {
+            background-color: @primary;
+
+            svg {
+                fill: #fff;
+            }
+
+            &:hover {
+                background-color: @primary;
+            }
         }
     }
 

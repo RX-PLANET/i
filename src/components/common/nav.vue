@@ -2,8 +2,7 @@
     <aside class="c-aside" :class="{ 'is-close': !navExpanded }">
         <nav class="c-nav">
             <a class="c-nav__brand" href="/dashboard">
-                <!-- <img class="u-logo" src="../../assets/img/test.svg" svg-inline alt="" /> -->
-                {{ $t("notification.nav.dashboard") }}
+                {{ appLabel || $t("notification.nav.dashboard") }}
             </a>
 
             <div class="c-collapse">
@@ -34,7 +33,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 import nav from "@/assets/data/nav";
 export default {
     name: "Nav",
@@ -47,6 +46,7 @@ export default {
     },
     computed: {
         ...mapState(["navExpanded"]),
+        ...mapGetters(["appLabel"]),
         routeName() {
             return this.$route.name;
         },

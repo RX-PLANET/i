@@ -14,6 +14,7 @@ export default {
     back: "Back",
     backToHome: "Back to Home",
     confirm: "Confirm",
+    logout: "Logout",
 
     // Account Messages
     loginSuccess: "Login Success",

@@ -11,13 +11,17 @@ export default {
     data: function () {
         return {};
     },
-    computed: {},
     watch: {},
     methods: {},
     created: function () {},
     mounted: function () {
         if (User.isLogin()) {
-            this.$store.dispatch("getProfile");
+            this.$store.dispatch("getProfile").then((res) => {
+                if (User.getLocale() !== res.lang) {
+                    User.setLocale(res.lang);
+                    location.reload();
+                }
+            });
         }
     },
 };
