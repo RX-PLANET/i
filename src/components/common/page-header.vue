@@ -2,24 +2,24 @@
     <div class="c-header">
         <div class="c-header_main">
             <div class="c-header-left">
-                <div class="m-title" v-if="routeMeta?.title">{{ routeMeta.title }}</div>
-                <div class="m-desc" v-if="routeMeta?.desc">{{ routeMeta.desc }}</div>
+                <div class="c-header__title" v-if="routeMeta?.title">{{ routeMeta.title }}</div>
+                <div class="c-header__desc" v-if="routeMeta?.desc">{{ routeMeta.desc }}</div>
             </div>
             <div class="c-header-right">
-                <div class="m-profile">
-                    <lang-select @change="onLangChange" :lang="lang"></lang-select>
-                    <span class="u-name">{{ profile.name }}</span>
-                    <el-dropdown trigger="click">
-                        <el-avatar class="u-avatar" :src="avatar" shape="square"></el-avatar>
-                        <template #dropdown>
-                            <el-dropdown-menu>
-                                <el-dropdown-item @click.stop="logout">
-                                    {{ $t("account.logout") }}
-                                </el-dropdown-item>
-                            </el-dropdown-menu>
-                        </template>
-                    </el-dropdown>
-                </div>
+                <lang-select class="c-header__lang" @change="onLangChange" :lang="lang"></lang-select>
+                <el-dropdown trigger="click">
+                    <div class="c-header__profile">
+                        <span class="u-name">{{ profile.name }}</span>
+                        <!-- <el-avatar class="u-avatar" :src="avatar" shape="square"></el-avatar> -->
+                    </div>
+                    <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item @click.stop="logout">
+                                {{ $t("account.logout") }}
+                            </el-dropdown-item>
+                        </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
             </div>
         </div>
     </div>
