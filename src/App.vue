@@ -18,7 +18,7 @@ export default {
         if (User.isLogin()) {
             this.$store.dispatch("getProfile").then((res) => {
                 if (User.getLocale() !== res.lang) {
-                    User.setLocale(res.lang);
+                    User.setLocale(res.lang || "zh-CN");
                     location.reload();
                 }
             });
