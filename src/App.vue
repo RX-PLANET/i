@@ -17,8 +17,11 @@ export default {
     mounted: function () {
         if (User.isLogin()) {
             this.$store.dispatch("getProfile").then((res) => {
-                if (User.getLocale() !== res.lang) {
-                    User.setLocale(res.lang || "zh-CN");
+                if (res.lang && User.getLocale() !== res.lang) {
+                    User.setLocale(res.lang);
+                    location.reload();
+                } else if (!res.lang && User.getLocale() !== "zh-CN") {
+                    User.setLocale("zh-CN");
                     location.reload();
                 }
             });
