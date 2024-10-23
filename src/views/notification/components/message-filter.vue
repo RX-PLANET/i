@@ -8,7 +8,7 @@
                 :key="item.value"
                 @click="appChange(item.value)"
             >
-                <img class="u-img" :src="getAppIcon(item.key)" />
+                <img class="u-img" :src="getAppIcon(item.key)" v-svg-inline />
                 <b>{{ item.label }}</b>
             </div>
         </div>
