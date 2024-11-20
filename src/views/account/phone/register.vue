@@ -6,17 +6,20 @@
                 <register :app="app" :loginLink="loginLink" />
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 import register from "@iruxu/pkg-widget/src/components/account/phone/register.vue";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountPhoneRegister",
     components: {
         register,
         Logo,
+        Footer,
     },
     data() {
         return {

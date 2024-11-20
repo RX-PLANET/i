@@ -1,5 +1,5 @@
 {
-    "title": "Title",
-    "keys": "",
-    "desc": ""
+    "title": "用户中心 - UserCenter",
+    "keys": "登录,注册,个人中心",
+    "desc": "UserCenter,contain login,register,personal center,.etc"
 }

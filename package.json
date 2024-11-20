@@ -1,15 +1,15 @@
 {
-    "name": "project",
+    "name": "i",
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve --mode serve",
-        "preview": "cross-env DEV_SERVER=true vue-cli-service serve --mode preview",
-        "dev": "cross-env DEV_SERVER=true vue-cli-service serve",
-        "debug": "cross-env DEV_SERVER=true vue-cli-service serve --mode staging",
-        "build": "vue-cli-service build",
-        "build-preview": "vue-cli-service build --mode preview",
+        "dev": "vue-cli-service serve --mode development",
+        "preview": "vue-cli-service serve --mode preview",
+        "serve": "vue-cli-service serve --mode production",
+        "debug": "vue-cli-service serve --mode staging",
         "build-dev": "vue-cli-service build --mode development",
+        "build-preview": "vue-cli-service build --mode preview",
+        "build": "vue-cli-service build --mode production",
         "lint": "vue-cli-service lint",
         "prepare": "husky install",
         "update": "npm install @iruxu/pkg-widget@latest @iruxu/pkg-common@latest --registry=https://registry.npmjs.org"

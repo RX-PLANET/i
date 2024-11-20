@@ -6,17 +6,20 @@
                 <login :app="app" :registerLink="registerLink" :resetPwdLink="resetPwdLink"></login>
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 import login from "@iruxu/pkg-widget/src/components/account/phone/code-login.vue";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountCodePhoneLogin",
     components: {
         login,
         Logo,
+        Footer,
     },
     data() {
         return {

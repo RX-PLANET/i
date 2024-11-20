@@ -112,6 +112,7 @@
                 </div>
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
@@ -119,11 +120,13 @@
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import { checkEmail, findPassword, resetPassword } from "@/service/account";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "ResetPassword",
     components: {
         CardHeader,
         Logo,
+        Footer,
     },
     data() {
         return {

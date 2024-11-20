@@ -6,17 +6,20 @@
                 <resetPassword :app="app" :loginLink="loginLink" />
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 import resetPassword from "@/components/account/phone/reset-password.vue";
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountPhoneResetPassword",
     components: {
         resetPassword,
         Logo,
+        Footer,
     },
     data() {
         return {

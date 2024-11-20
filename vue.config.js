@@ -24,7 +24,7 @@ module.exports = {
             //     target: process.env["DEV_SERVER"] == "true" ? "localhost" : "remote",
             // },
         },
-        port: 21009,
+        port: 20008,
     },
 
     //❤️ define path for static files ~

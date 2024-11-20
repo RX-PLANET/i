@@ -12,16 +12,19 @@
                 </el-alert>
             </main>
         </el-card>
+        <Footer />
     </div>
 </template>
 
 <script>
 import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import { activeByEmail } from "@/service/account";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountEmailActive",
     components: {
         CardHeader,
+        Footer,
     },
     data() {
         return {
