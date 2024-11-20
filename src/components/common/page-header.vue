@@ -27,7 +27,7 @@
 
 <script>
 import User from "@iruxu/pkg-common/utils/user";
-import { logout, updateProfile } from "@/service/account";
+import { logout, updateUserInfo } from "@/service/account";
 import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
 export default {
     name: "PageHeader",
@@ -63,7 +63,7 @@ export default {
             });
         },
         onLangChange(lang) {
-            updateProfile({ lang }, { app: this.app }).then(() => {
+            updateUserInfo({ lang }, { app: this.app }).then(() => {
                 // User.setLocale(lang);
                 // this.$i18n.locale = lang;
                 location.reload();

@@ -1,11 +1,34 @@
 import { $uc } from "@iruxu/pkg-common/utils/api.js";
 
+// ============ 基础信息 ============
 /**
  * 获取用户信息
  * @returns {Promise}
  */
 export function getUserInfo() {
     return $uc().get("/api/uc/user/account/i");
+}
+
+/**
+ * 更新用户信息
+ * @param {Object} data 用户信息
+ * @param {String} data.lang 语言
+ * @param {Object} params
+ * @param {String} params.app 应用标识
+ * @returns
+ */
+export function updateUserInfo(data, params) {
+    return $uc().put("/api/uc/user/account/i", data, {
+        params,
+    });
+}
+
+/**
+ * 登出
+ * @returns
+ */
+export function logout() {
+    return $uc().post("/api/uc/user/account/logout");
 }
 
 // ============ 邮箱相关 ============
@@ -242,28 +265,6 @@ export function registerByUsername(data, params) {
  */
 export function loginByUsername(data, params) {
     return $uc({ mute: true }).post("/api/uc/user/account/username/login", data, {
-        params,
-    });
-}
-
-/**
- * 登出
- * @returns
- */
-export function logout() {
-    return $uc().post("/api/uc/user/account/logout");
-}
-
-/**
- * 更新用户信息
- * @param {Object} data 用户信息
- * @param {String} data.lang 语言
- * @param {Object} params
- * @param {String} params.app 应用标识
- * @returns
- */
-export function updateProfile(data, params) {
-    return $uc().put("/api/uc/user/account/profile", data, {
         params,
     });
 }
