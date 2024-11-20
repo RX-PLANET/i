@@ -1,8 +1,8 @@
 name: Build Dev
 on:
     push:
-        tags:
-            - "v*.*.*-dev"
+        branches:
+            - dev
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest

@@ -1,4 +1,4 @@
-name: Preview Master
+name: Build Production
 on:
     push:
         tags:
