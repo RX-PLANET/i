@@ -7,7 +7,7 @@
                 <el-alert v-if="!success" :title="title" type="error" show-icon :closable="false" center> </el-alert>
                 <el-alert v-else type="success" show-icon :closable="false">
                     <template #title
-                        >验证成功，<a :href="loginLink">{{ $t("account.login") }}</a></template
+                        >验证成功，<a :href="loginLink">{{ $t("account.common.login") }}</a></template
                     >
                 </el-alert>
             </main>
@@ -17,13 +17,11 @@
 </template>
 
 <script>
-import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import { activeByEmail } from "@/service/account";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountEmailActive",
     components: {
-        CardHeader,
         Footer,
     },
     data() {

@@ -37,6 +37,16 @@ app.use(VueSvgInlinePlugin, {
     },
 });
 
+// global components
+import cardHeader from "./components/common/card-header.vue";
+app.component("card-header", cardHeader);
+import Logo from "./components/common/logo.vue";
+app.component("logo", Logo);
+import langSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
+app.component("lang-select", langSelect);
+import phoneCodeSelect from "@iruxu/pkg-widget/src/components/common/phone-code-select.vue";
+app.component("phone-code-select", phoneCodeSelect);
+
 import { i18n } from "@/locale";
 app.use(i18n);
 

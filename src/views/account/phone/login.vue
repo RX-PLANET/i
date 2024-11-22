@@ -11,14 +11,12 @@
 </template>
 
 <script>
-import login from "@iruxu/pkg-widget/src/components/account/phone/login.vue";
-import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import login from "@/components/account/phone/login.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountPhoneLogin",
     components: {
         login,
-        Logo,
         Footer,
     },
     data() {

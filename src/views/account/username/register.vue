@@ -10,13 +10,12 @@
 </template>
 
 <script>
-import Register from "@iruxu/pkg-widget/src/components/account/username/register.vue";
-import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import Register from "@/components/account/username/register.vue";
+
 export default {
     name: "AccountUsernameRegister",
     components: {
         Register,
-        Logo,
     },
     data() {
         return {

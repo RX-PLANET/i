@@ -17,7 +17,7 @@
                         ></span>
                     </div>
                     <div class="u-bind-tips">{{ $t("account.accountBind") }}</div>
-                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.editBind") }}</el-button>
+                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.common.editBind") }}</el-button>
                 </template>
                 <div class="m-login-card m-card-main" v-if="!profile.phone || isEdit">
                     <el-form
@@ -73,7 +73,7 @@
                     >
 
                     <a class="u-back" @click="onCancelEdit" v-if="isEdit"
-                        ><el-icon><ArrowLeftBold /></el-icon>{{ $t("account.back") }}</a
+                        ><el-icon><ArrowLeftBold /></el-icon>{{ $t("account.common.back") }}</a
                     >
                 </div>
             </div>
@@ -82,14 +82,12 @@
 </template>
 
 <script>
-import phoneCodeSelect from "@iruxu/pkg-widget/src/components/common/phone-code-select.vue";
 import { sendBindCode, checkPhoneCode, bindPhoneCode } from "@/service/account";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import pageHeader from "@/components/common/page-header.vue";
 export default {
     name: "dashboard-bind-phone",
     components: {
-        phoneCodeSelect,
         pageHeader,
     },
     props: {
@@ -107,7 +105,7 @@ export default {
             phoneCode: 86,
             rules: {
                 phone: [
-                    { required: true, message: this.$t("notification.phone.numberPlaceholder"), trigger: "change" },
+                    { required: true, message: this.$t("notification.phone.numberPlaceholder"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             const phone = `+${this.phoneCode}${value}`;
@@ -126,10 +124,10 @@ export default {
                                 callback();
                             }
                         },
-                        trigger: "change",
+                        trigger: "blur",
                     },
                 ],
-                code: [{ required: true, message: this.$t("notification.phone.codePlaceholder"), trigger: "change" }],
+                code: [{ required: true, message: this.$t("notification.phone.codePlaceholder"), trigger: "blur" }],
             },
 
             interval: 0,
@@ -169,7 +167,7 @@ export default {
                         .then(() => {
                             bindPhoneCode(params, { app: this.app })
                                 .then(() => {
-                                    this.$message.success(this.$t("account.bindSuccess"));
+                                    this.$message.success(this.$t("account.common.bindSuccess"));
 
                                     this.$store.dispatch("getProfile");
                                 })

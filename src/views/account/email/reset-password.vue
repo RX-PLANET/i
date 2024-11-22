@@ -30,8 +30,11 @@
                                         placeholder="yourname@example.com"
                                     >
                                     </el-input>
-                                    <el-button v-if="sent" class="u-btn" type="primary" plain @click="onResetPassword"
-                                        >{{ $t("account.email.resend") }} (<span>{{ interval }}s</span>)</el-button
+                                    <el-button v-if="sent" class="u-btn" type="primary" plain @click="resetPwd"
+                                        >{{ $t("account.email.resend") }}
+                                        <template v-if="interval"
+                                            >(<span>{{ interval }}s</span>)
+                                        </template></el-button
                                     >
                                 </div>
                             </el-form-item>
@@ -100,14 +103,16 @@
                         >
                         </el-alert>
                         <a class="u-skip el-button u-btn el-button--primary" :href="loginLink">{{
-                            $t("account.login")
+                            $t("account.common.login")
                         }}</a>
                     </main>
                 </div>
 
                 <div class="m-footer">
                     <div class="m-footer-skip">
-                        <a class="u-link" :href="loginLink">← {{ $t("account.back") + $t("account.login") }}</a>
+                        <a class="u-link" :href="loginLink"
+                            >← {{ $t("account.common.back") + $t("account.common.login") }}</a
+                        >
                     </div>
                 </div>
             </div>
@@ -117,15 +122,11 @@
 </template>
 
 <script>
-import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
 import { checkEmail, findPassword, resetPassword } from "@/service/account";
-import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "ResetPassword",
     components: {
-        CardHeader,
-        Logo,
         Footer,
     },
     data() {
@@ -137,7 +138,7 @@ export default {
             rules: {
                 email: [
                     { required: true, message: this.$t("account.email.addressPlaceholder"), trigger: "blur" },
-                    { type: "email", message: this.$t("account.email.addressError"), trigger: ["blur", "change"] },
+                    { type: "email", message: this.$t("account.email.addressError"), trigger: "blur" },
                     { validator: this.check, trigger: "blur" },
                 ],
                 code: [
@@ -147,16 +148,16 @@ export default {
                 ],
                 // password1和password2必须相同，且均在6-30位之间
                 password1: [
-                    { required: true, message: this.$t("common.passwordPlaceholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.common.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.common.passwordError"), trigger: "blur" },
                 ],
                 password2: [
-                    { required: true, message: this.$t("common.password2Placeholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("common.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.common.password2Placeholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.common.passwordError"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             if (value !== this.form.password1) {
-                                callback(new Error(this.$t("common.passwordError2")));
+                                callback(new Error(this.$t("account.common.passwordError2")));
                             } else {
                                 callback();
                             }

@@ -7,7 +7,7 @@
 <script>
 const DEFAULT_APP = "iruxu";
 export default {
-    name: "CardHeader",
+    name: "Logo",
     props: {
         app: {
             type: String,

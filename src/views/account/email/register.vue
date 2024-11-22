@@ -11,14 +11,13 @@
 </template>
 
 <script>
-import register from "@iruxu/pkg-widget/src/components/account/email/register.vue";
-import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
+import register from "@/components/account/email/register.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountEmailRegister",
     components: {
         register,
-        Logo,
+
         Footer,
     },
     data() {

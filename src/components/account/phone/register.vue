@@ -1,6 +1,6 @@
 <template>
     <div class="m-card m-register-card">
-        <card-header :title="$t('account.phone.resetPassword')">
+        <card-header :title="$t('account.common.register')">
             <template #right>
                 <lang-select :lang="form.lang" @change="changeLang" />
             </template>
@@ -60,17 +60,23 @@
                     <el-input v-model.trim="form.password1" type="password" size="large" show-password> </el-input>
                 </el-form-item>
             </el-form>
-            <el-button class="u-btn u-submit u-reset-submit" type="primary" @click="onResetPassword">{{
-                $t("account.phone.resetPassword")
+            <div class="u-terms">
+                <el-checkbox v-model="agreement" class="u-checkbox"
+                    >{{ $t("account.common.read") }}
+                    <a :href="terms" target="_blank">《{{ $t("account.common.terms") }}》 </a>
+                </el-checkbox>
+            </div>
+            <el-button class="u-btn u-submit" type="primary" :disabled="!canSubmit" @click="onRegister">{{
+                $t("account.common.register")
             }}</el-button>
         </div>
 
         <main class="m-card-main" v-if="success == true">
             <el-alert
                 class="m-alert"
-                :title="$t('account.phone.resetSuccess')"
+                :title="$t('account.phone.registerSuccess')"
                 type="success"
-                :description="$t('account.phone.resetSuccessDesc')"
+                :description="$t('account.phone.registerSuccessDesc')"
                 show-icon
                 :closable="false"
             >
@@ -79,21 +85,37 @@
                 $t("account.common.login")
             }}</el-button>
         </main>
+
+        <main class="m-card-main" v-if="success == false">
+            <el-alert
+                class="m-alert"
+                :title="$t('account.phone.registerFailed')"
+                type="error"
+                :description="$t('account.phone.registerFailedDesc')"
+                show-icon
+                :closable="false"
+            >
+            </el-alert>
+            <el-button size="large" class="u-btn u-back" type="primary" @click="onBack">{{
+                $t("account.common.back")
+            }}</el-button>
+        </main>
     </div>
     <div class="m-footer">
         <div class="m-footer-skip">
-            <a class="u-link" :href="loginLink">← {{ $t("account.common.back") + $t("account.common.login") }}</a>
+            {{ $t("account.common.hadAccount") }}
+            <a class="u-link" :href="loginLink">{{ $t("account.common.login") }} &raquo;</a>
         </div>
     </div>
 </template>
 
 <script>
-import { checkPhoneCode, sendCode, resetPasswordByPhone } from "@/service/account";
+import { checkPhone, registerByPhone, checkPhoneCode, activeByPhone } from "@/service/phone";
 import User from "@iruxu/pkg-common/utils/user";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export default {
-    name: "PhoneResetPassword",
+    name: "PhoneRegister",
     props: {
         app: {
             type: String,
@@ -123,7 +145,11 @@ export default {
                         validator: (rule, value, callback) => {
                             const phone = `+${this.phoneCode}${value}`;
                             const phoneNumber = parsePhoneNumberFromString(phone);
-                            if (!phoneNumber || !phoneNumber.isValid()) {
+                            if (!phoneNumber) {
+                                this.phoneChecked = false;
+                                callback(new Error(this.$t("account.phone.numberPlaceholder")));
+                            }
+                            if (!phoneNumber.isValid()) {
                                 callback(new Error(this.$t("account.phone.numberError")));
                             } else {
                                 this.phoneChecked = true;
@@ -132,6 +158,7 @@ export default {
                         },
                         trigger: "blur",
                     },
+                    { validator: this.check, trigger: "blur" },
                 ],
                 password: [
                     { required: true, message: this.$t("account.common.passwordPlaceholder"), trigger: "blur" },
@@ -153,6 +180,8 @@ export default {
                 ],
             },
 
+            agreement: false,
+
             success: null,
             phoneChecked: false,
 
@@ -162,6 +191,11 @@ export default {
             timer: null,
         };
     },
+    computed: {
+        canSubmit() {
+            return this.phoneChecked && this.agreement && this.form.password && this.form.code;
+        },
+    },
     mounted() {
         // 生成特征码
         User.generateFingerprint();
@@ -170,13 +204,29 @@ export default {
         this.form.lang = User.getLocale();
     },
     methods: {
+        async check(rule, value, callback) {
+            if (!value) {
+                this.phoneChecked = false;
+                callback(new Error(this.$t("account.phone.numberPlaceholder")));
+            } else {
+                const phone = `+${this.phoneCode}${value}`;
+                const res = await checkPhone(phone);
+                if (res) {
+                    this;
+                    callback(new Error(this.$t("account.phone.numberError")));
+                    return;
+                }
+                this.phoneChecked = true;
+                callback();
+            }
+        },
         // 发送验证码
         senCode() {
             if (!this.form.phone) {
                 return;
             }
             const phone = `+${this.phoneCode}${this.form.phone}`;
-            sendCode({ phone: phone }, { app: this.app }).then(() => {
+            registerByPhone({ phone: phone }, { app: this.app }).then(() => {
                 this.$message.success(this.$t("account.phone.sendSuccess"));
                 this.interval = 60;
                 this.timer = setInterval(() => {
@@ -187,18 +237,19 @@ export default {
                 }, 1000);
             });
         },
-        onResetPassword() {
+        onRegister() {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
                     // 检测验证码
                     const phone = `+${this.phoneCode}${this.form.phone}`;
                     checkPhoneCode({ phone, code: this.form.code }).then(() => {
                         const data = {
+                            lang: this.form.lang,
                             phone: phone,
                             password: this.form.password,
                             code: this.form.code,
                         };
-                        resetPasswordByPhone(data, { app: this.app })
+                        activeByPhone(data, { app: this.app })
                             .then(() => {
                                 this.success = true;
                             })
@@ -221,5 +272,3 @@ export default {
     },
 };
 </script>
-
-<style lang=""></style>

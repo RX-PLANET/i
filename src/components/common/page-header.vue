@@ -28,12 +28,8 @@
 <script>
 import User from "@iruxu/pkg-common/utils/user";
 import { logout, updateUserInfo } from "@/service/account";
-import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
 export default {
     name: "PageHeader",
-    components: {
-        LangSelect,
-    },
     data: function () {
         return {};
     },

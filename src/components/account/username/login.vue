@@ -1,10 +1,10 @@
 <!-- 公共组件 用户名注册 -->
 <template>
     <el-card class="m-card">
-        <card-header></card-header>
+        <card-header :title="$t('account.common.login')"></card-header>
         <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
             <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" :placeholder="$t('username.name')">
+                <el-input v-model.trim="form.username" size="large" :placeholder="$t('account.username.name')">
                     <template #prepend
                         ><el-icon><UserFilled></UserFilled></el-icon
                     ></template>
@@ -17,7 +17,7 @@
                     type="password"
                     size="large"
                     show-password
-                    :placeholder="$t('account.password')"
+                    :placeholder="$t('account.common.password')"
                 >
                     <template #prepend
                         ><el-icon><Lock></Lock></el-icon
@@ -27,21 +27,22 @@
             <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
             <el-form-item>
                 <el-button class="u-button u-submit" type="primary" @click="onLogin" :disabled="!canSubmit">{{
-                    $t("account.login")
+                    $t("account.common.login")
                 }}</el-button>
             </el-form-item>
             <el-form-item class="m-footer">
                 <p class="u-login">
-                    {{ $t("account.noAccount") }} <a :href="registerLink">{{ $t("account.registerNow") }} &raquo;</a>
+                    {{ $t("account.common.noAccount") }}
+                    <a :href="registerLink">{{ $t("account.common.registerNow") }} &raquo;</a>
                 </p>
             </el-form-item>
         </el-form>
 
         <main v-else class="m-card-main">
             <el-alert
-                :title="$t('account.loginSuccess')"
+                :title="$t('account.common.loginSuccess')"
                 type="success"
-                :description="`${$t('account.loginSuccess')}(#^.^#)`"
+                :description="`${$t('account.common.loginSuccess')}(#^.^#)`"
                 show-icon
                 :closable="false"
             >
@@ -52,14 +53,10 @@
 </template>
 
 <script>
-import { loginByUsername } from "@/service/account";
-import CardHeader from "@iruxu/pkg-widget/src/components/common/card-header.vue";
+import { loginByUsername } from "@/service/username";
 import User from "@iruxu/pkg-common/utils/user";
 export default {
     name: "UsernameLogin",
-    components: {
-        CardHeader,
-    },
     props: {
         app: {
             type: String,
@@ -75,12 +72,12 @@ export default {
 
             rules: {
                 username: [
-                    { required: true, message: this.$t("username.namePlaceholder"), trigger: "blur" },
-                    { min: 3, max: 20, message: this.$t("username.nameError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.username.namePlaceholder"), trigger: "blur" },
+                    { min: 3, max: 20, message: this.$t("account.username.nameError"), trigger: "blur" },
                 ],
                 password: [
-                    { required: true, message: this.$t("account.passwordPlaceholder"), trigger: "blur" },
-                    { min: 6, max: 30, message: this.$t("account.passwordError"), trigger: "blur" },
+                    { required: true, message: this.$t("account.common.passwordPlaceholder"), trigger: "blur" },
+                    { min: 6, max: 30, message: this.$t("account.common.passwordError"), trigger: "blur" },
                 ],
             },
 
@@ -113,7 +110,7 @@ export default {
                 if (valid) {
                     loginByUsername(this.form, { app: this.app })
                         .then((res) => {
-                            this.$message.success(this.$t("account.loginSuccess"));
+                            this.$message.success(this.$t("account.common.loginSuccess"));
                             this.success = true;
 
                             User.update(res.data.data).then(() => {
@@ -122,7 +119,7 @@ export default {
                         })
                         .catch((err) => {
                             this.success = false;
-                            this.error = err.data?.msg || this.$t("username.loginFailed");
+                            this.error = err.data?.msg || this.$t("account.username.loginFailed");
                         });
                 }
             });
@@ -132,10 +129,10 @@ export default {
             let redirect = search.get("redirect");
             if (redirect) {
                 this.redirect = redirect;
-                this.redirect_button = "即将跳转";
+                this.redirect_button = this.$t("account.common.jump");
             } else {
                 this.redirect = this.homepage;
-                this.redirect_button = "返回首页";
+                this.redirect_button = this.$t("account.common.backToHome");
             }
         },
         skip() {

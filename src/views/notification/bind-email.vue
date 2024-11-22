@@ -17,7 +17,7 @@
                         ></span>
                     </div>
                     <div class="u-bind-tips">{{ $t("account.accountBind") }}</div>
-                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.editBind") }}</el-button>
+                    <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.common.editBind") }}</el-button>
                 </template>
                 <div class="m-login-card m-card-main" v-if="!profile.email || isEdit">
                     <el-form
@@ -70,7 +70,7 @@
                     >
 
                     <a class="u-back" @click="onCancelEdit" v-if="isEdit"
-                        ><el-icon><ArrowLeftBold /></el-icon>{{ $t("account.back") }}</a
+                        ><el-icon><ArrowLeftBold /></el-icon>{{ $t("account.common.back") }}</a
                     >
                 </div>
             </div>
@@ -100,7 +100,7 @@ export default {
             },
             rules: {
                 email: [
-                    { required: true, message: this.$t("notification.email.addressPlaceholder"), trigger: "change" },
+                    { required: true, message: this.$t("notification.email.addressPlaceholder"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             if (value === this.profile.email) {
@@ -109,11 +109,11 @@ export default {
                                 callback();
                             }
                         },
-                        trigger: "change",
+                        trigger: "blur",
                     },
-                    { type: "email", message: this.$t("notification.email.addressError"), trigger: "change" },
+                    { type: "email", message: this.$t("notification.email.addressError"), trigger: "blur" },
                 ],
-                code: [{ required: true, message: this.$t("notification.phone.codePlaceholder"), trigger: "change" }],
+                code: [{ required: true, message: this.$t("notification.phone.codePlaceholder"), trigger: "blur" }],
             },
 
             interval: 0,
@@ -147,7 +147,7 @@ export default {
                     this.loading = true;
                     verifyEmail({ code: this.form.code }, { app: this.app })
                         .then(() => {
-                            this.$message.success(this.$t("account.bindSuccess"));
+                            this.$message.success(this.$t("account.common.bindSuccess"));
 
                             this.$store.dispatch("getProfile");
                         })
