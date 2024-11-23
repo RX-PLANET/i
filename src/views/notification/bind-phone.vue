@@ -203,11 +203,5 @@ export default {
             .none !important;
         }
     }
-    .is-required {
-        color: @primary-danger;
-        font-style: normal;
-        padding: 0 5px;
-        font-style: normal;
-    }
 }
 </style>
