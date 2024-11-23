@@ -16,7 +16,7 @@
                             ><el-icon><CircleCheckFilled /></el-icon
                         ></span>
                     </div>
-                    <div class="u-bind-tips">{{ $t("account.accountBind") }}</div>
+                    <div class="u-bind-tips">{{ $t("account.common.accountBind") }}</div>
                     <el-button class="u-edit-btn" @click="onEditBind">{{ $t("account.common.editBind") }}</el-button>
                 </template>
                 <div class="m-login-card m-card-main" v-if="!profile.phone || isEdit">

@@ -15,7 +15,7 @@
                     <template #dropdown>
                         <el-dropdown-menu>
                             <el-dropdown-item @click.stop="logout">
-                                {{ $t("account.logout") }}
+                                {{ $t("account.common.logout") }}
                             </el-dropdown-item>
                         </el-dropdown-menu>
                     </template>
