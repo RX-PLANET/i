@@ -172,13 +172,4 @@ export default {
 @import "~@/assets/css/account/common.less";
 @import "~@/assets/css/account/email/login.less";
 @import "~@/assets/css/notification/bind/bind.less";
-
-.p-bind-email {
-    .is-required {
-        color: @primary-danger;
-        font-style: normal;
-        padding: 0 5px;
-        font-style: normal;
-    }
-}
 </style>
