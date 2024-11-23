@@ -5,6 +5,7 @@ import {
     // createWebHashHistory,
 } from "vue-router";
 import { filter, flatten } from "lodash";
+import User from "@iruxu/pkg-common/utils/user.js";
 
 // 2.Routes
 const files = require.context("./", true, /\.js$/);
@@ -20,6 +21,11 @@ export const constantRoutes = [
         name: "index",
         path: "/",
         redirect: "/dashboard",
+        beforeEnter: () => {
+            if (User.isLogin()) {
+                return "/dashboard";
+            }
+        },
     },
     ...flatten(
         filter(routesModules, (module) => {

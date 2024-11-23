@@ -50,6 +50,9 @@ export default {
         routeName() {
             return this.$route.name;
         },
+        activeMenu() {
+            return this.$route.meta?.activeMenu;
+        },
     },
     watch: {
         routeName: {
@@ -91,7 +94,7 @@ export default {
         },
         // 判断是否激活, 用于高亮,子激活父也激活
         isActive(routeName) {
-            return this.active === routeName;
+            return this.active === routeName || this.activeMenu === routeName;
         },
         isParentActive(children) {
             return children.some((child) => child.routeName === this.active);

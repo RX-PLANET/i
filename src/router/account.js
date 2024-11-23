@@ -11,6 +11,7 @@ const PhoneResetPassword = () => import("@/views/account/phone/reset-password.vu
 
 const UsernameLogin = () => import("../views/account/username/login.vue");
 const UsernameRegister = () => import("../views/account/username/register.vue");
+import User from "@iruxu/pkg-common/utils/user.js";
 
 import { i18n } from "@/locale";
 
@@ -35,6 +36,11 @@ export default [
                 path: "email/login",
                 name: "email-login",
                 component: EmailLogin,
+                beforeEnter: () => {
+                    if (User.isLogin()) {
+                        return "/dashboard";
+                    }
+                },
                 meta: {
                     title: t("common.routes.emailLogin"),
                 },
@@ -60,6 +66,11 @@ export default [
                 path: "phone/login",
                 name: "phone-login",
                 component: PhoneLogin,
+                beforeEnter: () => {
+                    if (User.isLogin()) {
+                        return "/dashboard";
+                    }
+                },
                 meta: {
                     title: t("common.routes.phoneLogin"),
                 },
@@ -85,6 +96,11 @@ export default [
                 path: "username/login",
                 name: "username-login",
                 component: UsernameLogin,
+                beforeEnter: () => {
+                    if (User.isLogin()) {
+                        return "/dashboard";
+                    }
+                },
                 meta: {
                     title: t("common.routes.usernameLogin"),
                 },

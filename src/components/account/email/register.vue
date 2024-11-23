@@ -154,7 +154,7 @@ export default {
             rules: {
                 email: [
                     { required: true, message: this.$t("account.email.addressPlaceholder"), trigger: "blur" },
-                    { type: "email", message: this.$t("account.email.addressError"), trigger: ["blur"] },
+                    { type: "email", message: this.$t("account.email.addressError"), trigger: "blur" },
                     { validator: this.check, trigger: "blur" },
                 ],
                 password: [
@@ -213,16 +213,6 @@ export default {
                     return;
                 }
                 this.emailChecked = true;
-                callback();
-            }
-        },
-        checkNickname(rule, value, callback) {
-            // 不允许有空格和特殊符号
-            if (!value) {
-                callback(new Error(this.$t("account.email.nicknamePlaceholder")));
-            } else if (!/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/.test(value)) {
-                callback(new Error(this.$t("account.email.nicknameError")));
-            } else {
                 callback();
             }
         },

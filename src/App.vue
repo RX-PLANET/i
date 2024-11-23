@@ -20,8 +20,8 @@ export default {
                 if (res.lang && User.getLocale() !== res.lang) {
                     User.setLocale(res.lang);
                     location.reload();
-                } else if (!res.lang && User.getLocale() !== "zh-CN") {
-                    User.setLocale("zh-CN");
+                } else if (!res.lang && User.getLocale() !== "en-US") {
+                    User.setLocale("en-US");
                     location.reload();
                 }
             });

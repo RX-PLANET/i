@@ -34,7 +34,7 @@ export default [
                 meta: {
                     title: t("common.routes.messageTitle"),
                     desc: t("common.routes.messageDesc"),
-                    activeMenu: "/dashboard/notification/message",
+                    activeMenu: "dashboard-notification-message",
                 },
             },
             {

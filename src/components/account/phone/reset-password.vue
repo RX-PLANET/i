@@ -39,7 +39,7 @@
                         class="u-btn-send"
                         size="small"
                         @click="senCode"
-                        :disabled="interval > 0 || !phoneChecked"
+                        :disabled="interval > 0 || !phoneChecked || !form.phone"
                         >{{ $t("account.phone.send") }}<span v-if="interval">({{ interval }}s)</span></el-button
                     >
                 </el-form-item>
@@ -60,9 +60,13 @@
                     <el-input v-model.trim="form.password1" type="password" size="large" show-password> </el-input>
                 </el-form-item>
             </el-form>
-            <el-button class="u-btn u-submit u-reset-submit" type="primary" @click="onResetPassword">{{
-                $t("account.phone.resetPassword")
-            }}</el-button>
+            <el-button
+                class="u-btn u-submit u-reset-submit"
+                type="primary"
+                :disabled="canReset"
+                @click="onResetPassword"
+                >{{ $t("account.phone.resetPassword") }}</el-button
+            >
         </div>
 
         <main class="m-card-main" v-if="success == true">
@@ -161,6 +165,13 @@ export default {
             interval: 0,
             timer: null,
         };
+    },
+    computed: {
+        canReset() {
+            return (
+                !this.form.phone || !this.form.code || !this.form.password || !this.form.password1 || !this.phoneChecked
+            );
+        },
     },
     mounted() {
         // 生成特征码

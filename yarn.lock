@@ -1079,10 +1079,10 @@
     "element-plus" "^2.8.4"
     "fingerprintjs2" "^2.1.4"
 
-"@iruxu/pkg-widget@^0.0.9":
-  "integrity" "sha512-8AtHyRvGBF0ootW2rA3mdHn6lCh4kOWQuBX/+cx+nmxaBPNcaoKNS3Ra8jvV5Ey0Jwjwas435yOKfMITkd5CwA=="
-  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.9.tgz"
-  "version" "0.0.9"
+"@iruxu/pkg-widget@^0.0.10":
+  "integrity" "sha512-9aDdebk4srsP8UdI7br3ciQk/hnfWG8RJucLLjeXlf7GIoOOruiuI4MeYwyV7MQ2FUhAFG0pYlU22sz2RtFmBA=="
+  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.10.tgz"
+  "version" "0.0.10"
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
     "@iruxu/pkg-common" "^0.0.4"
