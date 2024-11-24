@@ -9,7 +9,7 @@
                 <lang-select class="c-header__lang" @change="onLangChange" :lang="lang"></lang-select>
                 <el-dropdown trigger="click">
                     <div class="c-header__profile">
-                        <span class="u-name">{{ profile.name }}</span>
+                        <span class="u-name">{{ profile.username || profile.nickname }}</span>
                         <!-- <el-avatar class="u-avatar" :src="avatar" shape="square"></el-avatar> -->
                     </div>
                     <template #dropdown>
