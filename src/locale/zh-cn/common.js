@@ -29,6 +29,9 @@ export default {
 
         phoneTitle: "手机绑定",
         phoneDesc: "绑定您的手机以接收重要通知",
+
+        // Document
+        termsTitle: "服务条款",
     },
 
     // messagebox

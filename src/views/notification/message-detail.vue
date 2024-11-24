@@ -77,6 +77,13 @@
                     <div class="u-content" v-html="detail.content"></div>
                     <div class="u-meta">
                         <span class="u-meta-key">
+                            {{ $t("notification.message.table.remark") }}
+                        </span>
+                        <span class="u-meta-val u-misc">{{ detail.remark || "-" }}</span>
+                        <el-icon class="u-edit" @click="handleRemark"><EditPen></EditPen></el-icon>
+                    </div>
+                    <div class="u-meta">
+                        <span class="u-meta-key">
                             {{ $t("notification.message.meta.link") }}
                         </span>
                         <a class="u-meta-val u-link" v-if="detail.link" :href="detail.link" target="_blank"
@@ -100,7 +107,7 @@
 </template>
 
 <script>
-import { getMessages, delMessages, getMessage, readAllMessages } from "@/service/notification";
+import { getMessages, delMessages, getMessage, readAllMessages, updateMessage } from "@/service/notification";
 import pageHeader from "@/components/common/page-header.vue";
 import messageFilter from "./components/message-filter.vue";
 import { arr2map } from "@/utils/index";
@@ -231,6 +238,32 @@ export default {
                 this.ids = ids;
                 this.total = total;
             });
+        },
+
+        handleRemark() {
+            const { id, remark } = this.detail;
+            this.$prompt(this.$t("notification.message.table.remark_placeholder"), this.$t("common.messagebox.title"), {
+                confirmButtonText: this.$t("common.messagebox.confirm"),
+                cancelButtonText: this.$t("common.messagebox.cancel"),
+                inputValue: remark,
+            })
+                .then(({ value }) => {
+                    const data = {
+                        remark: value,
+                    };
+                    if (value === remark) {
+                        return;
+                    }
+                    updateMessage(id, data).then(() => {
+                        this.$notify({
+                            title: this.$t("common.messagebox.success"),
+                            type: "success",
+                            duration: 2000,
+                        });
+                        this.detail.remark = value;
+                    });
+                })
+                .catch(() => {});
         },
 
         handlePrevious() {

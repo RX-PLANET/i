@@ -29,6 +29,9 @@ export default {
 
         phoneTitle: "Phone Bind",
         phoneDesc: "Bind your phone to receive important notifications.",
+
+        // Document
+        termsTitle: "Terms of Service",
     },
 
     // messagebox
