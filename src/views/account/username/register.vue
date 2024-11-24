@@ -1,21 +1,23 @@
 <template>
-    <div class="p-account p-account-username__register">
+    <div class="p-account p-account-username--register">
         <el-row class="m-container" justify="center">
             <div class="m-register">
                 <logo :app="app" />
                 <register :app="app" :loginLink="loginLink" />
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 import Register from "@/components/account/username/register.vue";
-
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountUsernameRegister",
     components: {
         Register,
+        Footer,
     },
     data() {
         return {

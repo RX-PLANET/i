@@ -1,50 +1,87 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-card">
-        <card-header></card-header>
-        <el-form ref="registerForm" :model="form" :rules="rules" size="large" status-icon>
-            <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" :placeholder="$t('account.username.name')">
-                    <template #prepend
-                        ><el-icon><UserFilled></UserFilled></el-icon
-                    ></template>
-                </el-input>
-            </el-form-item>
-            <el-form-item prop="password" class="m-password">
-                <el-input
-                    v-model.trim="form.password"
-                    type="password"
-                    size="large"
-                    show-password
-                    :placeholder="$t('account.common.password')"
-                >
-                    <template #prepend
-                        ><el-icon><Lock></Lock></el-icon
-                    ></template>
-                </el-input>
-            </el-form-item>
-            <el-form-item class="u-terms">
+    <div class="m-card m-register-card">
+        <card-header :title="$t('account.common.register')">
+            <template #right>
+                <lang-select :lang="form.lang" @change="changeLang" />
+            </template>
+        </card-header>
+
+        <div class="m-card-main" v-if="success === null">
+            <el-form
+                class="m-card-form"
+                hide-required-asterisk
+                ref="registerForm"
+                :model="form"
+                :rules="rules"
+                size="large"
+                status-icon
+                label-position="top"
+            >
+                <el-form-item prop="username">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("account.username.name") }}<i class="is-required">*</i></span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.username" size="large"> </el-input>
+                </el-form-item>
+                <el-form-item prop="password" class="m-password">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("account.common.password") }}<i class="is-required">*</i></span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.password" type="password" size="large" show-password> </el-input>
+                </el-form-item>
+            </el-form>
+            <div class="u-terms">
                 <el-checkbox v-model="agreement" class="u-checkbox"
                     >{{ $t("account.common.read") }}
-                    <a v-for="(item, index) in agreements" :key="index" :href="item.href" target="_blank"
-                        >《{{ item.name }}》
-                        {{ index === agreements.length - 1 ? "" : "、" }}
-                    </a>
+                    <a :href="terms" target="_blank">《{{ $t("account.common.terms") }}》 </a>
                 </el-checkbox>
-            </el-form-item>
-            <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
-                    $t("account.common.register")
-                }}</el-button>
-            </el-form-item>
-            <el-form-item class="m-footer">
-                <p class="u-login">
-                    {{ $t("account.common.hadAccount") }}
-                    <a :href="loginLink">{{ $t("account.common.login") }} &raquo;</a>
-                </p>
-            </el-form-item>
-        </el-form>
-    </el-card>
+            </div>
+            <el-button class="u-button u-submit" type="primary" @click="onRegister" :disabled="!canSubmit">{{
+                $t("account.common.register")
+            }}</el-button>
+        </div>
+
+        <main class="m-card-main" v-if="success == true">
+            <el-alert
+                class="m-alert"
+                :title="$t('account.email.registerSuccess')"
+                type="success"
+                :description="$t('account.email.registerSuccessDesc')"
+                show-icon
+                :closable="false"
+            >
+            </el-alert>
+            <el-button size="large" class="u-btn u-back" type="primary" @click="goLogin">{{
+                $t("account.common.login")
+            }}</el-button>
+        </main>
+
+        <main class="m-card-main" v-if="success == false">
+            <el-alert
+                class="m-alert"
+                :title="$t('account.email.registerFailed')"
+                type="error"
+                :description="$t('account.email.registerFailedDesc')"
+                show-icon
+                :closable="false"
+            >
+            </el-alert>
+            <el-button size="large" class="u-btn u-back" type="primary" @click="onBack">{{
+                $t("account.common.back")
+            }}</el-button>
+        </main>
+    </div>
+    <div class="m-footer">
+        <div class="m-footer-skip">
+            {{ $t("account.common.hadAccount") }}
+            <a class="u-link" :href="loginLink">{{ $t("account.common.login") }} &raquo;</a>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -68,6 +105,7 @@ export default {
             form: {
                 username: "",
                 password: "",
+                lang: "",
             },
 
             rules: {
@@ -83,6 +121,10 @@ export default {
             },
 
             agreement: false,
+
+            success: null,
+
+            terms: "/doc/terms",
         };
     },
     computed: {
@@ -97,6 +139,9 @@ export default {
     async mounted() {
         // 生成特征码
         User.generateFingerprint();
+
+        // 获取浏览器语言|系统语言
+        this.form.lang = User.getLocale();
     },
     methods: {
         async check(rule, value, callback) {
@@ -120,12 +165,26 @@ export default {
         onRegister() {
             this.$refs.registerForm.validate(async (valid) => {
                 if (valid) {
-                    registerByUsername(this.form, { app: this.app }).then(() => {
-                        this.$message.success(this.$t("account.username.registerSuccess"));
-                        this.$router.push({ name: "username-login", query: { app: this.app } });
-                    });
+                    registerByUsername(this.form, { app: this.app })
+                        .then(() => {
+                            this.$message.success(this.$t("account.username.registerSuccess"));
+                            // this.$router.push({ name: "username-login", query: { app: this.app } });
+                            this.success = true;
+                        })
+                        .catch(() => {
+                            this.success = false;
+                        });
                 }
             });
+        },
+        changeLang(lang) {
+            this.form.lang = lang;
+        },
+        goLogin() {
+            location.href = this.loginLink;
+        },
+        onBack() {
+            this.success = null;
         },
     },
 };

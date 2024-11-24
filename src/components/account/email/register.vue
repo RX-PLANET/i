@@ -17,22 +17,6 @@
                 status-icon
                 label-position="top"
             >
-                <!-- <el-form-item prop="nickname">
-                    <template #label>
-                        <div class="m-card-form-label">
-                            <span>{{ $t("account.email.nickname") }}<i class="is-required">*</i></span>
-                        </div>
-                    </template>
-                    <el-input v-model.trim="form.nickname" size="large" :maxlength="20"> </el-input>
-                </el-form-item> -->
-                <!-- <el-form-item prop="invite_code">
-                    <template #label>
-                        <div class="m-card-form-label">
-                            <span>{{ $t("account.email.invite_code") }}</span>
-                        </div>
-                    </template>
-                    <el-input v-model.trim="form.invite_code" size="large"> </el-input>
-                </el-form-item> -->
                 <el-form-item prop="email">
                     <template #label>
                         <div class="m-card-form-label">

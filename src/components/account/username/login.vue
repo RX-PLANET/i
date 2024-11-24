@@ -1,55 +1,71 @@
 <!-- 公共组件 用户名注册 -->
 <template>
-    <el-card class="m-card">
-        <card-header :title="$t('account.common.login')"></card-header>
-        <el-form ref="loginForm" :model="form" :rules="rules" size="large" v-if="!success">
-            <el-form-item prop="username">
-                <el-input v-model.trim="form.username" size="large" :placeholder="$t('account.username.name')">
-                    <template #prepend
-                        ><el-icon><UserFilled></UserFilled></el-icon
-                    ></template>
-                </el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-                <el-input
-                    v-model.trim="form.password"
-                    @keydown.enter="onLogin"
-                    type="password"
-                    size="large"
-                    show-password
-                    :placeholder="$t('account.common.password')"
-                >
-                    <template #prepend
-                        ><el-icon><Lock></Lock></el-icon
-                    ></template>
-                </el-input>
-            </el-form-item>
-            <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
-            <el-form-item>
-                <el-button class="u-button u-submit" type="primary" @click="onLogin" :disabled="!canSubmit">{{
-                    $t("account.common.login")
-                }}</el-button>
-            </el-form-item>
-            <el-form-item class="m-footer">
-                <p class="u-login">
-                    {{ $t("account.common.noAccount") }}
-                    <a :href="registerLink">{{ $t("account.common.registerNow") }} &raquo;</a>
-                </p>
-            </el-form-item>
-        </el-form>
+    <div class="m-card m-login-card">
+        <card-header :title="$t('account.common.login')">
+            <template #right>
+                <lang-select :lang="lang" />
+            </template>
+        </card-header>
 
-        <main v-else class="m-card-main">
+        <div class="m-card-main" v-if="!success">
+            <el-form
+                ref="loginForm"
+                :model="form"
+                label-position="top"
+                :rules="rules"
+                size="large"
+                class="m-card-form"
+                hide-required-asterisk
+            >
+                <el-form-item prop="username">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("account.username.name") }}</span>
+                        </div>
+                    </template>
+                    <el-input v-model.trim="form.username" size="large"> </el-input>
+                </el-form-item>
+                <el-form-item prop="password">
+                    <template #label>
+                        <div class="m-card-form-label">
+                            <span>{{ $t("account.common.password") }}</span>
+                        </div>
+                    </template>
+                    <el-input
+                        v-model.trim="form.password"
+                        @keydown.enter="onLogin"
+                        type="password"
+                        size="large"
+                        show-password
+                    >
+                    </el-input>
+                </el-form-item>
+            </el-form>
+            <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
+            <el-button class="u-btn u-submit" type="primary" @click="onLogin" :disabled="!canSubmit">{{
+                $t("account.common.login")
+            }}</el-button>
+        </div>
+
+        <div v-else class="m-card-main">
             <el-alert
+                class="m-alert"
                 :title="$t('account.common.loginSuccess')"
                 type="success"
-                :description="`${$t('account.common.loginSuccess')}(#^.^#)`"
+                :description="$t('account.common.loginSuccessDesc')"
                 show-icon
                 :closable="false"
             >
             </el-alert>
-            <a class="u-skip el-button u-button el-button--primary" :href="redirect">{{ redirect_button }}</a>
-        </main>
-    </el-card>
+            <a class="u-skip el-button u-btn el-button--primary" :href="redirect">{{ redirect_button }}</a>
+        </div>
+    </div>
+    <div class="m-footer">
+        <div class="m-footer-skip">
+            {{ $t("account.common.noAccount") }}
+            <a class="u-link" :href="registerLink">{{ $t("account.common.registerNow") }} 👉</a>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -96,6 +112,9 @@ export default {
             const path = this.$router.resolve({ name: "username-register", query: { app: this.app } });
 
             return path.href;
+        },
+        lang() {
+            return User.getLocale();
         },
     },
     mounted() {

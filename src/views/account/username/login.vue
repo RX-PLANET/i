@@ -1,20 +1,23 @@
 <template>
-    <div class="p-account p-account-username__login">
+    <div class="p-account p-account-username--login">
         <el-row class="m-container" justify="center">
             <div class="m-login">
                 <logo :app="app" />
                 <login :app="app" :registerLink="registerLink"></login>
             </div>
         </el-row>
+        <Footer />
     </div>
 </template>
 
 <script>
 import login from "@/components/account/username/login.vue";
+import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountUsernameLogin",
     components: {
         login,
+        Footer,
     },
     data() {
         return {
@@ -41,5 +44,5 @@ export default {
 
 <style lang="less">
 @import "@/assets/css/account/common.less";
-@import "@/assets/css/account/username/login.less";
+@import "@/assets/css/account/email/login.less";
 </style>
