@@ -1059,23 +1059,13 @@
   "resolved" "https://registry.npmjs.org/@intlify/shared/-/shared-9.14.1.tgz"
   "version" "9.14.1"
 
-"@iruxu/rx-common@^0.0.4":
-  "integrity" "sha512-tjN0/3yegD1zYGyW0h1HNOO8h1e5+/TFWVEgS7zq/vIze6GVrJhFrQfEtvO8d+Dm/jenVT7xbtfFiWfXp3GXhQ=="
-  "resolved" "https://registry.npmjs.org/@iruxu/rx-common/-/pkg-common-0.0.4.tgz"
-  "version" "0.0.4"
-  dependencies:
-    "axios" "^1.7.7"
-    "dayjs" "^1.11.13"
-    "element-plus" "^2.8.4"
-    "fingerprintjs2" "^2.1.4"
-
-"@iruxu/pkg-widget@^0.0.10":
-  "integrity" "sha512-9aDdebk4srsP8UdI7br3ciQk/hnfWG8RJucLLjeXlf7GIoOOruiuI4MeYwyV7MQ2FUhAFG0pYlU22sz2RtFmBA=="
-  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.10.tgz"
-  "version" "0.0.10"
+"@iruxu/pkg-widget@^0.0.11":
+  "integrity" "sha512-n1Nmz0hcv4sYpIS4uwY71lDliU3TwrHpyWceZKjgap0mSyfB31uO6YqiJQ1+tPpw347jztj+fILIOktaOstPzw=="
+  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.11.tgz"
+  "version" "0.0.11"
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
-    "@iruxu/rx-common" "^0.0.4"
+    "@iruxu/rx-common" "^0.1.0"
     "csslab" "^4.0.4"
     "element-plus" "^2.8.4"
     "flag-icons" "^7.2.3"
@@ -1086,7 +1076,7 @@
 
 "@iruxu/rx-common@^0.1.0":
   "integrity" "sha512-ic9ZAy7E0ezREPlsigTGNYJ429cBF8w78eclxgERd8VHNOB9wjKKXjG0wh2hNoQruycchAwK0MJPy5qBImjacQ=="
-  "resolved" "https://registry.npmmirror.com/@iruxu/rx-common/-/rx-common-0.1.0.tgz"
+  "resolved" "https://registry.npmjs.org/@iruxu/rx-common/-/rx-common-0.1.0.tgz"
   "version" "0.1.0"
   dependencies:
     "axios" "^1.7.7"
