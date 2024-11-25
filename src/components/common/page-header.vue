@@ -6,7 +6,7 @@
                 <div class="c-header__desc" v-if="routeMeta?.desc">{{ routeMeta.desc }}</div>
             </div>
             <div class="c-header-right">
-                <lang-select class="c-header__lang" @change="onLangChange" :lang="lang"></lang-select>
+                <lang-select class="c-header__lang" selected="text" @change="onLangChange" :lang="lang"></lang-select>
                 <el-dropdown trigger="click">
                     <div class="c-header__profile">
                         <span class="u-name">{{ profile.username || profile.nickname }}</span>
@@ -38,7 +38,7 @@ export default {
             return this.$route.meta;
         },
         profile() {
-            return User.getInfo();
+            return this.$store.state.user;
         },
         avatar() {
             return (this.profile?.avatar && this.profile.avatar != "null") || require("@/assets/img/test.png");
