@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import resetPassword from "@/components/account/phone/reset-password.vue";
+import resetPassword from "@/views/account/phone/components/reset-password.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountPhoneResetPassword",

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import register from "@/components/account/phone/register.vue";
+import register from "@/views/account/phone/components/register.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountPhoneRegister",

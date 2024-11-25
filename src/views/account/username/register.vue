@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Register from "@/components/account/username/register.vue";
+import Register from "./components/register.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountUsernameRegister",

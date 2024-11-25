@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import login from "@/components/account/username/login.vue";
+import login from "./components/login.vue";
 import Footer from "@/components/account/common/footer.vue";
 export default {
     name: "AccountUsernameLogin",
