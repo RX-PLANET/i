@@ -112,7 +112,7 @@ export default {
                 username: [
                     { required: true, message: this.$t("account.username.namePlaceholder"), trigger: "blur" },
                     { validator: this.check, trigger: "blur" },
-                    { min: 3, max: 20, message: this.$t("account.username.nameError"), trigger: "blur" },
+                    { min: 3, max: 30, message: this.$t("account.username.nameError"), trigger: "blur" },
                 ],
                 password: [
                     { required: true, message: this.$t("account.common.passwordPlaceholder"), trigger: "blur" },

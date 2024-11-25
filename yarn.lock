@@ -1059,10 +1059,10 @@
   "resolved" "https://registry.npmjs.org/@intlify/shared/-/shared-9.14.1.tgz"
   "version" "9.14.1"
 
-"@iruxu/pkg-widget@^0.0.11":
-  "integrity" "sha512-n1Nmz0hcv4sYpIS4uwY71lDliU3TwrHpyWceZKjgap0mSyfB31uO6YqiJQ1+tPpw347jztj+fILIOktaOstPzw=="
-  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.11.tgz"
-  "version" "0.0.11"
+"@iruxu/pkg-widget@^0.0.12":
+  "integrity" "sha512-YPMcUu1xuw1GKdpZcVsGyPUBOOx0XnEYqlR06Re2xI1q01DGtN0erSpNg4Gfv6EavQBBgbo4/JhRtsi6Q1Sjmg=="
+  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.12.tgz"
+  "version" "0.0.12"
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
     "@iruxu/rx-common" "^0.1.0"

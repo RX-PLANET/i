@@ -9,7 +9,7 @@ const store = {
     state: {
         user: {},
 
-        navExpanded: false,
+        navExpanded: true,
 
         app: "miipet",
     },
