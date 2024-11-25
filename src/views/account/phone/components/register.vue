@@ -185,7 +185,7 @@ export default {
             success: null,
             phoneChecked: false,
 
-            terms: "/doc/terms",
+            terms: "/document/terms",
 
             interval: 0,
             timer: null,

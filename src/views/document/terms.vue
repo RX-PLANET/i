@@ -12,7 +12,7 @@
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
 import User from "@iruxu/rx-common/utils/user";
-import { getCdnLink } from "@/utils/common";
+import { getCdnLink } from "@iruxu/rx-common/utils/common";
 // import { getDocument } from "@/service/document";
 export default {
     name: "DocumentTerms",
@@ -70,7 +70,7 @@ export default {
 <style lang="less">
 .p-document-terms {
     padding: 20px;
-    width: 600px;
+    max-width: 1000px;
     box-sizing: border-box;
     margin: 0 auto;
 

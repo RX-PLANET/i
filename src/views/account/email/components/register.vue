@@ -166,7 +166,7 @@ export default {
             success: null,
             emailChecked: false,
 
-            terms: "/doc/terms",
+            terms: "/document/terms",
 
             interval: 0,
             timer: null,

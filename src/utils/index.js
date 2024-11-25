@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { ElNotification } from "element-plus";
+import GlobalConf from "@iruxu/rx-common/data/global.json";
 
 export function formatDate(value, mode = "date") {
     if (value) {
@@ -18,6 +19,12 @@ export function formatDate(value, mode = "date") {
     }
 }
 
+// 时间转换
+export function formatTime(time, format = "YYYY-MM-DD HH:mm:ss") {
+    const _time = new Date(time);
+    return dayjs(_time).format(format);
+}
+
 /**
  * 头像地址
  * @param {*} url
@@ -27,7 +34,7 @@ export function avatarUrl(url) {
         if (url.startsWith("http")) {
             return url;
         }
-        return "https://cdn.uc.iruxu.com/" + url;
+        return GlobalConf.__defaultCDN + "/" + url;
     }
     return require("../assets/img/logo/logo.svg");
 }
@@ -82,12 +89,6 @@ export function removeEmptyParams(params) {
         }
     }
     return newParams;
-}
-
-// 时间转换
-export function formatTime(time, format = "YYYY-MM-DD HH:mm:ss") {
-    const _time = new Date(time);
-    return dayjs(_time).format(format);
 }
 
 // 数组转tree

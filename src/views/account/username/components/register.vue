@@ -124,7 +124,7 @@ export default {
 
             success: null,
 
-            terms: "/doc/terms",
+            terms: "/document/terms",
         };
     },
     computed: {
