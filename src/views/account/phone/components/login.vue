@@ -25,7 +25,7 @@
                     </template>
                     <div class="m-card-form-value">
                         <phone-code-select v-model="phoneCode" size="large" />
-                        <el-input class="u-phone-input" v-model.trim="form.phone" size="large"> </el-input>
+                        <el-input class="u-phone-input" v-model.trim="form.phone" size="large" tabindex="1"> </el-input>
                     </div>
                 </el-form-item>
                 <el-form-item prop="password">
@@ -43,12 +43,13 @@
                         type="password"
                         size="large"
                         show-password
+                        tabindex="2"
                     >
                     </el-input>
                 </el-form-item>
             </el-form>
             <el-alert class="u-alert" v-if="error" type="error" show-icon :title="error"></el-alert>
-            <el-button class="u-btn u-submit" type="primary" @click="onLogin">{{
+            <el-button class="u-btn u-submit" type="primary" @click="onLogin" tabindex="3">{{
                 $t("account.common.login")
             }}</el-button>
         </div>
