@@ -1,4 +1,4 @@
-import { $uc } from "@iruxu/pkg-common/utils/api";
+import { $uc } from "@iruxu/rx-common/utils/api";
 
 // ============ 手机相关 ============
 

@@ -70,7 +70,7 @@
 
 <script>
 import { loginByUsername } from "@/service/username";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 export default {
     name: "UsernameLogin",
     props: {

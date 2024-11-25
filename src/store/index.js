@@ -2,7 +2,7 @@
 import { createStore } from "vuex";
 import { getUserInfo } from "@/service/account";
 import { apps } from "@/assets/data/config/app";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 
 // 2.Store
 const store = {

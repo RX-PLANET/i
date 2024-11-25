@@ -5,7 +5,7 @@ import {
     // createWebHashHistory,
 } from "vue-router";
 import { filter, flatten } from "lodash";
-import User from "@iruxu/pkg-common/utils/user.js";
+import User from "@iruxu/rx-common/utils/user.js";
 
 // 2.Routes
 const files = require.context("./", true, /\.js$/);

@@ -11,7 +11,7 @@
 <script>
 import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 import { getCdnLink } from "@/utils/common";
 // import { getDocument } from "@/service/document";
 export default {

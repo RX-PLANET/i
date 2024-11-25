@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 import { logout, updateUserInfo } from "@/service/account";
 export default {
     name: "PageHeader",

@@ -93,7 +93,7 @@
 
 <script>
 import { checkPhoneCode, sendCode, resetPasswordByPhone } from "@/service/account";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export default {

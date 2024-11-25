@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 import Nav from "@/components/common/nav";
 import MiniNav from "@/components/common/mini-nav";
 import { mapMutations, mapState } from "vuex";

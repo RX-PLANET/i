@@ -1,4 +1,4 @@
-import { $uc } from "@iruxu/pkg-common/utils/api.js";
+import { $uc } from "@iruxu/rx-common/utils/api.js";
 
 // ============ 基础信息 ============
 /**

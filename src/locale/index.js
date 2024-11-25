@@ -1,5 +1,5 @@
 import { createI18n } from "vue-i18n";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 
 // 1. Ready translated locale messages
 // The structure of the locale message is the hierarchical object structure with each locale as the top property

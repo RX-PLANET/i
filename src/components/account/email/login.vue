@@ -73,7 +73,7 @@
 
 <script>
 import { loginByEmail } from "@/service/email";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 export default {
     name: "EmailLogin",
     props: {

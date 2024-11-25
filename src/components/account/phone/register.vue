@@ -111,7 +111,7 @@
 
 <script>
 import { checkPhone, registerByPhone, checkPhoneCode, activeByPhone } from "@/service/phone";
-import User from "@iruxu/pkg-common/utils/user";
+import User from "@iruxu/rx-common/utils/user";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 
 export default {

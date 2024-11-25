@@ -1,4 +1,4 @@
-import { $uc } from "@iruxu/pkg-common/utils/api.js";
+import { $uc } from "@iruxu/rx-common/utils/api.js";
 
 export function getMessages(params) {
     return $uc().get("/api/uc/user/message/inbox", { params });
