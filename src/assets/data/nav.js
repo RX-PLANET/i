@@ -28,7 +28,7 @@ const data = [
     },
     {
         title: t("security.nav.index"),
-        icon: "message",
+        icon: "lock",
         children: [
             {
                 title: t("security.nav.log"),

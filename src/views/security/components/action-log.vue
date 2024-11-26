@@ -21,7 +21,7 @@
                 </template>
             </el-input>
         </div>
-        <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading">
+        <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
             <el-table-column :label="$t('security.log.table.remark')" prop="remark" show-overflow-tooltip>
                 <template #default="{ row }">
                     <span :class="!row.status ? 'u-error' : ''">{{ row.remark }}</span>
@@ -35,7 +35,7 @@
             <el-table-column :label="$t('security.log.table.device')" prop="device" show-overflow-tooltip>
             </el-table-column>
             <el-table-column label="IP" prop="ip" show-overflow-tooltip></el-table-column>
-            <el-table-column label="User Agent" prop="ua" show-overflow-tooltip></el-table-column>
+            <!-- <el-table-column label="User Agent" prop="ua" show-overflow-tooltip></el-table-column> -->
             <el-table-column :label="$t('security.log.table.time')" prop="time" width="180">
                 <template #default="{ row }">
                     {{ formatDate(row.time, "datetime") }}
