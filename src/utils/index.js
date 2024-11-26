@@ -1,20 +1,21 @@
-import dayjs from "dayjs";
 import { ElNotification } from "element-plus";
 import GlobalConf from "@iruxu/rx-common/data/global.json";
+import RxTime from "@iruxu/rx-common/utils/rx-time";
+const timeInstance = new RxTime();
 
 export function formatDate(value, mode = "date") {
     if (value) {
         if (mode === "date") {
-            return dayjs(value).format("YYYY-MM-DD");
+            return timeInstance.format(value, "YYYY-MM-DD");
         }
         if (mode === "time") {
-            return dayjs(value).format("HH:mm:ss");
+            return timeInstance.format(value, "HH:mm:ss");
         }
         if (mode === "hour") {
-            return dayjs(value).format("HH:mm");
+            return timeInstance.format(value, "HH:mm");
         }
         if (mode === "datetime") {
-            return dayjs(value).format("YYYY-MM-DD HH:mm:ss");
+            return timeInstance.format(value, "YYYY-MM-DD HH:mm:ss");
         }
     }
 }
@@ -22,7 +23,7 @@ export function formatDate(value, mode = "date") {
 // 时间转换
 export function formatTime(time, format = "YYYY-MM-DD HH:mm:ss") {
     const _time = new Date(time);
-    return dayjs(_time).format(format);
+    return timeInstance.format(_time, format);
 }
 
 /**
