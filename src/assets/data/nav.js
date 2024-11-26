@@ -26,6 +26,17 @@ const data = [
             },
         ],
     },
+    {
+        title: t("security.nav.index"),
+        icon: "message",
+        children: [
+            {
+                title: t("security.nav.log"),
+                route: "/dashboard/security/log",
+                routeName: "dashboard-security-log",
+            },
+        ],
+    },
 ];
 
 export default data;

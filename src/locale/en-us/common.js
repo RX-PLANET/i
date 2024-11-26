@@ -32,6 +32,10 @@ export default {
 
         // Document
         termsTitle: "Terms of Service",
+
+        // Security
+        logTitle: "Log Audit",
+        logDesc: "Logs from all apps",
     },
 
     // messagebox
@@ -41,5 +45,17 @@ export default {
         error: "Operation failed",
         confirm: "Confirm",
         cancel: "Cancel",
+    },
+
+    table: {
+        refresh: "Refresh",
+        search: "Search",
+        start_time: "Start date",
+        end_time: "End date",
+        shortcuts: {
+            week: "Last week",
+            month: "Last month",
+            month_3: "Nearly 3 months",
+        },
     },
 };

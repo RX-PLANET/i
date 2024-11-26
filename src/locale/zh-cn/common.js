@@ -32,6 +32,10 @@ export default {
 
         // Document
         termsTitle: "服务条款",
+
+        // Security
+        logTitle: "日志审计",
+        logDesc: "来自所有应用的日志",
     },
 
     // messagebox
@@ -41,5 +45,17 @@ export default {
         error: "操作失败",
         confirm: "确定",
         cancel: "取消",
+    },
+
+    table: {
+        refresh: "刷新",
+        search: "搜索",
+        start_time: "开始日期",
+        end_time: "结束日期",
+        shortcuts: {
+            week: "近一周",
+            month: "近一月",
+            month_3: "近三月",
+        },
     },
 };
