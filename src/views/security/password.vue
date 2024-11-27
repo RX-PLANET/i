@@ -141,4 +141,17 @@ export default {
 @import "~@/assets/css/account/common.less";
 @import "~@/assets/css/account/email/login.less";
 @import "~@/assets/css/notification/bind/bind.less";
+.m-change-password {
+    .el-input__wrapper.is-focus {
+        background-color: @primary-bgc;
+    }
+    input:-internal-autofill-selected {
+        background: none !important;
+    }
+    input:-webkit-autofill {
+        -webkit-appearance: none !important;
+        appearance: none !important;
+        background: #fff !important;
+    }
+}
 </style>
