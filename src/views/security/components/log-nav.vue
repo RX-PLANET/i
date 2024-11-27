@@ -8,6 +8,7 @@
                 :key="item.value"
                 @click="typeChange(item.value)"
             >
+                <img class="u-img" :src="getIcon(item.value)" v-svg-inline />
                 <b>{{ item.label }}</b>
             </div>
         </div>
@@ -47,6 +48,9 @@ export default {
             this.$router.push({
                 params,
             });
+        },
+        getIcon(key) {
+            return require(`../../../assets/img/dashboard/${key}_log.svg`);
         },
     },
 };

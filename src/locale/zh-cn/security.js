@@ -11,10 +11,13 @@ export default {
         },
         status: {
             all: "全部",
-            success: "成功",
-            fail: "失败",
+            success: "登录成功",
+            fail: "登录失败",
         },
         table: {
+            action: "行为",
+            event: "事件",
+            status: "状态",
             remark: "备注",
             app: "应用",
             device: "设备",

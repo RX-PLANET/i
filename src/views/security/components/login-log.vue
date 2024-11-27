@@ -38,12 +38,12 @@
             </el-input>
         </div>
         <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
-            <el-table-column :label="$t('security.log.table.remark')" prop="remark" show-overflow-tooltip>
+            <el-table-column :label="$t('security.log.table.status')" prop="remark" width="150" show-overflow-tooltip>
                 <template #default="{ row }">
-                    <span :class="!row.status ? 'u-error' : ''">{{ row.remark }}</span>
+                    <el-tag :type="row.status ? 'success' : 'warning'">{{ statusMap[row.status]?.label }}</el-tag>
                 </template>
             </el-table-column>
-            <el-table-column :label="$t('security.log.table.app')" prop="app" width="100">
+            <el-table-column :label="$t('security.log.table.app')" prop="app" width="110">
                 <template #default="{ row }">
                     {{ appMap[row.app]?.label }}
                 </template>
@@ -117,6 +117,9 @@ export default {
         },
         appMap() {
             return arr2map({ array: apps, key: "value" });
+        },
+        statusMap() {
+            return arr2map({ array: statusList, key: "value" });
         },
     },
     watch: {

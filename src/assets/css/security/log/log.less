@@ -71,11 +71,6 @@
             font-size: 14px;
         }
     }
-    .m-table {
-        .u-error {
-            color: #f14c41;
-        }
-    }
     .m-pagination {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -152,9 +147,12 @@
     }
 }
 
-@media screen and (max-width: @ipad) {
+@media screen and (max-width: @mininote) {
     .m-log-filter {
-        .none;
+        .w(100%);
+        .m-log-filter__group {
+            flex-direction: row;
+        }
     }
     .m-log-main {
         .w(100%);

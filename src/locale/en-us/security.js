@@ -11,10 +11,13 @@ export default {
         },
         status: {
             all: "All",
-            success: "Success",
-            fail: "Fail",
+            success: "Login Successful",
+            fail: "Login Failed",
         },
         table: {
+            action: "Action",
+            event: "Event",
+            status: "Status",
             remark: "Remark",
             app: "Application",
             device: "Device",

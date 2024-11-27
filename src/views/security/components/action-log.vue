@@ -22,12 +22,12 @@
             </el-input>
         </div>
         <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
-            <el-table-column :label="$t('security.log.table.remark')" prop="remark" show-overflow-tooltip>
+            <el-table-column :label="$t('security.log.table.action')" prop="action" width="150" show-overflow-tooltip>
                 <template #default="{ row }">
                     <span :class="!row.status ? 'u-error' : ''">{{ row.remark }}</span>
                 </template>
             </el-table-column>
-            <el-table-column :label="$t('security.log.table.app')" prop="app" width="100">
+            <el-table-column :label="$t('security.log.table.app')" prop="app" width="110">
                 <template #default="{ row }">
                     {{ appMap[row.app]?.label }}
                 </template>
