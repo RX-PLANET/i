@@ -15,6 +15,7 @@ const routesModules = files.keys().reduce((modules, modulePath) => {
     modules[moduleName] = value.default;
     return modules;
 }, {});
+import dashboard from "./dashboard/index.js";
 
 export const constantRoutes = [
     {
@@ -32,6 +33,7 @@ export const constantRoutes = [
             return module;
         })
     ),
+    ...dashboard,
 ];
 
 // 3.Build An Instance

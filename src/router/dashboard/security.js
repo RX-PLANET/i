@@ -8,7 +8,7 @@ import layout from "@/layouts/dashboard";
 
 export default [
     {
-        path: "/security",
+        path: "/dashboard/security",
         name: "security",
         component: layout,
         redirect: {
