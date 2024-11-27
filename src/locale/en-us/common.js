@@ -36,6 +36,8 @@ export default {
         // Security
         logTitle: "Log Audit",
         logDesc: "Logs from all apps",
+        passwordTitle: "Change Password",
+        passwordDesc: "Change your login password",
     },
 
     // messagebox

@@ -2,6 +2,7 @@ export default {
     nav: {
         index: "安全中心",
         log: "日志审计",
+        password: "修改密码",
     },
     log: {
         type: {
@@ -23,5 +24,11 @@ export default {
             device: "设备",
             time: "时间",
         },
+    },
+    password: {
+        alert: "请设置一个相对合理安全的密码",
+        new: "新密码",
+        repeat: "重复密码",
+        changeSuccess: "修改成功",
     },
 };

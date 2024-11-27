@@ -35,6 +35,11 @@ const data = [
                 route: "/dashboard/security/log",
                 routeName: "dashboard-security-log",
             },
+            {
+                title: t("security.nav.password"),
+                route: "/dashboard/security/password",
+                routeName: "dashboard-security-password",
+            },
         ],
     },
 ];

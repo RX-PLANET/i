@@ -268,3 +268,18 @@ export function loginByUsername(data, params) {
         params,
     });
 }
+
+/**
+ * 修改密码
+ * @param {Object} data
+ * @param {String} data.password1 新密码
+ * @param {String} data.password2 重复密码
+ * @param {Object} params
+ * @param {String} params.app 应用标识
+ * @returns
+ */
+export function changePassword(data, params) {
+    return $uc().put("/api/uc/user/account/password", data, {
+        params,
+    });
+}

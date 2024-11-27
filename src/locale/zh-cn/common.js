@@ -36,6 +36,8 @@ export default {
         // Security
         logTitle: "日志审计",
         logDesc: "来自所有应用的日志",
+        passwordTitle: "修改密码",
+        passwordDesc: "修改您的登录密码",
     },
 
     // messagebox

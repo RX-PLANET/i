@@ -2,6 +2,7 @@ export default {
     nav: {
         index: "Security Center",
         log: "Log Audit",
+        password: "Change Password",
     },
     log: {
         type: {
@@ -23,5 +24,11 @@ export default {
             device: "Device",
             time: "Time",
         },
+    },
+    password: {
+        alert: "Please set a relatively reasonable and secure password",
+        new: "New Password",
+        repeat: "Repeat Password",
+        changeSuccess: "Change Successful",
     },
 };

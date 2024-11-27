@@ -25,6 +25,16 @@ export default [
                     desc: t("common.routes.logDesc"),
                 },
             },
+            // 修改密码
+            {
+                path: "password",
+                name: "dashboard-security-password",
+                component: () => import("@/views/security/password"),
+                meta: {
+                    title: t("common.routes.passwordTitle"),
+                    desc: t("common.routes.passwordDesc"),
+                },
+            },
         ],
     },
 ];
