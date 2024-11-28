@@ -15,6 +15,16 @@ export default [
             name: "dashboard-security-log",
         },
         children: [
+            // 日志审计
+            {
+                path: "log/:type(\\w+)?",
+                name: "dashboard-security-log",
+                component: () => import("@/views/security/log"),
+                meta: {
+                    title: t("common.routes.logTitle"),
+                    desc: t("common.routes.logDesc"),
+                },
+            },
             // 修改密码
             {
                 path: "password",
@@ -25,14 +35,14 @@ export default [
                     desc: t("common.routes.passwordDesc"),
                 },
             },
-            // 日志审计
+            // 注销账号
             {
-                path: "log/:type(\\w+)?",
-                name: "dashboard-security-log",
-                component: () => import("@/views/security/log"),
+                path: "destroy",
+                name: "dashboard-security-destroy",
+                component: () => import("@/views/security/destroy"),
                 meta: {
-                    title: t("common.routes.logTitle"),
-                    desc: t("common.routes.logDesc"),
+                    title: t("common.routes.destroyTitle"),
+                    desc: t("common.routes.destroyDesc"),
                 },
             },
         ],

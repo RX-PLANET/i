@@ -3,6 +3,7 @@ export default {
         index: "安全中心",
         log: "日志审计",
         password: "修改密码",
+        destroy: "注销账号",
     },
     log: {
         type: {
@@ -30,5 +31,14 @@ export default {
         new: "新密码",
         repeat: "重复密码",
         changeSuccess: "修改成功",
+    },
+    destroy: {
+        alert: `<p>请注意，本操作是永久性的，不可恢复。</p>
+        <p>一旦注销，您的所有本站信息和数据资产将丢失。</p>`,
+        next: "我想好了，下一步",
+        confirm: "确认注销",
+        agree: "我已知晓并同意上述规则",
+        confirmTip: "请输入您的登录密码",
+        success: "注销成功",
     },
 };

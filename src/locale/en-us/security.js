@@ -3,6 +3,7 @@ export default {
         index: "Security Center",
         log: "Log Audit",
         password: "Change Password",
+        destroy: "Deregister account",
     },
     log: {
         type: {
@@ -30,5 +31,14 @@ export default {
         new: "New Password",
         repeat: "Repeat Password",
         changeSuccess: "Change Successful",
+    },
+    destroy: {
+        alert: `<p>Please note that this operation is permanent and cannot be restored. </p>
+                <p>Once you log out, all your information and data assets on this site will be lost. </p>`,
+        next: "I've thought about it, next step",
+        confirm: "Confirm Logout",
+        agree: "I have understood and agree to the above rules",
+        confirmTip: "Please enter your login password",
+        success: "Logout successful",
     },
 };

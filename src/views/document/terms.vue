@@ -13,7 +13,7 @@ import Logo from "@iruxu/pkg-widget/src/components/common/logo.vue";
 import LangSelect from "@iruxu/pkg-widget/src/components/common/lang-select.vue";
 import User from "@iruxu/rx-common/utils/user";
 import { getCdnLink } from "@iruxu/rx-common/utils/common";
-// import { getDocument } from "@/service/document";
+import { getDocument } from "@/service/document";
 export default {
     name: "DocumentTerms",
     components: {
@@ -29,7 +29,12 @@ export default {
             lang: User.getLocale(),
         };
     },
-    computed: {},
+    computed: {
+        isCn() {
+            // 中文
+            return this.lang === "zh-CN";
+        },
+    },
     mounted() {
         const search = new URLSearchParams(document.location.search);
 
@@ -47,21 +52,28 @@ export default {
             this.load();
         },
         load() {
-            const path = getCdnLink(`/common/document/${this.slug}/${this.slug}-${this.lang}.txt`);
-            fetch(path)
-                .then((res) => {
-                    if (!res.ok) {
-                        throw new Error(res.status);
-                    }
-                    return res.text();
-                })
-                .then((data) => {
-                    this.document = data;
-                })
-                .catch((error) => {
-                    console.error(error);
-                    this.document = "-";
+            const slug = this.slug;
+            if (this.isCn) {
+                getDocument(slug).then((res) => {
+                    this.document = res.data.data?.content || "-";
                 });
+            } else {
+                const path = getCdnLink(`/common/document/${slug}/${slug}-${this.lang}.txt`);
+                fetch(path)
+                    .then((res) => {
+                        if (!res.ok) {
+                            throw new Error(res.status);
+                        }
+                        return res.text();
+                    })
+                    .then((data) => {
+                        this.document = data;
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                        this.document = "-";
+                    });
+            }
         },
     },
 };

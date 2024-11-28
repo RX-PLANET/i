@@ -40,6 +40,11 @@ const data = [
                 route: "/dashboard/security/password",
                 routeName: "dashboard-security-password",
             },
+            {
+                title: t("security.nav.destroy"),
+                route: "/dashboard/security/destroy",
+                routeName: "dashboard-security-destroy",
+            },
         ],
     },
 ];

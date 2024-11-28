@@ -110,7 +110,7 @@ export default {
         logout() {
             logout().then(() => {
                 User.logout();
-                this.$router.push({ name: "email-login" });
+                this.$router.replace({ name: "email-login" });
             });
         },
         submit() {

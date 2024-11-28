@@ -38,6 +38,8 @@ export default {
         logDesc: "Logs from all apps",
         passwordTitle: "Change Password",
         passwordDesc: "Change your login password",
+        destroyTitle: "Deregister account",
+        destroyDesc: "Are you sure you want to cancel your account?",
     },
 
     // messagebox

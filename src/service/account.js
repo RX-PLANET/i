@@ -283,3 +283,17 @@ export function changePassword(data, params) {
         params,
     });
 }
+
+/**
+ * 注销账号
+ * @param {Object} data
+ * @param {String} data.password 密码
+ * @param {Object} params
+ * @param {String} params.app 应用标识
+ * @returns
+ */
+export function destroyAccount(data, params) {
+    return $uc().post("/api/uc/user/account/destroy", data, {
+        params,
+    });
+}
