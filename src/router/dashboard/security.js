@@ -25,6 +25,16 @@ export default [
                     desc: t("common.routes.logDesc"),
                 },
             },
+            // 设备管理
+            {
+                path: "device",
+                name: "dashboard-security-device",
+                component: () => import("@/views/security/device"),
+                meta: {
+                    title: t("common.routes.deviceTitle"),
+                    desc: t("common.routes.deviceDesc"),
+                },
+            },
             // 修改密码
             {
                 path: "password",

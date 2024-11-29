@@ -4,6 +4,7 @@ export default {
         log: "Log Audit",
         password: "Change Password",
         destroy: "Deregister account",
+        device: "Device Management",
     },
     log: {
         type: {
@@ -40,5 +41,11 @@ export default {
         agree: "I have understood and agree to the above rules",
         confirmTip: "Please enter your login password",
         success: "Logout successful",
+    },
+    device: {
+        name: "Aliases",
+        title: "Device fingerprint",
+        lastTime: "Last login time",
+        lastLocation: "Last login location",
     },
 };

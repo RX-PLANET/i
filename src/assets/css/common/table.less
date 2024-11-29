@@ -1,0 +1,93 @@
+.m-common-table {
+    padding: 20px;
+    box-sizing: border-box;
+    .r(10px);
+    .m-table-filter {
+        .flex;
+        gap: 6.5px;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        font-size: 16px;
+
+        .el-icon--right {
+            margin-left: 0;
+        }
+        .u-op-icon {
+            background-color: #f9f9f9;
+            .size(34px);
+            border-radius: 7px;
+            .flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &:not(.is-disabled):hover {
+                background-color: #f1f4ff;
+                color: @primary;
+            }
+            &.is-disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+        .u-op {
+            .flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .is-active {
+            color: @primary;
+            background-color: #f9f9f9;
+            b {
+                .bold;
+            }
+        }
+    }
+    .u-search {
+        width: 192px;
+        .el-input__wrapper {
+            background-color: #f9f9f9;
+            border-color: #f9f9f9;
+            color: #4b5675;
+            box-shadow: none;
+            font-size: 12px;
+            border-radius: 7px;
+            &.is-focus {
+                background-color: #f1f1f4;
+                border-color: #f1f1f4;
+            }
+        }
+        .el-icon {
+            font-size: 14px;
+        }
+    }
+    .u-row {
+        .flex;
+        align-items: center;
+        gap: 10px;
+        .u-copy {
+            .none;
+            cursor: pointer;
+            color: @primary;
+        }
+        .u-edit {
+            .none;
+            cursor: pointer;
+            color: @primary;
+        }
+        &:hover {
+            .u-copy,
+            .u-edit {
+                .db;
+            }
+        }
+    }
+    .m-pagination {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .flex;
+        justify-content: center;
+    }
+}

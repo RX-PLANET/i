@@ -36,6 +36,8 @@ export default {
         // Security
         logTitle: "Log Audit",
         logDesc: "Logs from all apps",
+        deviceTitle: "Device Management",
+        deviceDesc: "Manage all your logged-in devices",
         passwordTitle: "Change Password",
         passwordDesc: "Change your login password",
         destroyTitle: "Deregister account",
@@ -49,6 +51,7 @@ export default {
         error: "Operation failed",
         confirm: "Confirm",
         cancel: "Cancel",
+        copySuccess: "Copy Success",
     },
 
     table: {
@@ -56,6 +59,12 @@ export default {
         search: "Search",
         start_time: "Start date",
         end_time: "End date",
+        op: "Operation",
+        copy: "Copy",
+        remark: "Remark",
+        remark_placeholder: "Please enter the remark",
+        remove: "Remove",
+        removeAlert: "Are you sure you want to remove this record?",
         shortcuts: {
             week: "Last week",
             month: "Last month",

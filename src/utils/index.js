@@ -2,6 +2,11 @@ import { ElNotification } from "element-plus";
 import GlobalConf from "@iruxu/rx-common/data/global.json";
 import RxTime from "@iruxu/rx-common/utils/rx-time";
 const timeInstance = new RxTime();
+import { i18n } from "@/locale";
+
+const {
+    global: { t },
+} = i18n;
 
 export function formatDate(value, mode = "date") {
     if (value) {
@@ -62,7 +67,7 @@ export function copyText(text) {
     if (navigator.clipboard) {
         navigator.clipboard.writeText(text);
         ElNotification({
-            title: "复制成功",
+            title: t("common.messagebox.copySuccess"),
             message: text,
             type: "success",
         });
@@ -74,7 +79,7 @@ export function copyText(text) {
         document.execCommand("copy");
         document.body.removeChild(input);
         ElNotification({
-            title: "复制成功",
+            title: t("common.messagebox.copySuccess"),
             message: text,
             type: "success",
         });

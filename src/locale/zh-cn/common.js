@@ -36,6 +36,8 @@ export default {
         // Security
         logTitle: "日志审计",
         logDesc: "来自所有应用的日志",
+        deviceTitle: "设备管理",
+        deviceDesc: "管理您的所有登录设备",
         passwordTitle: "修改密码",
         passwordDesc: "修改您的登录密码",
         destroyTitle: "注销账号",
@@ -49,6 +51,7 @@ export default {
         error: "操作失败",
         confirm: "确定",
         cancel: "取消",
+        copySuccess: "复制成功",
     },
 
     table: {
@@ -56,6 +59,12 @@ export default {
         search: "搜索",
         start_time: "开始日期",
         end_time: "结束日期",
+        op: "操作",
+        copy: "复制",
+        remark: "备注",
+        remark_placeholder: "请输入备注",
+        remove: "移除",
+        removeAlert: "确定要移除该条记录吗？",
         shortcuts: {
             week: "近一周",
             month: "近一月",

@@ -4,6 +4,7 @@ export default {
         log: "日志审计",
         password: "修改密码",
         destroy: "注销账号",
+        device: "设备管理",
     },
     log: {
         type: {
@@ -40,5 +41,11 @@ export default {
         agree: "我已知晓并同意上述规则",
         confirmTip: "请输入您的登录密码",
         success: "注销成功",
+    },
+    device: {
+        name: "别名",
+        title: "设备指纹",
+        lastTime: "最后一次登录时间",
+        lastLocation: "最后一次登录地点",
     },
 };
