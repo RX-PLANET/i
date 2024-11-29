@@ -18,10 +18,15 @@
         <div class="m-bind-block m-destroy-document" v-else>
             <div class="u-document" v-html="document"></div>
             <div class="u-op">
-                <el-checkbox v-model="isAgree">{{ $t("security.destroy.agree") }}</el-checkbox>
-                <el-button type="danger" :loading="loading" :disabled="loading || !isAgree" @click="submit">{{
-                    $t("security.destroy.confirm")
-                }}</el-button>
+                <el-checkbox size="large" v-model="isAgree">{{ $t("security.destroy.agree") }}</el-checkbox>
+                <el-button
+                    type="danger"
+                    :loading="loading"
+                    :disabled="loading || !isAgree"
+                    @click="submit"
+                    size="large"
+                    >{{ $t("security.destroy.confirm") }}</el-button
+                >
             </div>
         </div>
     </div>
@@ -145,6 +150,9 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        .el-button {
+            .w(200px);
+        }
     }
 }
 </style>
