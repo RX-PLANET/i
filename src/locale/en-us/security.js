@@ -14,8 +14,8 @@ export default {
         },
         status: {
             all: "All",
-            success: "Login Successful",
-            fail: "Login Failed",
+            success: "Success",
+            fail: "Failed",
         },
         table: {
             action: "Action",
