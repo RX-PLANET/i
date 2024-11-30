@@ -1,0 +1,90 @@
+.p-setting-user {
+    min-height: 100vh;
+    .m-user-main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        font-size: 14px;
+    }
+
+    .m-user-nav {
+        .flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        width: 268px;
+        padding: 30px;
+        box-sizing: border-box;
+        .r(10px);
+        @media screen and (max-width: @phone) {
+            width: 100%;
+        }
+    }
+
+    .m-user-main__right {
+        flex: 1;
+        .r(10px);
+    }
+
+    .m-user-nav__group {
+        .flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .m-user-nav__item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 0.65rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        cursor: pointer;
+        .r(0.65rem);
+        font-size: 14px;
+        user-select: none;
+        font-size: 13px;
+        transition: all 0.2s ease;
+        color: #000;
+
+        @size: 14px;
+
+        .u-img {
+            .size(14px);
+        }
+
+        &:hover,
+        &.is-active {
+            color: @primary;
+            background-color: #f9f9f9;
+            b {
+                .bold;
+            }
+        }
+    }
+}
+
+.p-setting-info {
+    .m-info-form {
+        padding: 20px;
+    }
+    .u-edit-btn {
+        margin-left: 10px;
+
+        .el-icon {
+            scale: 1.2;
+        }
+    }
+    .u-confirm {
+        width: 180px;
+    }
+}
+
+.p-setting-profile {
+    .m-profile-form {
+        padding: 20px;
+    }
+
+    .u-confirm {
+        width: 180px;
+    }
+}

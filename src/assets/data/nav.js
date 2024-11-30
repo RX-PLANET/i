@@ -31,6 +31,11 @@ const data = [
         icon: "lock",
         children: [
             {
+                title: t("security.nav.password"),
+                route: "/dashboard/security/password",
+                routeName: "dashboard-security-password",
+            },
+            {
                 title: t("security.nav.log"),
                 route: "/dashboard/security/log",
                 routeName: "dashboard-security-log",
@@ -40,11 +45,7 @@ const data = [
                 route: "/dashboard/security/device",
                 routeName: "dashboard-security-device",
             },
-            {
-                title: t("security.nav.password"),
-                route: "/dashboard/security/password",
-                routeName: "dashboard-security-password",
-            },
+
             {
                 title: t("security.nav.destroy"),
                 route: "/dashboard/security/destroy",
@@ -53,13 +54,28 @@ const data = [
         ],
     },
     {
-        title: t("profile.nav.index"),
+        title: t("setting.nav.index"),
         icon: "user",
         children: [
+            // {
+            //     title: t("setting.nav.info"),
+            //     route: "/dashboard/setting/info",
+            //     routeName: "dashboard-setting-info",
+            // },
+            // {
+            //     title: t("setting.nav.profile"),
+            //     route: "/dashboard/setting/profile",
+            //     routeName: "dashboard-setting-profile",
+            // },
             {
-                title: t("profile.nav.address"),
-                route: "/dashboard/profile/address",
-                routeName: "dashboard-profile-address",
+                title: t("setting.nav.user"),
+                route: "/dashboard/setting/user",
+                routeName: "dashboard-setting-user",
+            },
+            {
+                title: t("setting.nav.address"),
+                route: "/dashboard/setting/address",
+                routeName: "dashboard-setting-address",
             },
         ],
     },

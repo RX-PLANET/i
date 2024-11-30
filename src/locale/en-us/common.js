@@ -46,6 +46,15 @@ export default {
         // Profile
         addressTitle: "Address Management",
         addressDesc: "Manage your addresses here",
+
+        userTitle: "Personal Profile",
+        userDesc: "Manage your user profile",
+
+        infoTitle: "Basic Information",
+        infoDesc: "Manage your basic information",
+
+        profileTitle: "Personal Profile",
+        profileDesc: "Manage your personal profile",
     },
 
     // messagebox

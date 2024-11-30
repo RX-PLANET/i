@@ -1,5 +1,5 @@
 <template>
-    <div class="p-profile-address">
+    <div class="p-setting-address">
         <page-header></page-header>
         <div class="l-dashboard-primary">
             <div class="m-common-table w-card">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
-                    <el-table-column :label="$t('profile.address.tag')" width="180">
+                    <el-table-column :label="$t('setting.address.tag')" width="130">
                         <template #default="{ row }">
                             <div class="u-row">
                                 <el-tooltip
@@ -31,8 +31,8 @@
                                     effect="light"
                                     :content="
                                         row.is_default
-                                            ? $t('profile.address.cancelDefault')
-                                            : $t('profile.address.setDefault')
+                                            ? $t('setting.address.cancelDefault')
+                                            : $t('setting.address.setDefault')
                                     "
                                     placement="left"
                                 >
@@ -40,6 +40,7 @@
                                         class="u-default"
                                         :type="row.is_default ? 'danger' : 'info'"
                                         @click="onToggleDefault(row)"
+                                        >{{ $t("setting.address.defaultTag") }}</el-tag
                                     >
                                         <el-icon v-if="row.is_default"><StarFilled /></el-icon>
                                         <el-icon v-else><Star /></el-icon>
@@ -51,16 +52,11 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column :label="$t('profile.address.name')" prop="name" show-overflow-tooltip width="220">
+                    <el-table-column :label="$t('setting.address.name')" prop="name" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column
-                        :label="$t('profile.address.phone')"
-                        prop="phone"
-                        show-overflow-tooltip
-                        width="220"
-                    >
+                    <el-table-column :label="$t('setting.address.phone')" prop="phone" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column :label="$t('profile.address.addr')" prop="addr" show-overflow-tooltip>
+                    <el-table-column :label="$t('setting.address.addr')" prop="addr" show-overflow-tooltip>
                     </el-table-column>
                     <el-table-column :label="$t('common.table.op')" width="120" align="right">
                         <template #default="{ row }">

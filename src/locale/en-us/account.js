@@ -80,6 +80,7 @@ export default {
         resetSuccessDesc: "Your password has been reset successfully",
         findPassword: "We will send an email containing the reset verification code to your mailbox.",
         resetPassword: "Reset Password",
+        sendResetSuccess: "Send Success",
     },
     username: {
         name: "Username",
