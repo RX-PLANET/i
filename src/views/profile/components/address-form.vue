@@ -124,9 +124,9 @@ export default {
                 }
                 this.form.is_default = !!this.form.is_default;
                 if (mode === "edit" && this.form.phone) {
-                    const arr = this.form.phone.split(" ");
-                    this.phoneCode = ~~arr?.[0]?.slice(1) || 86;
-                    this.form.phone = arr?.[1];
+                    const phoneNumber = parsePhoneNumberFromString(this.form.phone);
+                    this.phoneCode = ~~phoneNumber?.countryCallingCode || 86;
+                    this.form.phone = phoneNumber?.nationalNumber || "";
                 }
             },
         },
@@ -157,7 +157,7 @@ export default {
         add() {
             const data = cloneDeep(pick(this.form, Object.keys(defaultForm)));
             data.is_default = ~~data.is_default;
-            data.phone = `+${this.phoneCode} ${data.phone}`;
+            data.phone = `+${this.phoneCode}${data.phone}`;
             this.loading = true;
             createAddress(data)
                 .then((res) => {
@@ -176,7 +176,7 @@ export default {
         edit() {
             const data = cloneDeep(pick(this.form, Object.keys(defaultForm)));
             data.is_default = ~~data.is_default;
-            data.phone = `+${this.phoneCode} ${data.phone}`;
+            data.phone = `+${this.phoneCode}${data.phone}`;
             this.loading = true;
             updateAddress(this.data.staged.id, data)
                 .then(() => {
