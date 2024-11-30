@@ -43,8 +43,10 @@
         </el-form>
         <template #footer>
             <span class="w-dialog__footer">
-                <el-button @click="close">取消</el-button>
-                <el-button type="primary" :loading="loading" :disabled="loading" @click="submit">确定</el-button>
+                <el-button @click="close">{{ $t("common.messagebox.cancel") }}</el-button>
+                <el-button type="primary" :loading="loading" :disabled="loading" @click="submit">{{
+                    $t("common.messagebox.confirm")
+                }}</el-button>
             </span>
         </template>
     </el-dialog>
