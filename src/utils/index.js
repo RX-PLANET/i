@@ -2,6 +2,7 @@ import { ElNotification } from "element-plus";
 import GlobalConf from "@iruxu/rx-common/data/global.json";
 import RxTime from "@iruxu/rx-common/utils/rx-time";
 const timeInstance = new RxTime();
+import { deviceTypeMap } from "@/assets/data/device_type";
 import { i18n } from "@/locale";
 
 const {
@@ -183,4 +184,10 @@ export function map2arr(map) {
             key: key,
         };
     });
+}
+
+export function getDeviceIcon(name) {
+    if (!name) return "";
+    const icon = deviceTypeMap[name] || "";
+    return icon ? require(`@/assets/img/device/${icon}.svg`) : "";
 }

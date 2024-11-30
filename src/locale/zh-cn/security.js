@@ -44,7 +44,7 @@ export default {
     },
     device: {
         name: "别名",
-        title: "设备指纹",
+        type: "设备类型",
         lastTime: "最后一次登录时间",
         lastLocation: "最后一次登录地点",
     },

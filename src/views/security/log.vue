@@ -3,7 +3,7 @@
         <page-header></page-header>
         <div class="l-dashboard-primary m-log-box">
             <logNav></logNav>
-            <component v-if="isInTypes" :app="app" :is="type"></component>
+            <component v-if="isInTypes" :app="app" :devices="devices" :is="type"></component>
         </div>
     </div>
 </template>
@@ -16,6 +16,7 @@ import loginLog from "./components/login-log.vue";
 import accountLog from "./components/account-log.vue";
 import actionLog from "./components/action-log.vue";
 import { types } from "@/assets/data/log";
+import { getMyDevices } from "@/service/device";
 export default {
     name: "dashboard-security-log",
     components: {
@@ -24,6 +25,11 @@ export default {
         login: loginLog,
         account: accountLog,
         action: actionLog,
+    },
+    data() {
+        return {
+            devices: [],
+        };
     },
     computed: {
         ...mapState(["app"]),
@@ -34,12 +40,30 @@ export default {
             return types.findIndex((item) => item.value === this.type) > -1;
         },
     },
+    mounted() {
+        this.load();
+    },
+    methods: {
+        load() {
+            getMyDevices().then((res) => {
+                this.devices = res.data.data || [];
+            });
+        },
+    },
 };
 </script>
 
 <style lang="less">
 .p-log {
     min-height: 100vh;
+    .u-row {
+        .flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .u-device {
+        .size(24px);
+    }
 }
 </style>
 <style lang="less">

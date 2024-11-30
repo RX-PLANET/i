@@ -1059,13 +1059,13 @@
   "resolved" "https://registry.npmjs.org/@intlify/shared/-/shared-9.14.1.tgz"
   "version" "9.14.1"
 
-"@iruxu/pkg-widget@^0.0.13":
-  "integrity" "sha512-t44KJdjbRq7O/zkGf91aoCY4vPUDaibyWIIWLFPFFpoCfhyghgWNokkYV7u8rhF9CMH7ON3jgSKGMlsl0uH8/Q=="
-  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.13.tgz"
-  "version" "0.0.13"
+"@iruxu/pkg-widget@^0.0.14":
+  "integrity" "sha512-x/tb5n8ayXeGyqcAiqOWNbAxfZtjrUbglkzSDQd4xeUfR4EazcF+uMgCT2kCxviRyH506fOn08waM+ts85oYGg=="
+  "resolved" "https://registry.npmjs.org/@iruxu/pkg-widget/-/pkg-widget-0.0.14.tgz"
+  "version" "0.0.14"
   dependencies:
     "@element-plus/icons-vue" "^2.3.1"
-    "@iruxu/rx-common" "^0.1.0"
+    "@iruxu/rx-common" "^0.1.1"
     "csslab" "^4.0.4"
     "element-plus" "^2.8.4"
     "flag-icons" "^7.2.3"
@@ -1074,10 +1074,10 @@
     "vue" "^3.4.37"
     "vue-i18n" "^9.14.1"
 
-"@iruxu/rx-common@^0.1.0":
-  "integrity" "sha512-ic9ZAy7E0ezREPlsigTGNYJ429cBF8w78eclxgERd8VHNOB9wjKKXjG0wh2hNoQruycchAwK0MJPy5qBImjacQ=="
-  "resolved" "https://registry.npmjs.org/@iruxu/rx-common/-/rx-common-0.1.0.tgz"
-  "version" "0.1.0"
+"@iruxu/rx-common@^0.1.1":
+  "integrity" "sha512-8iUqce44re52pfyohmetPJCmFrVR2tputNvo97ew1ttOOevEB5iB3To1iKKtEA5pbHTY0ytJtse6HLDnjb5IYw=="
+  "resolved" "https://registry.npmjs.org/@iruxu/rx-common/-/rx-common-0.1.1.tgz"
+  "version" "0.1.1"
   dependencies:
     "axios" "^1.7.7"
     "dayjs" "^1.11.13"
@@ -3914,6 +3914,11 @@
   "integrity" "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
   "resolved" "https://registry.npmmirror.com/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
+
+"fsevents@~2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmmirror.com/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
 
 "function-bind@^1.1.1", "function-bind@^1.1.2":
   "integrity" "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="

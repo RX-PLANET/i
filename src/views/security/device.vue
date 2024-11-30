@@ -28,16 +28,12 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column
-                        :label="$t('security.device.title')"
-                        prop="device"
-                        show-overflow-tooltip
-                        min-width="200"
-                    >
+                    <el-table-column :label="$t('security.device.type')" prop="name" show-overflow-tooltip>
                         <template #default="{ row }">
                             <div class="u-row">
-                                <span>{{ row.device }}</span>
-                                <el-icon class="u-copy" @click="copyText(row.device)"><DocumentCopy /></el-icon>
+                                <img v-if="getDeviceIcon(row.name)" class="u-device" :src="getDeviceIcon(row.name)" />
+                                <span>{{ row.name }}</span>
+                                <!-- <el-icon class="u-copy" @click="copyText(row.device)"><DocumentCopy /></el-icon> -->
                             </div>
                         </template>
                     </el-table-column>
@@ -62,7 +58,7 @@
                                     :content="$t('common.table.remove')"
                                     placement="top"
                                 >
-                                    <el-button class="u-view" circle plain icon="Delete" @click.stop="onDelete(row)">
+                                    <el-button class="u-view" circle plain icon="Close" @click.stop="onDelete(row)">
                                     </el-button>
                                 </el-tooltip>
                             </div>
@@ -75,7 +71,7 @@
 </template>
 
 <script>
-import { formatDate, copyText } from "@/utils";
+import { formatDate, copyText, getDeviceIcon } from "@/utils";
 import { getMyDevices, remarkDevice, removeDevice } from "@/service/device";
 import pageHeader from "@/components/common/page-header.vue";
 export default {
@@ -93,6 +89,7 @@ export default {
         this.load();
     },
     methods: {
+        getDeviceIcon,
         formatDate,
         copyText,
         load() {
@@ -106,11 +103,11 @@ export default {
                 });
         },
         onRemark(row) {
-            const { id, remark } = row;
+            const { id, remark, name } = row;
             this.$prompt(this.$t("common.table.remark_placeholder"), this.$t("common.messagebox.title"), {
                 confirmButtonText: this.$t("common.messagebox.confirm"),
                 cancelButtonText: this.$t("common.messagebox.cancel"),
-                inputValue: remark,
+                inputValue: remark || name,
             })
                 .then(({ value }) => {
                     const data = {
@@ -163,6 +160,9 @@ export default {
 <style lang="less">
 .p-device {
     min-height: 100vh;
+    .u-device {
+        .size(24px);
+    }
 }
 </style>
 <style lang="less">

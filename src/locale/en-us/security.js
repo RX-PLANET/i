@@ -44,7 +44,7 @@ export default {
     },
     device: {
         name: "Aliases",
-        title: "Device fingerprint",
+        type: "Device Type",
         lastTime: "Last login time",
         lastLocation: "Last login location",
     },

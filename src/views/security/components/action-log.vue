@@ -33,6 +33,12 @@
                 </template>
             </el-table-column>
             <el-table-column :label="$t('security.log.table.device')" prop="device" show-overflow-tooltip>
+                <template #default="{ row }">
+                    <div class="u-row">
+                        <img v-if="getDeviceIcon(row.device)" class="u-device" :src="getDeviceIcon(row.device)" />
+                        <span> {{ getDeviceName(row.device) }}</span>
+                    </div>
+                </template>
             </el-table-column>
             <el-table-column label="IP" prop="ip" show-overflow-tooltip></el-table-column>
             <!-- <el-table-column label="User Agent" prop="ua" show-overflow-tooltip></el-table-column> -->
@@ -57,7 +63,7 @@
 </template>
 
 <script>
-import { formatDate, removeEmpty, arr2map } from "@/utils/index";
+import { formatDate, removeEmpty, arr2map, getDeviceIcon } from "@/utils/index";
 import { getActionLogs } from "@/service/log";
 import { debounce } from "lodash";
 import { shortcuts } from "@/assets/data/shortcuts";
@@ -68,6 +74,10 @@ export default {
         app: {
             type: String,
             default: "",
+        },
+        devices: {
+            type: Array,
+            default: () => [],
         },
     },
     data() {
@@ -116,6 +126,14 @@ export default {
         },
     },
     methods: {
+        getDeviceName(id) {
+            const device = this.devices.find((item) => item.device === id) || { id };
+            return device.remark || device.name || device.id;
+        },
+        getDeviceIcon(id) {
+            const name = this.devices.find((item) => item.device === id)?.name;
+            return getDeviceIcon(name);
+        },
         formatDate,
         builtParams() {
             return removeEmpty(Object.assign(this.params, this.pageParams));
