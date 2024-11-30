@@ -42,6 +42,10 @@ export default {
         passwordDesc: "Change your login password",
         destroyTitle: "Deregister account",
         destroyDesc: "Are you sure you want to cancel your account?",
+
+        // Profile
+        addressTitle: "Address Management",
+        addressDesc: "Manage your addresses here",
     },
 
     // messagebox
@@ -55,6 +59,8 @@ export default {
     },
 
     table: {
+        add: "Add",
+        edit: "Edit",
         refresh: "Refresh",
         search: "Search",
         start_time: "Start date",

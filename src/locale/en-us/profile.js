@@ -1,0 +1,25 @@
+export default {
+    nav: {
+        index: "Personal Center",
+        address: "Address Management",
+    },
+    address: {
+        add: "Add new address",
+        edit: "Edit Address",
+        name: "Contact",
+        namePlaceholder: "Please enter a contact person",
+        phone: "Contact Number",
+        phonePlaceholder: "Please enter your contact number",
+        addr: "Contact Address",
+        addrPlaceholder: "Please enter the contact address",
+        tag: "Tag",
+        school: "School",
+        home: "Home",
+        company: "Company",
+        custom: "Custom",
+        isDefault: "Default Address",
+        defaultTag: "Default",
+        setDefault: "Set as Default",
+        cancelDefault: "Cancel default",
+    },
+};

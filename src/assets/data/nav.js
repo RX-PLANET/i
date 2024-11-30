@@ -52,6 +52,17 @@ const data = [
             },
         ],
     },
+    {
+        title: t("profile.nav.index"),
+        icon: "user",
+        children: [
+            {
+                title: t("profile.nav.address"),
+                route: "/dashboard/profile/address",
+                routeName: "dashboard-profile-address",
+            },
+        ],
+    },
 ];
 
 export default data;
