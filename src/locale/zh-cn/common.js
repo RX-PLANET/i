@@ -42,6 +42,10 @@ export default {
         passwordDesc: "修改您的登录密码",
         destroyTitle: "注销账号",
         destroyDesc: "您确定要注销您的账号吗？",
+
+        // Profile
+        addressTitle: "地址管理",
+        addressDesc: "在此管理您的地址",
     },
 
     // messagebox
@@ -55,6 +59,8 @@ export default {
     },
 
     table: {
+        add: "新增",
+        edit: "编辑",
         refresh: "刷新",
         search: "搜索",
         start_time: "开始日期",

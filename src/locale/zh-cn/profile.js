@@ -1,0 +1,25 @@
+export default {
+    nav: {
+        index: "个人中心",
+        address: "地址管理",
+    },
+    address: {
+        add: "新增地址",
+        edit: "编辑地址",
+        name: "联系人",
+        namePlaceholder: "请输入联系人",
+        phone: "联系电话",
+        phonePlaceholder: "请输入联系电话",
+        addr: "联系地址",
+        addrPlaceholder: "请输入联系地址",
+        tag: "标签",
+        school: "学校",
+        home: "家",
+        company: "公司",
+        custom: "自定义",
+        isDefault: "默认地址",
+        defaultTag: "默认",
+        setDefault: "设为默认",
+        cancelDefault: "取消默认",
+    },
+};
