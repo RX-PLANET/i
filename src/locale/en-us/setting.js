@@ -2,7 +2,7 @@ export default {
     nav: {
         index: "Settings",
         user: "Profile",
-        address: "Address Management",
+        address: "Address",
         info: "Basic Information",
         profile: "My Profile",
     },

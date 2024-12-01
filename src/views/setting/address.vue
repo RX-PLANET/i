@@ -40,7 +40,6 @@
                                         class="u-default"
                                         :type="row.is_default ? 'danger' : 'info'"
                                         @click="onToggleDefault(row)"
-                                        >{{ $t("setting.address.defaultTag") }}</el-tag
                                     >
                                         <el-icon v-if="row.is_default"><StarFilled /></el-icon>
                                         <el-icon v-else><Star /></el-icon>
