@@ -1,16 +1,16 @@
 export default {
     nav: {
-        index: "Personal Center",
-        address: "Address Management",
+        index: "Setting",
+        address: "Address",
     },
     address: {
         add: "Add new address",
         edit: "Edit Address",
-        name: "Contact",
+        name: "Name",
         namePlaceholder: "Please enter a contact person",
-        phone: "Contact Number",
+        phone: "Phone Number",
         phonePlaceholder: "Please enter your contact number",
-        addr: "Contact Address",
+        addr: "Address",
         addrPlaceholder: "Please enter the contact address",
         tag: "Tag",
         school: "School",

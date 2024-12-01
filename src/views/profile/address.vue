@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
-                    <el-table-column :label="$t('profile.address.tag')" width="130">
+                    <el-table-column :label="$t('profile.address.tag')" width="180">
                         <template #default="{ row }">
                             <div class="u-row">
                                 <el-tooltip
@@ -40,17 +40,25 @@
                                         class="u-default"
                                         :type="row.is_default ? 'danger' : 'info'"
                                         @click="onToggleDefault(row)"
-                                        >{{ $t("profile.address.defaultTag") }}</el-tag
                                     >
+                                        <el-icon v-if="row.is_default"><StarFilled /></el-icon>
+                                        <el-icon v-else><Star /></el-icon>
+                                        {{ $t("profile.address.defaultTag") }}
+                                    </el-tag>
                                 </el-tooltip>
                                 <el-tag v-if="row.tag">{{ row.tag }}</el-tag>
                                 <span v-else>-</span>
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column :label="$t('profile.address.name')" prop="name" show-overflow-tooltip>
+                    <el-table-column :label="$t('profile.address.name')" prop="name" show-overflow-tooltip width="220">
                     </el-table-column>
-                    <el-table-column :label="$t('profile.address.phone')" prop="phone" show-overflow-tooltip>
+                    <el-table-column
+                        :label="$t('profile.address.phone')"
+                        prop="phone"
+                        show-overflow-tooltip
+                        width="220"
+                    >
                     </el-table-column>
                     <el-table-column :label="$t('profile.address.addr')" prop="addr" show-overflow-tooltip>
                     </el-table-column>
@@ -177,6 +185,11 @@ export default {
     min-height: 100vh;
     .u-default {
         cursor: pointer;
+        .el-tag__content {
+            .flex;
+            align-items: center;
+            gap: 2px;
+        }
     }
 }
 </style>

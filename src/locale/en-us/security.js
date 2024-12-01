@@ -1,9 +1,9 @@
 export default {
     nav: {
-        index: "Security Center",
+        index: "Security",
         log: "Log Audit",
         password: "Change Password",
-        destroy: "Deregister account",
+        destroy: "Account Deletion",
         device: "Device Management",
     },
     log: {
@@ -15,7 +15,7 @@ export default {
         status: {
             all: "All",
             success: "Success",
-            fail: "Failed",
+            fail: "Failure",
         },
         table: {
             action: "Action",
@@ -28,7 +28,7 @@ export default {
         },
     },
     password: {
-        alert: "Please set a relatively reasonable and secure password",
+        alert: "Please set a secure and reasonable password.",
         new: "New Password",
         repeat: "Repeat Password",
         changeSuccess: "Change Successful",

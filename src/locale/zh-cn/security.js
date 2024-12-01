@@ -28,7 +28,7 @@ export default {
         },
     },
     password: {
-        alert: "请设置一个相对合理安全的密码",
+        alert: "请设置一个合理安全的密码",
         new: "新密码",
         repeat: "重复密码",
         changeSuccess: "修改成功",

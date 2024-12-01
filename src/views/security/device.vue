@@ -37,7 +37,7 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column :label="$t('security.device.lastTime')" prop="last_used" width="180">
+                    <el-table-column :label="$t('security.device.lastTime')" prop="last_used" width="280">
                         <template #default="{ row }">
                             {{ formatDate(row.last_used, "datetime") }}
                         </template>
@@ -58,7 +58,14 @@
                                     :content="$t('common.table.remove')"
                                     placement="top"
                                 >
-                                    <el-button class="u-view" circle plain icon="Close" @click.stop="onDelete(row)">
+                                    <el-button
+                                        class="u-view"
+                                        circle
+                                        plain
+                                        icon="Close"
+                                        @click.stop="onDelete(row)"
+                                        size="small"
+                                    >
                                     </el-button>
                                 </el-tooltip>
                             </div>
