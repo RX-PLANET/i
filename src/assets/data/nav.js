@@ -31,9 +31,9 @@ const data = [
         icon: "lock",
         children: [
             {
-                title: t("security.nav.log"),
-                route: "/dashboard/security/log",
-                routeName: "dashboard-security-log",
+                title: t("security.nav.password"),
+                route: "/dashboard/security/password",
+                routeName: "dashboard-security-password",
             },
             {
                 title: t("security.nav.device"),
@@ -41,9 +41,9 @@ const data = [
                 routeName: "dashboard-security-device",
             },
             {
-                title: t("security.nav.password"),
-                route: "/dashboard/security/password",
-                routeName: "dashboard-security-password",
+                title: t("security.nav.log"),
+                route: "/dashboard/security/log",
+                routeName: "dashboard-security-log",
             },
             {
                 title: t("security.nav.destroy"),
