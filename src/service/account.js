@@ -1,4 +1,4 @@
-import { $uc } from "@iruxu/rx-common/utils/api.js";
+import { $uc, $cms } from "@iruxu/rx-common/utils/api.js";
 
 // ============ 基础信息 ============
 /**
@@ -22,6 +22,66 @@ export function updateUserInfo(data, params) {
         params,
     });
 }
+
+/**
+ * 更新用户昵称
+ * @param {Object} data
+ * @param {String} data.nickname 昵称
+ * @returns
+ */
+export function updateNickname(data) {
+    return $uc().put("/api/uc/user/account/i/nickname", data);
+}
+
+/**
+ * 获取用户资料
+ * @returns
+ */
+export async function getProfile() {
+    return $uc().get("/api/uc/user/i/profile");
+}
+
+/**
+ * 更新用户资料
+ * @param {Object} data
+ * @param {String} data.country 国家
+ * @param {String} data.birth_year 出生年
+ * @param {String} data.birth_month 出生月
+ * @param {String} data.birth_day 出生日
+ * @param {String} data.bio 签名
+ * @returns
+ */
+export function updateProfile(data) {
+    return $uc().post("/api/uc/user/i/profile", data);
+}
+
+/**
+ * 检查昵称是否可用
+ * @param {String} nickname 昵称
+ * @returns {Promise}
+ * @returns
+ */
+export async function checkNickname(nickname) {
+    return $uc()
+        .get("/api/uc/user/account/nickname/valid", {
+            params: {
+                nickname,
+            },
+        })
+        .then((res) => res.data.data);
+}
+
+/**
+ * 上传头像
+ * @param {Object} file
+ */
+export const uploadAvatar = async (file) => {
+    return $cms().post("/api/cms/user/upload/avatar", file, {
+        headers: {
+            "Content-Type": file.type || "application/octet-stream",
+        },
+    });
+};
 
 /**
  * 登出

@@ -2,12 +2,12 @@ import common from "./common";
 import notification from "./notification";
 import account from "./account";
 import security from "./security";
-import profile from "./profile";
+import setting from "./setting";
 
 export default {
     common,
     notification,
     account,
     security,
-    profile,
+    setting,
 };

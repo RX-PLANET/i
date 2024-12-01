@@ -1,7 +1,10 @@
 export default {
     nav: {
-        index: "Setting",
+        index: "Settings",
+        user: "Account",
         address: "Address",
+        info: "Basic",
+        profile: "Profile",
     },
     address: {
         add: "Add new address",
@@ -21,5 +24,20 @@ export default {
         defaultTag: "Default",
         setDefault: "Set as Default",
         cancelDefault: "Cancel default",
+    },
+    info: {
+        avatar: "Avatar",
+        nickname: "Nickname",
+        email: "Email",
+        phone: "Phone",
+        locale: "Language",
+        nicknameRequired: "Please enter a nickname",
+        nicknameExist: "Nickname already exists",
+    },
+    profile: {
+        country: "Country",
+        birth: "Birthday",
+        bio: "Bio",
+        birthPlaceholder: "Please select your birthday",
     },
 };

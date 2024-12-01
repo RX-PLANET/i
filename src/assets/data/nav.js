@@ -53,13 +53,18 @@ const data = [
         ],
     },
     {
-        title: t("profile.nav.index"),
+        title: t("setting.nav.index"),
         icon: "user",
         children: [
             {
-                title: t("profile.nav.address"),
-                route: "/dashboard/profile/address",
-                routeName: "dashboard-profile-address",
+                title: t("setting.nav.user"),
+                route: "/dashboard/setting/user",
+                routeName: "dashboard-setting-user",
+            },
+            {
+                title: t("setting.nav.address"),
+                route: "/dashboard/setting/address",
+                routeName: "dashboard-setting-address",
             },
         ],
     },

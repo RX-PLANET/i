@@ -217,7 +217,7 @@ export default {
             this.$refs.resetForm.validate(async (valid) => {
                 if (valid) {
                     findPassword({ email: this.form.email }, { app: this.app }).then(() => {
-                        this.$message.success("验证码已发送至您的邮箱，请查收");
+                        this.$message.success(this.$t("account.email.sendResetSuccess"));
                         this.sent = true;
                         this.step = 1;
                         // 定时180s才能再次发送
@@ -242,7 +242,7 @@ export default {
                         password: this.form.password1,
                     };
                     resetPassword(data, { app: this.app }).then(() => {
-                        this.$message.success("密码重置成功");
+                        this.$message.success(this.$t("account.email.resetSuccessDesc"));
                         this.step = 3;
                     });
                 }

@@ -1,7 +1,10 @@
 export default {
     nav: {
-        index: "个人中心",
+        index: "资料设置",
         address: "地址管理",
+        user: "个人资料",
+        info: "基本信息",
+        profile: "我的资料",
     },
     address: {
         add: "新增地址",
@@ -21,5 +24,20 @@ export default {
         defaultTag: "默认",
         setDefault: "设为默认",
         cancelDefault: "取消默认",
+    },
+    info: {
+        avatar: "头像",
+        nickname: "昵称",
+        email: "邮箱",
+        phone: "手机",
+        locale: "语言偏好",
+        nicknameRequired: "请输入昵称",
+        nicknameExist: "昵称已存在",
+    },
+    profile: {
+        country: "国家",
+        birth: "生日",
+        bio: "签名",
+        birthPlaceholder: "请选择生日",
     },
 };

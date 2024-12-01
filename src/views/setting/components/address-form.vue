@@ -1,25 +1,25 @@
 <template>
     <el-dialog class="w-dialog" :model-value="visible" :title="title" :before-close="close" draggable>
         <el-form class="m-address-form" ref="form" :model="form" :rules="rules" label-position="top">
-            <el-form-item prop="name" :label="$t('profile.address.name')" required>
-                <el-input v-model="form.name" :placeholder="$t('profile.address.namePlaceholder')"> </el-input>
+            <el-form-item prop="name" :label="$t('setting.address.name')" required>
+                <el-input v-model="form.name" :placeholder="$t('setting.address.namePlaceholder')"> </el-input>
             </el-form-item>
-            <el-form-item prop="phone" :label="$t('profile.address.phone')" required>
+            <el-form-item prop="phone" :label="$t('setting.address.phone')" required>
                 <div class="m-line">
                     <phone-code-select ref="phoneCodeSelect" v-model="phoneCode" />
-                    <el-input v-model="form.phone" :placeholder="$t('profile.address.phonePlaceholder')"> </el-input>
+                    <el-input v-model="form.phone" :placeholder="$t('setting.address.phonePlaceholder')"> </el-input>
                 </div>
             </el-form-item>
-            <el-form-item :label="$t('profile.address.addr')" prop="addr" required>
+            <el-form-item :label="$t('setting.address.addr')" prop="addr" required>
                 <div class="m-line">
                     <el-input
                         class="u-detail-address"
-                        :placeholder="$t('profile.address.addrPlaceholder')"
+                        :placeholder="$t('setting.address.addrPlaceholder')"
                         v-model="form.addr"
                     ></el-input>
                 </div>
             </el-form-item>
-            <el-form-item :label="$t('profile.address.tag')" prop="tag">
+            <el-form-item :label="$t('setting.address.tag')" prop="tag">
                 <div class="m-line">
                     <el-tag
                         v-for="(item, i) in tags"
@@ -33,12 +33,12 @@
                 <el-input
                     v-if="isCustomTag"
                     class="u-custom-tag"
-                    :placeholder="$t('profile.address.custom')"
+                    :placeholder="$t('setting.address.custom')"
                     v-model="form.tag"
                 ></el-input>
             </el-form-item>
             <el-form-item prop="is_default">
-                <el-checkbox v-model="form.is_default">{{ this.$t("profile.address.isDefault") }}</el-checkbox>
+                <el-checkbox v-model="form.is_default">{{ this.$t("setting.address.isDefault") }}</el-checkbox>
             </el-form-item>
         </el-form>
         <template #footer>
@@ -75,10 +75,10 @@ export default {
             phoneCode: 86,
             form: {},
             rules: {
-                name: [{ required: true, message: this.$t("profile.address.namePlaceholder"), trigger: "blur" }],
-                addr: [{ required: true, message: this.$t("profile.address.addrPlaceholder"), trigger: "blur" }],
+                name: [{ required: true, message: this.$t("setting.address.namePlaceholder"), trigger: "blur" }],
+                addr: [{ required: true, message: this.$t("setting.address.addrPlaceholder"), trigger: "blur" }],
                 phone: [
-                    { required: true, message: this.$t("profile.address.phonePlaceholder"), trigger: "blur" },
+                    { required: true, message: this.$t("setting.address.phonePlaceholder"), trigger: "blur" },
                     {
                         validator: (rule, value, callback) => {
                             const phone = `+${this.phoneCode}${value}`;
@@ -95,10 +95,10 @@ export default {
                 ],
             },
             tags: [
-                this.$t("profile.address.school"),
-                this.$t("profile.address.home"),
-                this.$t("profile.address.company"),
-                this.$t("profile.address.custom"),
+                this.$t("setting.address.school"),
+                this.$t("setting.address.home"),
+                this.$t("setting.address.company"),
+                this.$t("setting.address.custom"),
             ],
             isCustomTag: false,
         };
@@ -108,7 +108,7 @@ export default {
             return this.data.mode === "edit";
         },
         title() {
-            return this.isEdit ? this.$t("profile.address.edit") : this.$t("profile.address.add");
+            return this.isEdit ? this.$t("setting.address.edit") : this.$t("setting.address.add");
         },
     },
     watch: {

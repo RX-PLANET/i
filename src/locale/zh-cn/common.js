@@ -46,6 +46,15 @@ export default {
         // Profile
         addressTitle: "地址管理",
         addressDesc: "在此管理您的地址",
+
+        userTitle: "个人资料",
+        userDesc: "管理您的用户设置",
+
+        infoTitle: "基本信息",
+        infoDesc: "管理您的基本信息",
+
+        profileTitle: "个人资料",
+        profileDesc: "管理您的个人资料",
     },
 
     // messagebox

@@ -6,7 +6,7 @@
                 <div class="c-header__desc" v-if="routeMeta?.desc">{{ routeMeta.desc }}</div>
             </div>
             <div class="c-header-right">
-                <lang-select class="c-header__lang" selected="text" @change="onLangChange" :lang="lang"></lang-select>
+                <lang-select class="c-header__lang" selected="icon" @change="onLangChange" :lang="lang"></lang-select>
                 <el-dropdown trigger="click">
                     <div class="c-header__profile">
                         <span class="u-name">{{ profile.username || profile.nickname }}</span>
