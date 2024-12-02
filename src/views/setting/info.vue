@@ -39,27 +39,26 @@
                         @click="onEditNickname"
                     ></el-button>
                     <template v-else>
-                        <el-button icon="CircleClose" link class="u-edit-btn" @click="onEditNicknameCancel"></el-button>
-                        <el-button
-                            icon="CircleCheck"
-                            link
-                            class="u-edit-btn"
-                            @click="onEditNicknameConfirm"
-                        ></el-button>
+                        <el-button class="u-edit-btn" @click="onEditNicknameConfirm" type="primary">{{
+                            $t("common.messagebox.confirm")
+                        }}</el-button>
+                        <el-button class="u-edit-btn" @click="onEditNicknameCancel">{{
+                            $t("common.messagebox.cancel")
+                        }}</el-button>
                     </template>
                 </el-form-item>
 
-                <el-form-item :label="$t('setting.info.locale')">
+                <el-form-item :label="$t('setting.info.locale')" class="m-language-setting">
                     <lang-select @change="onLangChange" :lang="form.lang"></lang-select>
                 </el-form-item>
 
                 <el-form-item :label="$t('setting.info.email')">
                     <span>{{ user.email || "-" }}</span>
-                    <el-button icon="Edit" link class="u-edit-btn" @click="onEmailEdit"></el-button>
+                    <el-button icon="Setting" link class="u-edit-btn" @click="onEmailEdit"></el-button>
                 </el-form-item>
                 <el-form-item :label="$t('setting.info.phone')">
                     <span>{{ secretPhone(user.phone) }}</span>
-                    <el-button icon="Edit" link class="u-edit-btn" @click="onPhoneEdit"></el-button>
+                    <el-button icon="Setting" link class="u-edit-btn" @click="onPhoneEdit"></el-button>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" :disabled="loading" class="u-confirm" @click="onConfirm">{{
@@ -164,10 +163,14 @@ export default {
             });
         },
         onEmailEdit() {
-            this.$router.push({ name: "dashboard-notification-email" });
+            const path = this.$router.resolve({ name: "dashboard-notification-email" });
+
+            window.open(path.href, "_blank");
         },
         onPhoneEdit() {
-            this.$router.push({ name: "dashboard-notification-phone" });
+            const path = this.$router.resolve({ name: "dashboard-notification-phone" });
+
+            window.open(path.href, "_blank");
         },
         /**
          * 秘密加*号

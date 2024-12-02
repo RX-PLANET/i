@@ -38,6 +38,7 @@
 import { getProfile, updateProfile } from "@/service/account";
 import User from "@iruxu/rx-common/utils/user";
 import countries from "i18n-iso-countries";
+import dayjs from "dayjs";
 export default {
     name: "dashboard-setting-profile",
     data() {
@@ -78,7 +79,7 @@ export default {
 
                 this.form = {
                     country: data.country || "",
-                    birth: birthArr.join("-") || "",
+                    birth: (birthArr?.length && dayjs(birthArr.join("-")).format("YYYY-MM-DD")) || "",
                     bio: data.bio || "",
                 };
             });
@@ -87,14 +88,15 @@ export default {
             this.$refs.profileForm.validate((valid) => {
                 if (valid) {
                     this.loading = true;
-                    const [birth_year, birth_month, birth_date] = this.form.birth.split("-");
-                    updateProfile({
+                    const [birth_year, birth_month, birth_date] = this.form.birth?.split("-") || [];
+                    const data = {
                         country: this.form.country,
-                        birth_year,
-                        birth_month,
-                        birth_date,
                         bio: this.form.bio,
-                    })
+                        birth_year: birth_year || 0,
+                        birth_month: birth_month || 0,
+                        birth_date: birth_date || 0,
+                    };
+                    updateProfile(data)
                         .then(() => {
                             this.$message.success(this.$t("common.messagebox.success"));
                         })
