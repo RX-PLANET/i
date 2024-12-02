@@ -16,7 +16,6 @@
                         @update="onAvatarUpdate"
                         :domain="domain"
                         :upload-fn="upload"
-                        :default-avatar="logo"
                         :size="[80, 80]"
                         shape="circle"
                     ></upload-image>
