@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <el-table class="m-table" :data="tableData" max-height="600px" v-loading="loading" size="large">
-                    <el-table-column :label="$t('setting.address.tag')" width="130">
+                    <el-table-column :label="$t('setting.address.tag')" width="180">
                         <template #default="{ row }">
                             <div class="u-row">
                                 <el-tooltip
@@ -51,13 +51,18 @@
                             </div>
                         </template>
                     </el-table-column>
-                    <el-table-column :label="$t('setting.address.name')" prop="name" show-overflow-tooltip>
+                    <el-table-column :label="$t('setting.address.name')" prop="name" show-overflow-tooltip width="180">
                     </el-table-column>
-                    <el-table-column :label="$t('setting.address.phone')" prop="phone" show-overflow-tooltip>
+                    <el-table-column
+                        :label="$t('setting.address.phone')"
+                        prop="phone"
+                        show-overflow-tooltip
+                        width="180"
+                    >
                     </el-table-column>
                     <el-table-column :label="$t('setting.address.addr')" prop="addr" show-overflow-tooltip>
                     </el-table-column>
-                    <el-table-column :label="$t('common.table.op')" width="120" align="right">
+                    <el-table-column :label="$t('common.table.op')" width="180" align="right">
                         <template #default="{ row }">
                             <div class="u-op">
                                 <el-tooltip
