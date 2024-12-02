@@ -41,9 +41,9 @@
                                         :type="row.is_default ? 'danger' : 'info'"
                                         @click="onToggleDefault(row)"
                                     >
-                                        <el-icon v-if="row.is_default"><StarFilled /></el-icon>
-                                        <el-icon v-else><Star /></el-icon>
-                                        {{ $t("profile.address.defaultTag") }}
+                                        <el-icon v-if="row.is_default" size="18"><StarFilled /></el-icon>
+                                        <el-icon v-else size="18"><Star /></el-icon>
+                                        {{ $t("setting.address.defaultTag") }}
                                     </el-tag>
                                 </el-tooltip>
                                 <el-tag v-if="row.tag">{{ row.tag }}</el-tag>
@@ -176,7 +176,7 @@ export default {
 </script>
 
 <style lang="less">
-.p-profile-address {
+.p-setting-address {
     min-height: 100vh;
     .u-default {
         cursor: pointer;
