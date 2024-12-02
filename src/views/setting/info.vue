@@ -18,7 +18,7 @@
                         :upload-fn="upload"
                         :default-avatar="logo"
                         :size="[80, 80]"
-                        shape="square"
+                        shape="circle"
                     ></upload-image>
                 </el-form-item>
 
