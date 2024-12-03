@@ -15,7 +15,7 @@
         "update": "npm install @iruxu/pkg-widget@latest @iruxu/rx-common@latest --registry=https://registry.npmjs.org"
     },
     "dependencies": {
-        "@iruxu/pkg-widget": "^0.0.17",
+        "@iruxu/pkg-widget": "^0.0.18",
         "@iruxu/rx-common": "^0.1.1",
         "@vueuse/head": "^0.7.6",
         "axios": "^1.7.2",
