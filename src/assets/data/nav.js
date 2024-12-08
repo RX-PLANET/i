@@ -6,6 +6,22 @@ const {
 
 const data = [
     {
+        title: t("setting.nav.index"),
+        icon: "user",
+        children: [
+            {
+                title: t("setting.nav.user"),
+                route: "/dashboard/setting/user",
+                routeName: "dashboard-setting-user",
+            },
+            {
+                title: t("setting.nav.address"),
+                route: "/dashboard/setting/address",
+                routeName: "dashboard-setting-address",
+            },
+        ],
+    },
+    {
         title: t("notification.nav.index"),
         icon: "message", // 对应地址 @assets/img/icon/message.svg
         children: [
@@ -49,22 +65,6 @@ const data = [
                 title: t("security.nav.destroy"),
                 route: "/dashboard/security/destroy",
                 routeName: "dashboard-security-destroy",
-            },
-        ],
-    },
-    {
-        title: t("setting.nav.index"),
-        icon: "user",
-        children: [
-            {
-                title: t("setting.nav.user"),
-                route: "/dashboard/setting/user",
-                routeName: "dashboard-setting-user",
-            },
-            {
-                title: t("setting.nav.address"),
-                route: "/dashboard/setting/address",
-                routeName: "dashboard-setting-address",
             },
         ],
     },
