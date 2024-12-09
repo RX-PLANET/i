@@ -1,8 +1,8 @@
 name: Build Preview
 on:
     push:
-        tags:
-            - "v*.*.*-preview"
+        branches:
+            - preview
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
