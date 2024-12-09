@@ -34,12 +34,12 @@ jobs:
               run: npm run build
 
             - name: Deploy Build
-              uses: JamesIves/github-pages-deploy-action@releases/v3
+              uses: JamesIves/github-pages-deploy-action@v4
               with:
-                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                  BRANCH: dist
-                  FOLDER: dist
-                  CLEAN: true
+                  token: ${{ secrets.ACCESS_TOKEN }}
+                  branch: dist
+                  folder: dist
+                  clean: true
 
             - name: OSS
               uses: manyuanrong/setup-ossutil@v2.0
