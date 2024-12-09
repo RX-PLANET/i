@@ -6,13 +6,19 @@ on:
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [v16.18.1]
         steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v2
+              with:
+                  node-version: ${{ matrix.node-version }}
 
             # TODO:私有包指定域
-            - name: Use Node.js
-              uses: actions/setup-node@v3
+            # - name: Use Node.js
+            #   uses: actions/setup-node@v3
             #   with:
             #       always-auth: true
             #       node-version: "16.x"
@@ -26,6 +32,7 @@ jobs:
 
             - name: Build
               run: npm run build
+
             - name: Deploy Build
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
@@ -40,5 +47,4 @@ jobs:
                   endpoint: "oss-cn-hangzhou.aliyuncs.com"
                   access-key-id: ${{secrets.ACCESSKEY_ID}}
                   access-key-secret: ${{secrets.ACCESS_KEY_SECRET}}
-            # TODO:配置oss路径
-            - run: ossutil cp -rf dist oss://$bucket/$path-to
+            - run: ossutil cp -rf dist oss://iruxu/static/i
