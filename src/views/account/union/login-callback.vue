@@ -50,7 +50,6 @@ export default {
         init() {
             if (this.$route.query.userdata) {
                 const userdata = JSON.parse(atob(this.$route.query.userdata));
-                console.log("用户资料测试userdata", userdata);
                 User.update(userdata).then(() => {
                     this.skip();
                 });
