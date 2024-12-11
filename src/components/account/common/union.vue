@@ -44,8 +44,7 @@ export default {
             return this.$store.state.app;
         },
         lang() {
-            let lang = User.getLocale();
-            return lang === "zh-CN" ? "cn" : "en";
+            return User.getLocale();
         },
         unionLinkSuffix() {
             return "?app=" + this.app + "&lang=" + this.lang;
