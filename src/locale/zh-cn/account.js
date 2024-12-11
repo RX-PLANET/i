@@ -13,7 +13,7 @@ export default {
 
         // Account Messages
         loginSuccess: "登录成功",
-        loginSuccessDesc: "欢迎回来，宝！",
+        loginSuccessDesc: "欢迎回来「RX星球」！",
         passwordPlaceholder: "请输入密码",
         password2Placeholder: "请再次输入密码",
         passwordError: "长度在 6 到 30 个字符",

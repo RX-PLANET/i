@@ -3,18 +3,18 @@
         <el-row class="m-container" justify="center">
             <div class="m-register">
                 <logo :app="app" />
-                <div class="m-card">
+                <div class="m-card m-login-card">
                     <main class="m-card-main">
                         <el-alert
                             class="m-alert"
-                            :title="$t('account.email.registerSuccess')"
+                            :title="$t('account.common.loginSuccess')"
                             type="success"
-                            :description="$t('account.email.registerSuccessDesc')"
+                            :description="$t('account.common.loginSuccessDesc')"
                             show-icon
                             :closable="false"
                         >
                         </el-alert>
-                        <union mode="login" :includes="[from]" />
+                        <a class="el-button u-btn el-button--primary u-skip" :href="redirect">{{ redirect_button }}</a>
                     </main>
                 </div>
             </div>
@@ -25,32 +25,38 @@
 
 <script>
 import Footer from "@/components/account/common/footer.vue";
-import union from "@/components/account/common/union.vue";
+import User from "@iruxu/rx-common/utils/user";
 export default {
     name: "UnionRegisterCallback",
     props: [],
     components: {
         Footer,
-        union,
     },
     data: function () {
         return {
             app: "",
+            redirect: "",
+            redirect_button: "",
+            homepage: "/",
         };
     },
     computed: {
-        loginLink() {
-            const path = this.$router.resolve({ name: "email-login" });
-            return path.href;
-        },
         from() {
             return this.$route.query.from;
         },
     },
     watch: {},
     methods: {
-        goLogin() {
-            location.href = this.loginLink;
+        checkDirect() {
+            let search = new URLSearchParams(document.location.search);
+            let redirect = search.get("redirect");
+            if (redirect) {
+                this.redirect = redirect;
+                this.redirect_button = this.$t("account.common.jump");
+            } else {
+                this.redirect = this.homepage;
+                this.redirect_button = this.$t("account.common.backToHome");
+            }
         },
     },
     created: function () {},
@@ -62,11 +68,16 @@ export default {
         } else {
             this.app = "miipet";
         }
+
+        // 生成特征码
+        User.generateFingerprint();
+
+        this.checkDirect();
     },
 };
 </script>
 
 <style lang="less">
 @import "@/assets/css/account/common.less";
-@import "@/assets/css/account/email/register.less";
+@import "@/assets/css/account/email/login.less";
 </style>

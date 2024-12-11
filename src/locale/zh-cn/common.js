@@ -21,6 +21,7 @@ export default {
         phoneResetPassword: "重置密码 - 手机重置",
 
         registerCallback: "注册成功",
+        loginCallback: "登录成功",
 
         // Notification
         messageTitle: "消息",

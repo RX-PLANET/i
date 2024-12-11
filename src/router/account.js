@@ -13,6 +13,7 @@ const UsernameLogin = () => import("../views/account/username/login.vue");
 const UsernameRegister = () => import("../views/account/username/register.vue");
 
 const RegisterCallback = () => import("@/views/account/union/register-callback.vue");
+const LoginCallback = () => import("@/views/account/union/login-callback.vue");
 
 import User from "@iruxu/rx-common/utils/user.js";
 import { i18n } from "@/locale";
@@ -122,6 +123,14 @@ export default [
                 component: RegisterCallback,
                 meta: {
                     title: t("common.routes.registerCallback"),
+                },
+            },
+            {
+                path: "callback/login",
+                name: "callback-login",
+                component: LoginCallback,
+                meta: {
+                    title: t("common.routes.loginCallback"),
                 },
             },
         ],

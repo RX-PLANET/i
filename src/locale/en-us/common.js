@@ -21,6 +21,7 @@ export default {
         phoneResetPassword: "Reset Password - Phone",
 
         registerCallback: "Register Success",
+        loginCallback: "Login Success",
 
         // Notification
         messageTitle: "Message",

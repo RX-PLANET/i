@@ -1,5 +1,5 @@
 <template>
-    <div class="m-account-union">
+    <div class="m-account-union" v-if="includes.length">
         <div class="m-account-union__header">
             <span
                 ><el-icon><Star /></el-icon
