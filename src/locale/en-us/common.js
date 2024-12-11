@@ -20,6 +20,8 @@ export default {
         phoneCodeLogin: "Login - Phone Code",
         phoneResetPassword: "Reset Password - Phone",
 
+        registerCallback: "Register Success",
+
         // Notification
         messageTitle: "Message",
         messageDesc: "System message from all applications",

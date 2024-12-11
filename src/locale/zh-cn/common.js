@@ -20,6 +20,8 @@ export default {
         phoneCodeLogin: "登录 - 验证码登录",
         phoneResetPassword: "重置密码 - 手机重置",
 
+        registerCallback: "注册成功",
+
         // Notification
         messageTitle: "消息",
         messageDesc: "来自所有应用的系统消息",

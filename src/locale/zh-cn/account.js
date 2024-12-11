@@ -122,6 +122,7 @@ export default {
         resetSuccessDesc: "您的密码已重置成功",
     },
     union: {
-        unionTitle: "或",
+        verifySuccess: "验证成功",
+        registerSuccess: "注册成功",
     },
 };

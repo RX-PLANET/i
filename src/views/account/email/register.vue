@@ -17,7 +17,6 @@ export default {
     name: "AccountEmailRegister",
     components: {
         register,
-
         Footer,
     },
     data() {

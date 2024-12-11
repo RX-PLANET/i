@@ -122,6 +122,7 @@ export default {
         resetSuccessDesc: "Your password has been reset successfully",
     },
     union: {
-        unionTitle: "OR",
+        verifySuccess: "验证成功",
+        registerSuccess: "注册成功",
     },
 };

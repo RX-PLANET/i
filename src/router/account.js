@@ -11,8 +11,10 @@ const PhoneResetPassword = () => import("@/views/account/phone/reset-password.vu
 
 const UsernameLogin = () => import("../views/account/username/login.vue");
 const UsernameRegister = () => import("../views/account/username/register.vue");
-import User from "@iruxu/rx-common/utils/user.js";
 
+const RegisterCallback = () => import("@/views/account/union/register-callback.vue");
+
+import User from "@iruxu/rx-common/utils/user.js";
 import { i18n } from "@/locale";
 
 const {
@@ -111,6 +113,15 @@ export default [
                 component: UsernameRegister,
                 meta: {
                     title: t("common.routes.usernameRegister"),
+                },
+            },
+
+            {
+                path: "callback/register",
+                name: "callback-register",
+                component: RegisterCallback,
+                meta: {
+                    title: t("common.routes.registerCallback"),
                 },
             },
         ],

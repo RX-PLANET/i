@@ -6,7 +6,11 @@
             ></span>
         </div>
         <div class="m-account-union__content">
-            <a class="m-account-union__item m-account-union__item--wechat" :href="getUnionLink('/user/union/wesite/')">
+            <a
+                class="m-account-union__item m-account-union__item--wechat"
+                :href="getUnionLink('/user/union/wesite/')"
+                v-if="includes.includes('wechat')"
+            >
                 <img class="u-icon" src="@/assets/img/union/wechat.svg" />
                 <span class="u-label">微信</span>
             </a>
@@ -19,7 +23,16 @@ import User from "@iruxu/rx-common/utils/user";
 import GlobalData from "@iruxu/rx-common/data/global.json";
 export default {
     name: "AccountUnion",
-    props: ["mode"],
+    props: {
+        mode: {
+            type: String,
+            default: "login",
+        },
+        includes: {
+            type: Array,
+            default: () => [],
+        },
+    },
     components: {},
     data: function () {
         return {
