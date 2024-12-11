@@ -49,7 +49,7 @@
             <el-button class="u-btn u-submit" type="primary" @click="onLogin" tabindex="3">{{
                 $t("account.common.login")
             }}</el-button>
-            <union mode="login" />
+            <union mode="login" :includes="['wechat']" />
         </div>
 
         <div class="m-card-main" v-else>

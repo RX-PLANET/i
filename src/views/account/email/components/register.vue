@@ -66,7 +66,7 @@
             <el-button class="u-btn u-submit" type="primary" :disabled="!canRegister" @click="onRegister">{{
                 $t("account.common.register")
             }}</el-button>
-            <union mode="register" />
+            <union mode="register" :includes="['wechat']" />
         </div>
 
         <main class="m-card-main" v-if="success == true">
