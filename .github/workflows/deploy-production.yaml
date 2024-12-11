@@ -50,3 +50,14 @@ jobs:
                   access-key-id: ${{secrets.ACCESSKEY_ID}}
                   access-key-secret: ${{secrets.ACCESS_KEY_SECRET}}
             - run: ossutil cp -rf dist oss://iruxu/static/i
+
+            - name: Local Deploy
+              uses: appleboy/ssh-action@master
+              with:
+                  host: ${{ secrets.PROD_HOST }}
+                  username: ${{ secrets.PROD_USER }}
+                  key: ${{ secrets.PROD_KEY }}
+                  script: |
+                      cd /www/wwwroot/rx/i/master
+                      git checkout dist
+                      git pull origin dist

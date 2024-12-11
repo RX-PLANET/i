@@ -158,8 +158,12 @@ export default {
             });
         },
         checkDirect() {
-            let search = new URLSearchParams(document.location.search);
-            let redirect = search.get("redirect");
+            const search = new URLSearchParams(document.location.search);
+            const redirect = search.get("redirect");
+
+            // 第三方登录跳转
+            sessionStorage.setItem("redirect", redirect);
+
             if (redirect) {
                 this.redirect = redirect;
                 this.redirect_button = this.$t("account.common.jump");
@@ -171,6 +175,7 @@ export default {
         skip() {
             if (this.redirect) {
                 setTimeout(() => {
+                    sessionStorage.setItem("redirect", "");
                     location.href = decodeURIComponent(this.redirect);
                 }, 1200);
             }

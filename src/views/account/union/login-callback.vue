@@ -47,9 +47,17 @@ export default {
     },
     watch: {},
     methods: {
+        init() {
+            if (this.$route.query.userdata) {
+                const userdata = JSON.parse(atob(this.$route.query.userdata));
+                User.update(userdata).then(() => {
+                    this.skip();
+                });
+            }
+        },
         checkDirect() {
-            let search = new URLSearchParams(document.location.search);
-            let redirect = search.get("redirect");
+            // 读取sessionStorage中的redirect
+            const redirect = sessionStorage.getItem("redirect");
             if (redirect) {
                 this.redirect = redirect;
                 this.redirect_button = this.$t("account.common.jump");
@@ -58,8 +66,15 @@ export default {
                 this.redirect_button = this.$t("account.common.backToHome");
             }
         },
+        skip() {
+            if (this.redirect) {
+                setTimeout(() => {
+                    sessionStorage.setItem("redirect", "");
+                    location.href = decodeURIComponent(this.redirect);
+                }, 1200);
+            }
+        },
     },
-    created: function () {},
     mounted: function () {
         const search = new URLSearchParams(document.location.search);
 
