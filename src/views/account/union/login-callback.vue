@@ -77,8 +77,13 @@ export default {
         },
     },
     mounted: function () {
-        const search = new URLSearchParams(document.location.search);
+        // 处理重定向
+        this.checkDirect();
 
+        // 读取回调用户信息
+        this.init();
+
+        const search = new URLSearchParams(document.location.search);
         if (search.has("app")) {
             this.app = search.get("app");
         } else {
@@ -87,8 +92,6 @@ export default {
 
         // 生成特征码
         User.generateFingerprint();
-
-        this.checkDirect();
     },
 };
 </script>
