@@ -66,6 +66,7 @@
             <el-button class="u-btn u-submit" type="primary" :disabled="!canRegister" @click="onRegister">{{
                 $t("account.common.register")
             }}</el-button>
+            <union mode="register" />
         </div>
 
         <main class="m-card-main" v-if="success == true">
@@ -109,9 +110,12 @@
 <script>
 import { checkEmail, registerByEmail, activeByEmail } from "@/service/email";
 import User from "@iruxu/rx-common/utils/user";
-
+import union from "@/components/account/common/union.vue";
 export default {
     name: "EmailRegister",
+    components: {
+        union,
+    },
     props: {
         app: {
             type: String,
@@ -122,7 +126,6 @@ export default {
             default: "",
         },
     },
-    components: {},
     data() {
         return {
             form: {

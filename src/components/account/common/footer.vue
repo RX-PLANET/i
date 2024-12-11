@@ -4,7 +4,7 @@
 
 <script>
 export default {
-    name: "RX-Footer1",
+    name: "RX-Footer",
     props: [],
     components: {},
     data: function () {

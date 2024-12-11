@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@iruxu/pkg-widget": "^0.0.18",
-        "@iruxu/rx-common": "^0.1.1",
+        "@iruxu/rx-common": "^0.1.2",
         "@vueuse/head": "^0.7.6",
         "axios": "^1.7.2",
         "core-js": "^3.8.3",

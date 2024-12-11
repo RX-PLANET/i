@@ -121,4 +121,7 @@ export default {
         resetSuccess: "Reset Success",
         resetSuccessDesc: "Your password has been reset successfully",
     },
+    union: {
+        unionTitle: "OR",
+    },
 };

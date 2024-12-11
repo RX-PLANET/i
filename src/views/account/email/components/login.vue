@@ -49,6 +49,7 @@
             <el-button class="u-btn u-submit" type="primary" @click="onLogin" tabindex="3">{{
                 $t("account.common.login")
             }}</el-button>
+            <union mode="login" />
         </div>
 
         <div class="m-card-main" v-else>
@@ -75,8 +76,12 @@
 <script>
 import { loginByEmail } from "@/service/email";
 import User from "@iruxu/rx-common/utils/user";
+import union from "@/components/account/common/union.vue";
 export default {
     name: "EmailLogin",
+    components: {
+        union,
+    },
     props: {
         app: {
             type: String,

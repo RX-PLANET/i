@@ -121,4 +121,7 @@ export default {
         resetSuccess: "重置成功",
         resetSuccessDesc: "您的密码已重置成功",
     },
+    union: {
+        unionTitle: "或",
+    },
 };
