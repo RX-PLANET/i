@@ -50,6 +50,7 @@ export default {
         init() {
             if (this.$route.query.userdata) {
                 const userdata = JSON.parse(atob(this.$route.query.userdata));
+                console.log("用户资料测试userdata", userdata);
                 User.update(userdata).then(() => {
                     this.skip();
                 });
@@ -58,7 +59,7 @@ export default {
         checkDirect() {
             // 读取sessionStorage中的redirect
             const redirect = sessionStorage.getItem("redirect");
-            if (redirect) {
+            if (redirect && redirect.startsWith("http")) {
                 this.redirect = redirect;
                 this.redirect_button = this.$t("account.common.jump");
             } else {
